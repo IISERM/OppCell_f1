@@ -56,15 +56,57 @@ Route::get('database', function()
 
 Route::get('database/progs', function()
 {
-	return View::make('databases.progs');
+	$data = array(
+				array(
+						'name' 		=> 'Name 1',
+						'link' 		=> 'Link 1',
+						'location' 	=> 'Location 1',
+						'subject'	=> 'Subject 1',
+						'deadline'	=> 'Deadline 1',
+						'opening'	=> 'Opening 1'
+					),
+				array(
+						'name' 		=> 'Name 2',
+						'link' 		=> 'Link 2',
+						'location' 	=> 'Location 2',
+						'subject'	=> 'Subject 2',
+						'deadline'	=> 'Deadline 2',
+						'opening'	=> 'Opening 2'
+					),
+				array(
+						'name' 		=> 'Name 3',
+						'link' 		=> 'Link 3',
+						'location' 	=> 'Location 3',
+						'subject'	=> 'Subject 3',
+						'deadline'	=> 'Deadline 3',
+						'opening'	=> 'Opening 3'
+					),
+				array(
+						'name' 		=> 'Name 4',
+						'link' 		=> 'Link 4',
+						'location' 	=> 'Location 4',
+						'subject'	=> 'Subject 4',
+						'deadline'	=> 'Deadline 4',
+						'opening'	=> 'Opening 4'
+					),
+				array(
+						'name' 		=> 'Name 5',
+						'link' 		=> 'Link 5',
+						'location' 	=> 'Location 5',
+						'subject'	=> 'Subject 5',
+						'deadline'	=> 'Deadline 5',
+						'opening'	=> 'Opening 5'
+					)
+				);
+	return View::make('database.progs')->with(array('data' => $data));
 });
 Route::get('database/jobs', function()
 {
-	return View::make('databases.jobs');
+	return View::make('database.jobs');
 });
 Route::get('database/scholarships', function()
 {
-	return View::make('databases.scholarships');
+	return View::make('database.scholarships');
 });
 
 Route::get('admin',function(){

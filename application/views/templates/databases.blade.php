@@ -39,14 +39,8 @@
     <h2>@yield('heading2')</h2>
     <p>@yield('text')</p>
     <br/><h2>@yield('title_table')</h2>
+    @yield('sort')
     <table>
-        <tr>
-            <th>Name</th>
-            <th>Country</th>
-            <th>Subject</th>
-            <th>Deadline</th>
-            <th>Application Opening</th>
-        </tr>
         @yield('table')
     </table>
 @endsection
