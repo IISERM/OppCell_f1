@@ -54,9 +54,17 @@ Route::get('database', function()
 	return View::make('static.database');
 });
 
-Route::get('css/front', function()
+Route::get('database/progs', function()
 {
-	return View::make('css.front');
+	return View::make('databases.progs');
+});
+Route::get('database/jobs', function()
+{
+	return View::make('databases.jobs');
+});
+Route::get('database/scholarships', function()
+{
+	return View::make('databases.scholarships');
 });
 
 /*

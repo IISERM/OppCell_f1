@@ -33,7 +33,7 @@
                     @endif><a href="{{URL::to('about')}}">About</a></li>
                     <li @if (URI::segment(1) == 'database')
                         {{"class='current'"}}
-                    @endif><a href="{{URL::to('database')}}">Summers</a></li>
+                    @endif><a href="{{URL::to('database')}}">Databases</a></li>
                     <li @if (URI::segment(1) == 'contact')
                         {{"class='current'"}}
                     @endif><a href="{{URL::to('contact')}}">Contact Us</a></li>

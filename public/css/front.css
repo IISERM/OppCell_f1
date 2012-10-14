@@ -127,46 +127,6 @@ ol li
   font: 500% 'tangerine', arial; 
   color: #111;}
 
-#menubar
-{ height: 46px;
-  width: 700px;
-  margin: 0px auto -1px auto;
-  float: right;
-  padding: 0px 0 0 0;} 
-
-ul#menu
-{ float: right;}
-
-ul#menu li
-{ float: left;
-  padding: 0 0 0px 0px;
-  list-style: none;
-  margin: 2px 0 0 0;
-  background: transparent;}
-
-ul#menu li a
-{ font: normal 170% 'Yanone Kaffeesatz', sans-serif;
-  text-decoration: none;
-  color: #444;
-  display: block; 
-  float: left; 
-  height: 20px;
-  padding: 7px 23px 15px 23px;
-  text-align: center;} 
-
-ul#menu li.current a
-{ height: 20px;
-  padding: 6px 22px 15px 22px;}
-
-ul#menu li.current a
-{ background: #fff;
-  border: 1px solid #ddd;
-  border-bottom: 0;
-  color: #F14E23;}
-
-ul#menu li a:hover
-{ color: #F14E23;}
-
 #site_content
 { width: 950px;
   overflow: hidden;
@@ -324,3 +284,43 @@ table tr td
 { background: #FBFBFB;
   color: #111;
   border-top: 1px solid #FFF;}
+
+#menubar
+{ height: 46px;
+  width: 700px;
+  margin: 0px auto -1px auto;
+  float: right;
+  padding: 0px 0 0 0;} 
+
+ul#menu
+{ float: right;}
+
+ul#menu li
+{ float: left;
+  padding: 0 0 0px 0px;
+  list-style: none;
+  margin: 2px 0 0 0;
+  background: transparent;}
+
+ul#menu li a
+{ font: normal 170% 'Yanone Kaffeesatz', sans-serif;
+  text-decoration: none;
+  color: #444;
+  display: block; 
+  float: left; 
+  height: 20px;
+  padding: 7px 23px 15px 23px;
+  text-align: center;} 
+
+ul#menu li.current a
+{ height: 20px;
+  padding: 6px 22px 15px 22px;}
+
+ul#menu li.current a
+{ background: #fff;
+  border: 1px solid #ddd;
+  border-bottom: 0;
+  color: #F14E23;}
+
+ul#menu li a:hover
+{ color: #F14E23;}
