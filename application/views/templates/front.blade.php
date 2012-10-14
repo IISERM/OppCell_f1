@@ -10,7 +10,7 @@
     <!-- <meta http-equiv="content-type" content="text/html; charset=utf-8" /> -->
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine&amp;v1" />
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz" />
-    <link rel="stylesheet" type="text/css" href="style/style.css" />
+    <link rel="stylesheet" type="text/css" href="{{URL::to('css/front')}}" />
 </head>
 
 <body>
@@ -26,24 +26,24 @@
                     <!-- put class="current" in the li tag for the selected page - to highlight which page you're on -->
                     @section('menu')
                     <li @if (URI::segment(1) == 'home')
-                        {{class="current"}}
-                    @endif><a href="index.html">Home</a></li>
+                        {{"class='current'"}}
+                    @endif><a href="{{URL::to('home')}}">Home</a></li>
                     <li @if (URI::segment(1) == 'about')
-                        {{class="current"}}
-                    @endif><a href="about.html">About</a></li>
+                        {{"class='current'"}}
+                    @endif><a href="{{URL::to('about')}}">About</a></li>
                     <li @if (URI::segment(1) == 'databases')
-                        {{class="current"}}
-                    @endif><a href="summer.html">Summers</a></li>
+                        {{"class='current'"}}
+                    @endif><a href="{{URL::to('database')}}">Summers</a></li>
                     <li @if (URI::segment(1) == 'contact')
-                        {{class="current"}}
-                    @endif><a href="contact.html">Contact Us</a></li>
+                        {{"class='current'"}}
+                    @endif><a href="{{URL::to('contact')}}">Contact Us</a></li>
                     @yield_section
                 </ul>
             </div>
         </div>
         <div id="site_content">
             <div id="sidebar_container">
-                <img class="paperclip" src="style/paperclip.png" alt="paperclip" />
+                <img class="paperclip" src="{{URL::base().'/img/front'}}/paperclip.png" alt="paperclip" />
                 <div class="sidebar">
                 <!-- insert your sidebar items here -->
                 <h3>Latest News</h3>
@@ -51,7 +51,7 @@
                 <h5>Date</h5>
                 <p>Content<br /><a href="#">Read more</a></p>
                 </div>
-                <img class="paperclip" src="style/paperclip.png" alt="paperclip" />
+                <img class="paperclip" src="{{URL::base().'/img/front'}}/paperclip.png" alt="paperclip" />
                 <div class="sidebar">
                     <h3>Upcoming Things</h3>
                     <h4>Opp Cell Awareness Seminar</h4>

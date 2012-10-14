@@ -34,7 +34,29 @@
 
 Route::get('/', function()
 {
+	return Redirect::to('home');
+});
+
+Route::get('home', function()
+{
 	return View::make('static.home');
+});
+Route::get('about', function()
+{
+	return View::make('static.about');
+});
+Route::get('contact', function()
+{
+	return View::make('static.contact');
+});
+Route::get('database', function()
+{
+	return View::make('static.database');
+});
+
+Route::get('css/front', function()
+{
+	return View::make('css.front');
 });
 
 /*
