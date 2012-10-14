@@ -107,7 +107,7 @@ ol li
   padding: 0 0 0px 10px;}
 
 #logo h1
-{ font: normal 350% 'Yanone Kaffeesatz', arial, sans-serif;
+{ font: normal 400% 'Yanone Kaffeesatz', arial, sans-serif;
   padding: 5px 0 0 17px;
   color: #555;
   float: left;}
@@ -124,7 +124,7 @@ ol li
 { float: right; 
   padding-right: 25px;
   text-align: right; 
-  font: 500% 'tangerine', arial; 
+  font: 400% 'tangerine', arial; 
   color: #111;}
 
 #site_content
@@ -181,7 +181,7 @@ ol li
 #footer
 { clear: both;
   width: 100%;
-  font: normal 150% 'yanone kaffeesatz',  arial, sans-serif;
+  font: normal 100% 'yanone kaffeesatz',  arial, sans-serif;
   height: 85px;
   padding: 20px 0 5px 0;
   text-align: center; 
@@ -190,7 +190,7 @@ ol li
   margin-bottom: 20px;}
 
 #footer p
-{ padding: 0 0 10px 0;}
+{ padding: 0 20px 10px 20px;}
 
 #footer a, #footer a:hover
 { color: #555;

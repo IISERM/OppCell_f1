@@ -67,6 +67,9 @@ Route::get('database/scholarships', function()
 	return View::make('databases.scholarships');
 });
 
+Route::get('admin',function(){
+	return View::make('admin.index');
+});
 /*
 |--------------------------------------------------------------------------
 | Application 404 & 500 Error Handlers
