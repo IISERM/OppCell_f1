@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<title>Laravel: A Framework For Web Artisans</title>
 	<meta name="viewport" content="width=device-width">
-	{{ HTML::style('laravel/css/style.css') }}
+	{= HTML::style('laravel/css/style.css') =}
 </head>
 <body>
 	<div class="wrapper">
@@ -25,17 +25,17 @@
 					is generating this page lives at:
 				</p>
 
-				<pre>{{ path('app') }}routes.php</pre>
+				<pre>{= path('app') =}routes.php</pre>
 
 				<p>And the view sitting before you can be found at:</p>
 
-				<pre>{{ path('app') }}views/home/index.blade.php</pre>
+				<pre>{= path('app') =}views/home/index.blade.php</pre>
 
 				<h2>Grow in knowledge.</h2>
 
 				<p>
 					Learning to use Laravel is amazingly simple thanks to
-					its {{ HTML::link('docs', 'wonderful documentation') }}.
+					its {= HTML::link('docs', 'wonderful documentation') =}.
 				</p>
 
 				<h2>Create something beautiful.</h2>

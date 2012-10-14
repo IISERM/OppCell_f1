@@ -51,7 +51,7 @@ Route::get('contact', function()
 });
 Route::get('database', function()
 {
-	return View::make('static.database');
+	return Redirect::to('database/progs');;
 });
 
 Route::get('database/progs', function()

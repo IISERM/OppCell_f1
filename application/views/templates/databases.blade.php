@@ -18,19 +18,19 @@
             <!-- put class="current" in the li tag for the selected page - to highlight which page you're on -->
             <li
             @if (URI::segment(2) == 'progs')
-                {{"class='current'"}}
+                {="class='current'"=}
             @endif
-            ><a href="{{URL::to('database/progs')}}">Academic Programs</a></li>
+            ><a href="{=URL::to('database/progs')=}">Academic Programs</a></li>
             <li
             @if (URI::segment(2) == 'scholarships')
-                {{"class='current'"}}
+                {="class='current'"=}
             @endif
-            ><a href="{{URL::to('database/scholarships')}}">Scholarships</a></li>
+            ><a href="{=URL::to('database/scholarships')=}">Scholarships</a></li>
             <li
             @if (URI::segment(2) == 'jobs')
-                {{"class='current'"}}
+                {="class='current'"=}
             @endif
-            ><a href="{{URL::to('database/jobs')}}">Jobs</a></li>
+            ><a href="{=URL::to('database/jobs')=}">Jobs</a></li>
         </ul>
     </div>
     <!-- insert the page content here -->
