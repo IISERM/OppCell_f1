@@ -10,7 +10,7 @@
     <!-- <meta http-equiv="content-type" content="text/html; charset=utf-8" /> -->
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine&amp;v1" />
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz" />
-    <link rel="stylesheet" type="text/css" href="{{URL::to('css/front')}}" />
+    <link rel="stylesheet" type="text/css" href="{{URL::base().'/css/front.css'}}" />
 </head>
 
 <body>
