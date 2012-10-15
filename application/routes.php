@@ -56,50 +56,34 @@ Route::get('database', function()
 
 Route::get('database/progs', function()
 {
-	$data = array(
-				array(
-						'name' 		=> 'Name 1',
-						'link' 		=> 'Link 1',
-						'location' 	=> 'Location 1',
-						'subject'	=> 'Subject 1',
-						'deadline'	=> 'Deadline 1',
-						'opening'	=> 'Opening 1'
-					),
-				array(
-						'name' 		=> 'Name 2',
-						'link' 		=> 'Link 2',
-						'location' 	=> 'Location 2',
-						'subject'	=> 'Subject 2',
-						'deadline'	=> 'Deadline 2',
-						'opening'	=> 'Opening 2'
-					),
-				array(
-						'name' 		=> 'Name 3',
-						'link' 		=> 'Link 3',
-						'location' 	=> 'Location 3',
-						'subject'	=> 'Subject 3',
-						'deadline'	=> 'Deadline 3',
-						'opening'	=> 'Opening 3'
-					),
-				array(
-						'name' 		=> 'Name 4',
-						'link' 		=> 'Link 4',
-						'location' 	=> 'Location 4',
-						'subject'	=> 'Subject 4',
-						'deadline'	=> 'Deadline 4',
-						'opening'	=> 'Opening 4'
-					),
-				array(
-						'name' 		=> 'Name 5',
-						'link' 		=> 'Link 5',
-						'location' 	=> 'Location 5',
-						'subject'	=> 'Subject 5',
-						'deadline'	=> 'Deadline 5',
-						'opening'	=> 'Opening 5'
-					)
-				);
-	return View::make('database.progs')->with(array('data' => $data));
+	$d = array();
+	$data = array();
+	$progs = Program::with(array('location','subjects'))->all();
+	foreach ($progs as $prog)
+	{
+		$s = "";
+		foreach ($prog->subjects as $subject)
+		{
+			$s = $s.$subject->name.", ";
+			if($subject->parent['name'] != 0)
+				{
+					$s = $s.$subject->name.", ";
+				}
+		}
+		$data = array(
+				'id' 		=> $prog->id,
+				'name' 		=> $prog->name,
+				'link'		=> $prog->link,
+				'location'	=> $prog->location['name'],
+				'subject'	=> $s,
+				'deadline'	=> $prog->deadline,
+				'opening'	=> $prog->opening
+			);
+		$d[] = $data;
+	}
+	return View::make('database.progs')->with(array('data' => $d));
 });
+
 Route::get('database/jobs', function()
 {
 	return View::make('database.jobs');

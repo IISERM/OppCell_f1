@@ -1,6 +1,6 @@
 <?php
 
-class Link_Programs_Subjects
+class Link_Programs_Skills
 {
 
 	/**
@@ -10,15 +10,15 @@ class Link_Programs_Subjects
 	 */
 	public function up()
 	{
-		Schema::create('program_subject', function($table)
+		Schema::create('job_skill', function($table)
 		{
 			// ID
 			$table->increments('id');
 			
-			// Program ID
-			$table->integer('program_id');
-			// Subject ID
-			$table->integer('subject_id');
+			// Job ID
+			$table->integer('job_id');
+			// Skill ID
+			$table->integer('skill_id');
 
 			// Timestamps
 			$table->timestamps();
@@ -32,7 +32,7 @@ class Link_Programs_Subjects
 	 */
 	public function down()
 	{
-		Schema::drop('program_subject')
+		Schema::drop('job_skill');
 	}
 
 }

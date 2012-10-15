@@ -1,6 +1,7 @@
 <?php
 
-class Create_Programs {
+class Create_Programs
+{
 
 	/**
 	 * Make changes to the database.
