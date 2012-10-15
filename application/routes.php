@@ -65,18 +65,19 @@ Route::get('database/progs', function()
 		foreach ($prog->subjects as $subject)
 		{
 			$s = $s.$subject->name.", ";
-			if($subject->parent['name'] != 0)
-				{
-					$s = $s.$subject->parent['name'].", ";
-				}
+			if($subject->parent != 0)
+			{
+				$s = $s.Subject::find($subject->parent)->name.", ";
+			}
 		}
-		substr_replace($s ,"",-1);
-		substr_replace($s ,"",-1);
+		substr($s,0,-1);
+		substr($s,0,-1);
+		// substr($s,0,-1);
 		$data = array(
 				'id' 		=> $prog->id,
 				'name' 		=> $prog->name,
 				'link'		=> $prog->link,
-				'location'	=> $prog->location['name'],
+				'location'	=> Location::find($prog->location)->name,
 				'subject'	=> $s,
 				'deadline'	=> $prog->deadline,
 				'opening'	=> $prog->opening
