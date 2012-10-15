@@ -67,9 +67,11 @@ Route::get('database/progs', function()
 			$s = $s.$subject->name.", ";
 			if($subject->parent['name'] != 0)
 				{
-					$s = $s.$subject->name.", ";
+					$s = $s.$subject->parent['name'].", ";
 				}
 		}
+		substr_replace($s ,"",-1);
+		substr_replace($s ,"",-1);
 		$data = array(
 				'id' 		=> $prog->id,
 				'name' 		=> $prog->name,

@@ -32,7 +32,7 @@ class Link_Programs_Subjects
 	 */
 	public function down()
 	{
-		Schema::drop('program_subject')
+		Schema::drop('program_subject');
 	}
 
 }
