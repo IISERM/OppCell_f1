@@ -1,7 +1,7 @@
 @layout('templates.front')
 
 @section('title')
-	About Us
+	Contact Us
 @endsection
 
 @section('description')

@@ -11,6 +11,7 @@
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine&amp;v1" />
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz" />
     <link rel="stylesheet" type="text/css" href="{=URL::base().'/css/front.css'=}" />
+    <link rel="Shortcut Icon" href="{=URL::base().'/img/favicon.ico'=}" />
 </head>
 
 <body>
