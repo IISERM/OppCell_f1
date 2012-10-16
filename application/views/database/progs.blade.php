@@ -27,6 +27,7 @@
                 <th>Name</th>
                 <th>Location</th>
                 <th>Subject</th>
+                <th>Position</th>
                 <th>Deadline</th>
                 <th>Application Opening</th>
             </tr>
@@ -35,6 +36,7 @@
                     <td><a href="{= $d['link'] =}">{= $d['name'] =}</td>
                     <td>{= $d['location'] =}</td>
                     <td>{= $d['subject'] =}</td>
+                    <td>{= $d['position'] =}</td>
                     <td>{= $d['deadline'] =}</td>
                     <td>{= $d['opening'] =}</td>
                 </tr>

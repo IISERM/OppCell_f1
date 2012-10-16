@@ -3,10 +3,10 @@
 	{
 		public static $table = 'positions';
 
-		// public function programs()
-		// {
-		// 	// Programs with this position
-		// 	// return $this->has_many('Program','positions');
-		// }
+		public function programs()
+		{
+			// Positions in the program
+			return $this->has_many_and_belongs_to('Programs','position_program');
+		}
 
 	}

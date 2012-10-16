@@ -38,12 +38,14 @@
 					$l = $l.", ".$l2->name;
 				}
 				$s = substr($s,0,-2);
+				$p = substr($p,0,-2);
 				$data = array(
 						'id' 		=> $prog->id,
 						'name' 		=> $prog->name,
 						'link'		=> $prog->link,
 						'location'	=> $l,
 						'subject'	=> $s,
+						'position'	=> $p,
 						'deadline'	=> $prog->deadline,
 						'opening'	=> $prog->opening
 					);
