@@ -49,52 +49,8 @@ Route::get('contact', function()
 {
 	return View::make('static.contact');
 });
-Route::get('database', function()
-{
-	return Redirect::to('database/progs');;
-});
 
-Route::get('database/progs', function()
-{
-	$d = array();
-	$data = array();
-	$progs = Program::with(array('location','subjects'))->all();
-	foreach ($progs as $prog)
-	{
-		$s = "";
-		foreach ($prog->subjects as $subject)
-		{
-			$s = $s.$subject->name.", ";
-			if($subject->parent != 0)
-			{
-				$s = $s.Subject::find($subject->parent)->name.", ";
-			}
-		}
-		substr($s,0,-1);
-		substr($s,0,-1);
-		// substr($s,0,-1);
-		$data = array(
-				'id' 		=> $prog->id,
-				'name' 		=> $prog->name,
-				'link'		=> $prog->link,
-				'location'	=> Location::find($prog->location)->name,
-				'subject'	=> $s,
-				'deadline'	=> $prog->deadline,
-				'opening'	=> $prog->opening
-			);
-		$d[] = $data;
-	}
-	return View::make('database.progs')->with(array('data' => $d));
-});
-
-Route::get('database/jobs', function()
-{
-	return View::make('database.jobs');
-});
-Route::get('database/scholarships', function()
-{
-	return View::make('database.scholarships');
-});
+Route::controller('database');
 
 Route::get('admin',function(){
 	return View::make('admin.index');

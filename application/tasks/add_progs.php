@@ -24,6 +24,7 @@
 					)
 				);
 			$prog->subjects()->sync(array(1, 2, 3));
+			$prog->positions()->sync(array(1, 2, 3));
 			$prog = Program::create(
 					array(
 						'name'		=> 'Some Insti 2',
@@ -34,6 +35,7 @@
 					)
 				);
 			$prog->subjects()->sync(array(1, 4));
+			$prog->positions()->sync(array(1, 3));
 			$prog = Program::create(
 					array(
 						'name'		=> 'Some Insti 3',
@@ -44,6 +46,7 @@
 					)
 				);
 			$prog->subjects()->sync(array(5));
+			$prog->positions()->sync(array(2, 3));
 		}
 
 		public function positions()
@@ -51,19 +54,19 @@
 			DB::query('TRUNCATE TABLE positions');
 			Position::create(
 					array(
-						'name'		=> '2 Month Summer Project',
+						'name'		=> 'Summer Project (2 months)',
 						'duration'	=> 2.00
 					)
 				);
 			Position::create(
 					array(
-						'name'		=> '4 Month Summer Project',
+						'name'		=> 'Summer Project (4 months)',
 						'duration'	=> 4.00
 					)
 				);
 			Position::create(
 					array(
-						'name'		=> '3 yr PhD',
+						'name'		=> 'PhD (3 yr)',
 						'duration'	=> 36.00
 					)
 				);

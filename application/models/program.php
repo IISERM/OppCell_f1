@@ -15,4 +15,10 @@
 			return $this->has_many_and_belongs_to('Subject','program_subject');
 		}
 
+		public function positions()
+		{
+			// Positions in the program
+			return $this->has_many_and_belongs_to('Position','position_program');
+		}
+
 	}
