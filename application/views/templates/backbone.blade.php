@@ -57,9 +57,7 @@
         <div id="site_content">
             @yield('full_content')
             @yield('side_bar')
-            <div id="content">
-                @yield('content')
-            </div>
+            @yield('contents')
         </div>
         <div id="footer">
             <p style="float:left">Copyright &copy; Opportunity Cell - IISER Mohali </p>

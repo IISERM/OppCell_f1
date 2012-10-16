@@ -19,3 +19,9 @@
         </div>
     </div>
 @endsection
+
+@section('contents')
+            <div id="content">
+                @yield('content')
+            </div>
+@endsection

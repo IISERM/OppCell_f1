@@ -21,12 +21,26 @@
 @endsection
 
 @section('table')
-    <tr>
-        <th>Name</th>
-        <th>Country</th>
-        <th>Subject</th>
-        <th>Deadline</th>
-        <th>Application Opening</th>
-    </tr>
-    @yield('data')
+    @if($data)
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Location</th>
+                <th>Skill</th>
+                <th>Deadline</th>
+                <th>Application Opening</th>
+            </tr>
+            @foreach($data as $d)
+                <tr>
+                    <td><a href="{= $d['link'] =}">{= $d['name'] =}</td>
+                    <td>{= $d['location'] =}</td>
+                    <td>{= $d['skill'] =}</td>
+                    <td>{= $d['deadline'] =}</td>
+                    <td>{= $d['opening'] =}</td>
+                </tr>
+            @endforeach
+        </table>
+    @else
+        No data to show!!
+    @endif
 @endsection
