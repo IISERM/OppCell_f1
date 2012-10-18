@@ -1,10 +1,10 @@
 angular.module('oppapp',[])
-.config(function($routeProvider) 
+.config(function($routeProvider)
 {
     $routeProvider.
       when('/', {redirectTo:'/progs'}).
-      when('/progs', {controller:c_progs, templateUrl:'/atemplates/progs'}).
-      when('/scholarhips', {controller:c_scholarships, templateUrl:'/atemplates/scholarships'}).
+      when('/progs', {controller:c_progs, templateUrl:'{=URL::to('admin')=}/atemplates_progs'}).
+      when('/scholarships', {controller:c_scholarships, templateUrl:'{=URL::to('admin')=}/atemplates_scholarships'}).
       otherwise({redirectTo:'/'});
 })
 .filter('startFrom', function()
@@ -41,23 +41,51 @@ angular.module('oppapp',[])
 			{
 				basePath:"",addIndexDotPHP:"/index.php"
 			}
+		},
+		nav:
+		{
+			// blank:[{progs:''},{scholarships:''}],
+			select_classname:'current',
+			current_select:{progs:'',scholarships:'',jobs:''},
+			select:{}
 		}
 	}
+
+	truth.nav.select=function(val)
+	{
+		for(var key in  truth.nav.current_select)
+		{
+			truth.nav.current_select[key]='none';
+		}
+		truth.nav.current_select[val]=truth.nav.select_classname;
+	}
+	return truth;
 });
 
 
-function c_oppcell($scope,$timeout)
+function c_oppcell($scope,truthSource,$timeout)
 {
-	var current_progs='current';
+	
+	// $scope.$watch('')
+	// $scope.current_select=truthSource.nav.current_select;
+	$scope.truthSource=truthSource;
 }
 
 function c_progs($scope,truthSource,$timeout)
 {
-	var current_progs='current';
+	
+	// truthSource.nav.current_select['progs']='current';
+	truthSource.nav.select('progs');
+	// $scope.$apply();
+	$scope.truthSource=truthSource;
+
 }
 
 function c_scholarships($scope,truthSource,$timeout)
 {
-	
+	// truthSource.nav.current_select=['','current',''];
+	truthSource.nav.select('scholarships');
+	// $scope.$apply();
+	$scope.truthSource=truthSource;
 }
-alert('hello');
+// alert('hello');

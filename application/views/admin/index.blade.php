@@ -11,16 +11,18 @@
     <!-- <script type="text/javascript" src=<?php echo "\"".URL::base()."/js/libraries/angularjs/angular.current.js\""; ?>> </script> -->
     <!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.2/angular.min.js"> </script> -->
     <script type="text/javascript" src="{=URL::base().'/js/libraries/angularjs/angular.current.js'=}"> </script>    
+    <script type="text/javascript" src="{=URL::to('admin/js_main')=}" > </script>    
 @endsection
 
 @section('full_content')
-    <div ng-app="oppapp" ng-controller="c_oppapp">
+    <div ng-app="oppapp">
+    <div ng-controller="c_oppcell">
         <div id="menubar">
             <ul id="menu">
                 <!-- put class="current" in the li tag for the selected page - to highlight which page you're on -->
-                <li><a href="#progs" class="{{current_progs}}">Academic Programs</a></li>
-                <li><a href="#scholarships">Scholarships</a></li>
-                <li><a href="#jobs">Jobs</a></li>
+                <li ng-class="truthSource.nav.current_select['progs']"><a href="#/progs">Academic Programs</a></li>
+                <li ng-class="truthSource.nav.current_select['scholarships']"><a href="#/scholarships">Scholarships</a></li>
+                <li ng-class="truthSource.nav.current_select['jobs']"><a>Jobs</a></li>
             </ul>
         </div>
         <!-- insert the page content here -->
@@ -45,11 +47,10 @@
             </tr>    
         </table>
 
-        <div ng-view> </div>
+        <h1> THIS IS THE VIEW </h1>
+        <div ng-view>
+        </div>
+    </div>
     </div>
     
-    
-        
-    <script type="text/javascript" src="{=URL::to('admin/js_main')=}" > </script>
-
 @endsection
