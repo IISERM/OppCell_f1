@@ -1,3 +1,3 @@
-Academic Programs	prog
-Scholarhips			scholarship
-Jobs				job
+Academic Programs	progs
+Scholarhips			scholarships
+Jobs				jobs

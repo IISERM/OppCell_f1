@@ -46,6 +46,10 @@ angular.module('oppapp',[])
 		nav:
 		{
 			// blank:[{progs:''},{scholarships:''}],
+			current:'Loading..',
+			clear_select:{progs:'Academic Programs',
+							scholarships:'Scholarships',
+							jobs:'Jobs'},
 			select_classname:'current',
 			current_select:{progs:'',scholarships:'',jobs:''},
 			select:{}
@@ -59,6 +63,7 @@ angular.module('oppapp',[])
 			truth.nav.current_select[key]='none';
 		}
 		truth.nav.current_select[val]=truth.nav.select_classname;
+		truth.nav.current=truth.nav.clear_select[val];
 	}
 	return truth;
 });

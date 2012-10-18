@@ -28,7 +28,7 @@
         <!-- insert the page content here -->
         <input type="text" ng-model="bam"></input>
 
-        <h1>{{bam}}</h1>
+        <h1>{{truthSource.nav.current}}</h1>
         <p>Use this system to introduce changes</p>
         <br/>
         
