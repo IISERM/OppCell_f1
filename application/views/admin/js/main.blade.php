@@ -50,7 +50,7 @@ angular.module('oppapp',[])
 			clear_select:{progs:'Academic Programs',
 							scholarships:'Scholarships',
 							jobs:'Jobs'},
-			select_classname:'current',
+			select_classname:'current2',
 			current_select:{progs:'',scholarships:'',jobs:''},
 			select:{}
 		}

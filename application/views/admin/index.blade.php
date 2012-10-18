@@ -12,6 +12,7 @@
     <!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.2/angular.min.js"> </script> -->
     <script type="text/javascript" src="{=URL::base().'/js/libraries/angularjs/angular.current.js'=}"> </script>    
     <script type="text/javascript" src="{=URL::to('admin/js_main')=}" > </script>    
+    <link rel="stylesheet" type="text/css" href="{=URL::base().'/css/extra.css'=}" />
 @endsection
 
 @section('full_content')
@@ -25,29 +26,19 @@
                 <li ng-class="truthSource.nav.current_select['jobs']"><a href="#/jobs">Jobs</a></li>
             </ul>
         </div>
-        <!-- insert the page content here -->
-        <input type="text" ng-model="bam"></input>
-
+        <!-- insert the page content here -->        
         <h1>{{truthSource.nav.current}}</h1>
-        <p>Use this system to introduce changes</p>
+        <h2>About</h2>
+        <textarea>Use this system to introduce this section</textarea>
+        <p><a>Update</a></p>
         <br/>
         
-        <h2>About</h2>
-        <p>This section deals with Academic Programmes including Scholarships, PhDs, Summer Intern-ships etcetera</p>
+        <h2>Best Practices</h2>
+        <textarea>This section deals with Academic Programmes including Scholarships, PhDs, Summer Intern-ships etcetera</textarea>
+        <p><a>Update</a></p>
         <br/>
 
-        <h2>Table's Title</h2>
-        <table>
-            <tr>
-                <th>Name</th>
-                <th>Country</th>
-                <th>Subject</th>
-                <th>Deadline</th>
-                <th>Application Opening</th>
-            </tr>    
-        </table>
-
-        <h1> THIS IS THE VIEW </h1>
+        <h1>The Database</h1>
         <div ng-view>
         </div>
     </div>
