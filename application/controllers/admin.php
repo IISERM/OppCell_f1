@@ -23,4 +23,9 @@ class Admin_Controller extends Base_Controller {
 		return View::make('admin.atemplates.progs');
 	}
 
+	public function action_atemplates_jobs()
+	{
+		return View::make('admin.atemplates.jobs');
+	}
+
 }

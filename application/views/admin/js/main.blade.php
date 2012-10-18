@@ -5,6 +5,7 @@ angular.module('oppapp',[])
       when('/', {redirectTo:'/progs'}).
       when('/progs', {controller:c_progs, templateUrl:'{=URL::to('admin')=}/atemplates_progs'}).
       when('/scholarships', {controller:c_scholarships, templateUrl:'{=URL::to('admin')=}/atemplates_scholarships'}).
+      when('/jobs', {controller:c_jobs, templateUrl:'{=URL::to('admin')=}/atemplates_jobs'}).
       otherwise({redirectTo:'/'});
 })
 .filter('startFrom', function()
@@ -89,3 +90,11 @@ function c_scholarships($scope,truthSource,$timeout)
 	$scope.truthSource=truthSource;
 }
 // alert('hello');
+
+function c_jobs($scope,truthSource,$timeout)
+{
+	// truthSource.nav.current_select=['','current',''];
+	truthSource.nav.select('jobs');
+	// $scope.$apply();
+	$scope.truthSource=truthSource;
+}

@@ -22,7 +22,7 @@
                 <!-- put class="current" in the li tag for the selected page - to highlight which page you're on -->
                 <li ng-class="truthSource.nav.current_select['progs']"><a href="#/progs">Academic Programs</a></li>
                 <li ng-class="truthSource.nav.current_select['scholarships']"><a href="#/scholarships">Scholarships</a></li>
-                <li ng-class="truthSource.nav.current_select['jobs']"><a>Jobs</a></li>
+                <li ng-class="truthSource.nav.current_select['jobs']"><a href="#/jobs">Jobs</a></li>
             </ul>
         </div>
         <!-- insert the page content here -->
