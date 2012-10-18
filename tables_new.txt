@@ -1,96 +1,178 @@
-jobs
-	> id
-	> name
-	> link
-	> comments
-progs
-	> id
-	> name
-	> link
-	> comments
-scholars
-	> id
-	> name
-	> link
-	> comments
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@							Tables							@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@#	jobs
+@#		> id
+@#		> name
+@#		> link
+@#		> comments
+@#	progs
+@#		> id
+@#		> name
+@#		> link
+@#		> comments
+@#	scholars
+@#		> id
+@#		> name
+@#		> link
+@#		> comments
+@
+@#	locations
+@#		> id
+@#		> name
+@#		> parent_id
+@#		> comments
+@#	subjects
+@#		> id
+@#		> name
+@#		> parent_id
+@#		> comments
+@#	skills
+@#		> id
+@#		> name
+@#		> parent_id
+@#		> comments
+@#	positions
+@#		> id
+@#		> name
+@#		> parent_id
+@#		> comments
+@
+@#	position_skill
+@#		> id
+@#		> position_id
+@#		> skill_id
+@
+@#	jbranches
+@#		> id
+@#		> jobs_id
+@#		> location_id
+@#		> link
+@#		> comments
+@#	pbranches
+@#		> id
+@#		> progs_id
+@#		> location_id
+@#		> link
+@#		> comments
+@#	sbranches
+@#		> id
+@#		> scholars_id
+@#		> location_id
+@#		> link
+@#		> comments
+@
+@#	jpositions
+@#		> id
+@#		> jbranch_id
+@#		> position_id
+@#		> opening
+@#		> deadline
+@#		> link
+@#	ppositions
+@#		> id
+@#		> pbranch_id
+@#		> position_id
+@#		> opening
+@#		> deadline
+@#		> link
+@#	spositions
+@#		> id
+@#		> sbranch_id
+@#		> position_id
+@#		> opening
+@#		> deadline
+@#		> link
+@
+@#	jsubjects
+@#		> id
+@#		> jbranch_id
+@#		> subject_id
+@#	psubjects
+@#		> id
+@#		> pbranch_id
+@#		> subject_id
+@#	ssubjects
+@#		> id
+@#		> sbranch_id
+@#		> subject_id
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
-locations
-	> id
-	> name
-	> parent_id
-	> comments
-subjects
-	> id
-	> name
-	> parent_id
-	> comments
-skills
-	> id
-	> name
-	> parent_id
-	> comments
-positions
-	> id
-	> name
-	> parent_id
-	> comments
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@							Models							@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@	Job
+@		- location	has_many_and_belongs_to	Location->jbranches
+@			+ Pivot:	link
+@						comments
+@	Prog
+@		- location	has_many_and_belongs_to	Location->pbranches
+@			+ Pivot:	link
+@						comments
+@	Scholar
+@		- location	has_many_and_belongs_to	Location->sbranches
+@			+ Pivot:	link
+@						comments
+@
+@	Location
+@		- parent	belongs_to				Location->parent_id
+@		- jobs		has_many_and_belongs_to	Job->jbranches
+@		- progs		has_many_and_belongs_to	Prog->pbranches
+@		- scholars	has_many_and_belongs_to	Scholar->sbranches
+@	Subject
+@		- parent	belongs_to				Location->parent_id
+@		- jobs		has_many_and_belongs_to	Job->jsubjects
+@		- progs		has_many_and_belongs_to	Prog->psubjects
+@		- scholars	has_many_and_belongs_to	Scholar->ssubjects
+@	Skill
+@		- parent	belongs_to				Location->parent_id
+@		- positions	has_many_and_belongs_to	Position->position_skill
+@	Position
+@		- parent	belongs_to				Location->parent_id
+@		- skills	has_many_and_belongs_to	Skill->position_skill
+@
+@	Jbranch
+@		> jobs_id
+@		> location_id
+@	Pbranch
+@		> progs_id
+@		> location_id
+@	Sbranch
+@		> scholars_id
+@		> location_id
+@
+@	jpositions
+@		> id
+@		> jbranch_id
+@		> position_id
+@		> opening
+@		> deadline
+@		> link
+@	ppositions
+@		> id
+@		> pbranch_id
+@		> position_id
+@		> opening
+@		> deadline
+@		> link
+@	spositions
+@		> id
+@		> sbranch_id
+@		> position_id
+@		> opening
+@		> deadline
+@		> link
+@
+@	jsubjects
+@	psubjects
+@	ssubjects
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
-position_skill
-	> id
-	> position_id
-	> skill_id
-
-jbranch
-	> id
-	> jobs_id
-	> location_id
-	> link
-	> comments
-pbranch
-	> id
-	> progs_id
-	> location_id
-	> link
-	> comments
-sbranch
-	> id
-	> scholars_id
-	> location_id
-	> link
-	> comments
-
-jposition
-	> id
-	> jbranch_id
-	> position_id
-	> opening
-	> deadline
-	> link
-pposition
-	> id
-	> pbranch_id
-	> position_id
-	> opening
-	> deadline
-	> link
-sposition
-	> id
-	> sbranch_id
-	> position_id
-	> opening
-	> deadline
-	> link
-
-jsubject
-	> id
-	> jbranch_id
-	> subject_id
-psubject
-	> id
-	> pbranch_id
-	> subject_id
-ssubject
-	> id
-	> sbranch_id
-	> subject_id
-
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@							Links							@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
