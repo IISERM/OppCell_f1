@@ -1,0 +1,96 @@
+jobs
+	> id
+	> name
+	> link
+	> comments
+progs
+	> id
+	> name
+	> link
+	> comments
+scholars
+	> id
+	> name
+	> link
+	> comments
+
+locations
+	> id
+	> name
+	> parent_id
+	> comments
+subjects
+	> id
+	> name
+	> parent_id
+	> comments
+skills
+	> id
+	> name
+	> parent_id
+	> comments
+positions
+	> id
+	> name
+	> parent_id
+	> comments
+
+position_skill
+	> id
+	> position_id
+	> skill_id
+
+jbranch
+	> id
+	> jobs_id
+	> location_id
+	> link
+	> comments
+pbranch
+	> id
+	> progs_id
+	> location_id
+	> link
+	> comments
+sbranch
+	> id
+	> scholars_id
+	> location_id
+	> link
+	> comments
+
+jposition
+	> id
+	> jbranch_id
+	> position_id
+	> opening
+	> deadline
+	> link
+pposition
+	> id
+	> pbranch_id
+	> position_id
+	> opening
+	> deadline
+	> link
+sposition
+	> id
+	> sbranch_id
+	> position_id
+	> opening
+	> deadline
+	> link
+
+jsubject
+	> id
+	> jbranch_id
+	> subject_id
+psubject
+	> id
+	> pbranch_id
+	> subject_id
+ssubject
+	> id
+	> sbranch_id
+	> subject_id
+
