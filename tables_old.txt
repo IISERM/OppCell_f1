@@ -1,0 +1,65 @@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@JOBS
+@	* id
+@	* name
+@	* location		- LOCATION	- job_location			- Pivot
+@																> position	- POSITIONS
+@																> link
+@																> deadline
+@																> opening
+@																> comments
+																> skill		- SKILL
+@	* comments
+
+@SCHOLARSHIPS
+@	* id
+@	* name
+@	* location		- LOCATION	- location_scholarship	- Pivot
+@																> position	- POSITIONS
+@																> link
+@																> deadline
+@																> opening
+@																> comments
+																> subject	- SUBJECT
+@	* comments
+
+@PROGRAMS
+@	* id
+@	* name
+@	* location		- LOCATION	- location_program		- Pivot
+@																> position	- POSITIONS
+@																> link
+@																> deadline
+@																> opening
+@																> comments
+																> subject	- SUBJECT
+@	* comments
+
+@	SUBJECTS
+@	LOCATIONS
+@	SKILLS
+@	POSITIONS
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+
+ACADEMIC RECOGNITIONS
+Please list any major academic recognitions, honors, and memberships in scientific, professional, and honorary societies
+
+SIGNIFICANT EXTRACURRICULAR ACTIVITIES
+Please list any significant extracurricular activities.
+
+PUBLICATIONS
+List any titles of publications, major papers, or theses authored or co-authored; if published provide citation. Do not upload the entire document as the admissions committee often does not have the time to read a large file. It is preferred that you either list or provide links or a URL where publications can be located.
+
+WORK EXPERIENCE
+Please list any work experience.
+
+STATEMENT OF PURPOSE
+Provide a brief statement of your scientific and professional interests and objectives. Include a description of your past accomplishments that are not evident from the examination of the other documents submitted. Report, if applicable, on any research in progress.
+
+TRANSCRIPT
+Please obtain a copy of your transcript(s), convert them into an electronic format, and upload the file on this page. If you have more than one transcript, please upload all of your transcripts as a single document. To find out how to convert your transcript(s) into an electronic format, please click on the "?" button below.
+For the purpose of applying, official, sealed copies of your transcripts are not required and scanned copies of an original transcript or university generated web printouts are accepted. If you have uploaded an electronic copy of your transcripts below, please do not submit a paper copy.
+
+ADDITIONAL INFORMATION
+Please use this page for any additional information that was not captured within your application. If you feel you've already provided us with sufficient information about yourself, you need not add anything here. Please do not exceed 50 lines of text.
