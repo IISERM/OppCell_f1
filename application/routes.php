@@ -50,11 +50,13 @@ Route::get('contact', function()
 	return View::make('static.contact');
 });
 
-Route::controller('database');
+Route::controller(array('database','admin'));
 
-Route::get('admin',function(){
-	return View::make('admin.index');
-});
+
+// Route::get('admin',function(){
+// 	return View::make('admin.index');
+// });
+
 /*
 |--------------------------------------------------------------------------
 | Application 404 & 500 Error Handlers
