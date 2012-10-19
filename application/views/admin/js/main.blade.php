@@ -146,12 +146,6 @@ angular.module('oppapp',[])
 function c_oppcell($scope,truthSource,$timeout)
 {
 	$scope.truthSource=truthSource;
-}
-
-function c_progs($scope,truthSource,$timeout)
-{
-	truthSource.nav.Select('progs');
-	$scope.truthSource=truthSource;
 
 	$scope.progs=
 				{
@@ -204,6 +198,16 @@ function c_progs($scope,truthSource,$timeout)
 			});
 		}
 
+		$scope.Delete=function(type,id,autoRefresh)
+		{
+			truthSource.func.Delete(type,id,function(val){
+				$scope.$apply();
+				alert(JSON.stringify(val, null, 4));
+
+				// $scope.Refresh(type);
+			});
+		}
+
 		$scope.Refresh=function(type){
 			truthSource.func.Fetch(type,function(val){
 				$scope.$apply();
@@ -229,6 +233,14 @@ function c_progs($scope,truthSource,$timeout)
 			}			
 		},1000);
 	}	
+
+}
+
+function c_progs($scope,truthSource,$timeout)
+{
+	truthSource.nav.Select('progs');
+	$scope.truthSource=truthSource;
+
 
 }
 
