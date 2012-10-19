@@ -1,7 +1,17 @@
 <table>
 	<tr>
 		<th>Program Name</th>
-		<th>Details</th>
+		<th>
+			<table style="width:100%">
+				<tr>
+					<td>Location</td>
+					<td>Subjects</td>
+					<td>Positions</td>
+					<td>Comment</td>
+					<td>Control</td>
+				</tr>
+			</table>
+		</th>
 		<th>Comments</th>
 	</tr>
 	<tr>
@@ -173,7 +183,11 @@
 								<option>Summer</option>
 								<option selected="true">Research Assistant</option>
 								</select> <a>X</a>
+								<input type="date" value="2012-10-10">
+								<input type="date" value="2012-10-10">
 							</li>
+							
+
 							<li>
 								<select>
 								<option>PhD</option>
@@ -242,4 +256,23 @@
 	</tr>
 
 </table>
-<p> PROGRAMMES </p>
+<h1> This is AngularJS </h1>
+<table>
+	<tr>
+		<th  style="width:20px">START</th>
+	</tr>
+	<tr ng-repeat="id in progsa">
+		<td>
+			<!-- <input type="text" ng-model="prog[id]"></text>  -->
+			{{progs[id].name}}
+			<p><a>Save</a></p>
+		</td>
+	</tr>
+
+	<tr ng-repeat="(index,element) in progs">
+		<td>
+			{{index}}, {{element.name}}
+		</td>
+	</tr>
+
+</table>
