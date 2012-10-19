@@ -1,101 +1,105 @@
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 @@@@@@							Tables							@@@@@
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-@#	jobs
-@#		> id
-@#		> name
-@#		> link
-@#		> comments
-@#	progs
-@#		> id
-@#		> name
-@#		> link
-@#		> comments
-@#	scholars
-@#		> id
-@#		> name
-@#		> link
-@#		> comments
+@	@-	Border
+@	#-	Create Table
+@	!-	List
+@	$-	Add
+@#!$	jobs
+@#!$		> id
+@#!$		> name
+@#!$		> link
+@#!$		> comments
+@#!$	progs
+@#!$		> id
+@#!$		> name
+@#!$		> link
+@#!$		> comments
+@#!$	scholars
+@#!$		> id
+@#!$		> name
+@#!$		> link
+@#!$		> comments
 @
-@#	locations
-@#		> id
-@#		> name
-@#		> parent_id
-@#		> comments
-@#	subjects
-@#		> id
-@#		> name
-@#		> parent_id
-@#		> comments
-@#	skills
-@#		> id
-@#		> name
-@#		> parent_id
-@#		> comments
-@#	positions
-@#		> id
-@#		> name
-@#		> parent_id
-@#		> comments
+@#!$	locations
+@#!$		> id
+@#!$		> name
+@#!$		> parent_id
+@#!$		> comments
+@#!$	subjects
+@#!$		> id
+@#!$		> name
+@#!$		> parent_id
+@#!$		> comments
+@#!$	skills
+@#!$		> id
+@#!$		> name
+@#!$		> parent_id
+@#!$		> comments
+@#!$	positions
+@#!$		> id
+@#!$		> name
+@#!$		> parent_id
+@#!$		> comments
 @
-@#	position_skill
-@#		> id
-@#		> position_id
-@#		> skill_id
+@#!$	position_skill
+@#!$		> id
+@#!$		> position_id
+@#!$		> skill_id
 @
-@#	jbranches
-@#		> id
-@#		> job_id
-@#		> location_id
-@#		> link
-@#		> comments
-@#	pbranches
-@#		> id
-@#		> prog_id
-@#		> location_id
-@#		> link
-@#		> comments
-@#	sbranches
-@#		> id
-@#		> scholar_id
-@#		> location_id
-@#		> link
-@#		> comments
+@#!$	jbranches
+@#!$		> id
+@#!$		> job_id
+@#!$		> location_id
+@#!$		> link
+@#!$		> comments
+@#!$	pbranches
+@#!$		> id
+@#!$		> prog_id
+@#!$		> location_id
+@#!$		> link
+@#!$		> comments
+@#!$	sbranches
+@#!$		> id
+@#!$		> scholar_id
+@#!$		> location_id
+@#!$		> link
+@#!$		> comments
 @
-@#	jpositions
-@#		> id
-@#		> jbranch_id
-@#		> position_id
-@#		> opening
-@#		> deadline
-@#		> link
-@#	ppositions
-@#		> id
-@#		> pbranch_id
-@#		> position_id
-@#		> opening
-@#		> deadline
-@#		> link
-@#	spositions
-@#		> id
-@#		> sbranch_id
-@#		> position_id
-@#		> opening
-@#		> deadline
-@#		> link
+@#!$	jpositions
+@#!$		> id
+@#!$		> jbranch_id
+@#!$		> position_id
+@#!$		> opening
+@#!$		> deadline
+@#!$		> link
+@#!$	ppositions
+@#!$		> id
+@#!$		> pbranch_id
+@#!$		> position_id
+@#!$		> opening
+@#!$		> deadline
+@#!$		> link
+@#!$	spositions
+@#!$		> id
+@#!$		> sbranch_id
+@#!$		> position_id
+@#!$		> opening
+@#!$		> deadline
+@#!$		> link
 @
-@#	jsubjects
-@#		> id
-@#		> jbranch_id
-@#		> subject_id
-@#	psubjects
-@#		> id
-@#		> pbranch_id
-@#		> subject_id
-@#	ssubjects
-@#		> id
-@#		> sbranch_id
-@#		> subject_id
+@#!$	jsubjects
+@#!$		> id
+@#!$		> jbranch_id
+@#!$		> subject_id
+@#!$	psubjects
+@#!$		> id
+@#!$		> pbranch_id
+@#!$		> subject_id
+@#!$	ssubjects
+@#!$		> id
+@#!$		> sbranch_id
+@#!$		> subject_id
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 

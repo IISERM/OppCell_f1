@@ -1,9 +1,11 @@
 <?php
 
-class List_Controller extends Base_Controller {
+class List_Controller extends Base_Controller
+{
 
 	public function action_index()
 	{
+		return Response::error('404');
 	}
 
 	public function action_prog()
