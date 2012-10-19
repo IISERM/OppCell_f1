@@ -45,19 +45,19 @@
 @
 @#	jbranches
 @#		> id
-@#		> jobs_id
+@#		> job_id
 @#		> location_id
 @#		> link
 @#		> comments
 @#	pbranches
 @#		> id
-@#		> progs_id
+@#		> prog_id
 @#		> location_id
 @#		> link
 @#		> comments
 @#	sbranches
 @#		> id
-@#		> scholars_id
+@#		> scholar_id
 @#		> location_id
 @#		> link
 @#		> comments
@@ -102,71 +102,92 @@
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 @@@@@@							Models							@@@@@
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-@	Job
-@		- location	has_many_and_belongs_to	Location->jbranches
-@			+ Pivot:	link
-@						comments
-@	Prog
-@		- location	has_many_and_belongs_to	Location->pbranches
-@			+ Pivot:	link
-@						comments
-@	Scholar
-@		- location	has_many_and_belongs_to	Location->sbranches
-@			+ Pivot:	link
-@						comments
+@#	jobs
+@#	Job
+@#		- location	has_many_and_belongs_to	Location->jbranches
+@#			+ Pivot:	link
+@#						comments
+@#	progs
+@#	Prog
+@#		- location	has_many_and_belongs_to	Location->pbranches
+@#			+ Pivot:	link
+@#						comments
+@#	scholars
+@#	Scholar
+@#		- location	has_many_and_belongs_to	Location->sbranches
+@#			+ Pivot:	link
+@#						comments
 @
-@	Location
-@		- parent	belongs_to				Location->parent_id
-@		- jobs		has_many_and_belongs_to	Job->jbranches
-@		- progs		has_many_and_belongs_to	Prog->pbranches
-@		- scholars	has_many_and_belongs_to	Scholar->sbranches
-@	Subject
-@		- parent	belongs_to				Location->parent_id
-@		- jobs		has_many_and_belongs_to	Job->jsubjects
-@		- progs		has_many_and_belongs_to	Prog->psubjects
-@		- scholars	has_many_and_belongs_to	Scholar->ssubjects
-@	Skill
-@		- parent	belongs_to				Location->parent_id
-@		- positions	has_many_and_belongs_to	Position->position_skill
-@	Position
-@		- parent	belongs_to				Location->parent_id
-@		- skills	has_many_and_belongs_to	Skill->position_skill
+@#	locations
+@#	Location
+@#		- parent	belongs_to				Location->parent_id
+@#		- jobs		has_many_and_belongs_to	Job->jbranches
+@#		- progs		has_many_and_belongs_to	Prog->pbranches
+@#		- scholars	has_many_and_belongs_to	Scholar->sbranches
+@#	subjects
+@#	Subject
+@#		- parent	belongs_to				Subject->parent_id
+@#		- jobs		has_many_and_belongs_to	Jbranch->jsubjects
+@#		- progs		has_many_and_belongs_to	Pbranch->psubjects
+@#		- scholars	has_many_and_belongs_to	Sbranch->ssubjects
+@#	skills
+@#	Skill
+@#		- parent	belongs_to				Skill->parent_id
+@#		- positions	has_many_and_belongs_to	Position->position_skill
+@#	positions
+@#	Position
+@#		- parent	belongs_to				Position->parent_id
+@#		- skills	has_many_and_belongs_to	Skill->position_skill
+@#		- jobs		has_many_and_belongs_to	Jbranch->jpositions
+@#		- progs		has_many_and_belongs_to	Pbranch->ppositions
+@#		- scholars	has_many_and_belongs_to	Sbranch->spositions
 @
-@	Jbranch
-@		> jobs_id
-@		> location_id
-@	Pbranch
-@		> progs_id
-@		> location_id
-@	Sbranch
-@		> scholars_id
-@		> location_id
+@#	jbranches
+@#	Jbranch
+@#		- job		belongs_to				Job->job_id
+@#		- location	belongs_to				Location->location_id
+@#		- subject	has_many_and_belongs_to	Subject->ssubjects
+@#		- position	has_many_and_belongs_to	Position->jposition
+@#				+ Pivot	: Opening
+@#						: Deadline
+@						: Link
+@#	pbranches
+@#	Pbranch
+@#		- progs		belongs_to				Prog->location_id
+@#		- location	belongs_to				Location->location_id
+@#		- subject	has_many_and_belongs_to	Subject->ssubjects
+@#		- position	has_many_and_belongs_to	Position->pposition
+@#				+ Pivot	: Opening
+@#						: Deadline
+@#						: Link
+@#	sbranches
+@#	Sbranch
+@#		- scholars	belongs_to				Scholar->location_id
+@#		- location	belongs_to				Location->location_id
+@#		- subject	has_many_and_belongs_to	Subject->ssubjects
+@#		- position	has_many_and_belongs_to	Position->sposition
+@#				+ Pivot	: Opening
+@#						: Deadline
+@#						: Link
+@#
 @
-@	jpositions
-@		> id
-@		> jbranch_id
-@		> position_id
-@		> opening
-@		> deadline
-@		> link
-@	ppositions
-@		> id
-@		> pbranch_id
-@		> position_id
-@		> opening
-@		> deadline
-@		> link
-@	spositions
-@		> id
-@		> sbranch_id
-@		> position_id
-@		> opening
-@		> deadline
-@		> link
+@#	position_skill
+@#	Ps
 @
-@	jsubjects
-@	psubjects
-@	ssubjects
+@#	jpositions
+@#	Jpos
+@#	ppositions
+@#	Ppos
+@#	spositions
+@#	Spos
+@
+@#	jsubjects
+@#	Jsub
+@#	psubjects
+@#	Psub
+@#	ssubjects
+@#	Ssub
+@
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
