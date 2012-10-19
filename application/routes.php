@@ -50,8 +50,48 @@ Route::get('contact', function()
 	return View::make('static.contact');
 });
 
-Route::controller(array('database','admin'));
+Route::controller(array('database','admin','list'));
 
+/*
+Route::get('json',function()
+{
+	$data = array();
+	$id = 1;
+	$name = 'Name 1';
+	$comment = 'Comment 1';
+	$data[$id] = array('name'=>$name,'comment'=>$comment);
+	$id = 2;
+	$name = 'Name 2';
+	$comment = 'Comment 2';
+	$data[$id] = array('name'=>$name,'comment'=>$comment);
+	$id = 5;
+	$name = 'Name 5';
+	$comment = 'Comment 5';
+	$data[$id] = array('name'=>$name,'comment'=>$comment);
+	return json_encode($data);
+});
+
+Route::get('json2',function()
+{
+	$data = array();
+	$id = 1;
+	$name = 'Name 1';
+	$comment = 'Comment 1';
+	$d = array('id'=>$id,'name'=>$name,'comment'=>$comment);
+	$data[] = $d;
+	$id = 2;
+	$name = 'Name 2';
+	$comment = 'Comment 2';
+	$d = array('id'=>$id,'name'=>$name,'comment'=>$comment);
+	$data[] = $d;
+	$id = 5;
+	$name = 'Name 5';
+	$comment = 'Comment 5';
+	$d = array('id'=>$id,'name'=>$name,'comment'=>$comment);
+	$data[] = $d;
+	return json_encode($data);
+});
+*/
 
 // Route::get('admin',function(){
 // 	return View::make('admin.index');
