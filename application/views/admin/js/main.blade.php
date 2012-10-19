@@ -15,7 +15,7 @@ angular.module('oppapp',[])
         return input.slice(start);
     }
 })
-.factory('truthSource',function()
+.factory('truthSource',function($http, $log)
 {
 	//CONVENTIONS
 	//everything is small camel cased
@@ -24,12 +24,12 @@ angular.module('oppapp',[])
 	var truth=
 	{
 		prog:
-			{	
-					fetch:{Now:{},lnk:'/plist'},
+			{
+					fetch:{Now:{},lnk:'/list'},
 					add:{Now:{},lnk:'/padd'},
 					remove:{Now:{},lnk:'/pdel'},
 					update:{Now:{},lnk:'/pupdate'},
-					config:{basePath:'/admin'},
+					config:{basePath:'/prog'},
 					data:{}
 			},
 		io:
@@ -40,7 +40,7 @@ angular.module('oppapp',[])
 			},
 			config:
 			{
-				basePath:"",addIndexDotPHP:"/index.php"
+				basePath:"{=URL::base()=}",addIndexDotPHP:"/index.php"
 			}
 		},
 		nav:
@@ -54,10 +54,28 @@ angular.module('oppapp',[])
 			current_select:{progs:'',scholarships:'',jobs:''},
 			Select:{}
 		},
-		util:
+	}
+
+	function FetchHelp(lnk,truthData,targetFunction)
+	{
+		truth.io.state.working=true;
+		$http.get(truth.io.config.basePath + lnk)
+		.success(function(data)
 		{
-			Index:{},Toarray:{}
-		}
+			$log.log(data);
+			truthData=data;
+			targetFunction(truthData);
+		})
+		.error(function(data,status){
+			$log.error(data+' '+status);
+			targetFunction(truthData);
+		});
+	}
+
+	truth.prog.fetch.Now=function(OnComplete)
+	{
+		FetchHelp(truth.prog.fetch.lnk + truth.prog.config.basePath,
+			truth.prog.data,OnComplete);
 	}
 
 	truth.nav.Select=function(val)
@@ -70,13 +88,6 @@ angular.module('oppapp',[])
 		truth.nav.current=truth.nav.clear_select[val];
 	}
 
-	truth.util.Index=function(indexto,indexthis)
-	{		
-		for (var key in indexthis)
-		{
-			indexto.push(key);
-		}
-	}
 	return truth;
 });
 
@@ -94,29 +105,41 @@ function c_progs($scope,truthSource,$timeout)
 	truthSource.nav.Select('progs');
 	$scope.truthSource=truthSource;
 
-	$scope.progs={	'1':{name:'IISc Winter School',link:'http://www.IISc.org/',comments:'This is the best in India apparently'},
+	$scope.progs=
+				{
+					'1':{name:'IISc Winter School',link:'http://www.iisc.org/',comments:'This is the best in India apparently'},
 					'2':{name:'IIT Winter School',link:'http://www.iitb.ac.in/',comments:''}
 				}
-	$scope.progsa = [];
-	// truthSource.progs.init();
-	truthSource.util.Index($scope.progsa,$scope.progs);
-	// truthSource.util.Toarray($scope.proga,$scope.progs);
 
-	temp=[];
-	for (var key in $scope.progs) {
-	    var temp_obj={};
-	    for (var key_obj in $scope.progs[key])
-	    {
-	    	temp_obj[key_obj]=$scope.progs[key][key_obj];
-	    }
-	    temp.push(temp_obj);
-	}	
+	$scope.Update=function(type,obj,autoRefresh)
+	{
+		if(type=='progs')
+		{
+			// truthSource.prog.update.Now(obj,function(val){
+				// $scope.$apply();
+				if(autoRefresh==true)
+					truthSource.prog.fetch.Now(function(val){
+						$scope.$apply();
+						$scope.updatingInterface=true;
+						$scope.$apply();
+						prog=val;
+						$scope.updatingInterface=false;
+						$scope.$apply();
 
+					});
+				alert("Hey! This works :)");
+			// });
+		}
+	}
 
-	// truthSource.util.toarray()
-	// alert(temp[0]['name']);
-	// alert(temp[0].name);
-
+	// RefreshHelp=function(val,source){
+	// 	$scope.$apply();
+	// 	$scope.updatingInterface=true;
+	// 	$scope.$apply();
+	// 	source=val;
+	// 	$scope.updatingInterface=false;
+	// 	$scope.$apply();
+	// }
 }
 
 function c_scholarships($scope,truthSource,$timeout)

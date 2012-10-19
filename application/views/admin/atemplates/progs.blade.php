@@ -259,19 +259,13 @@
 <h1> This is AngularJS </h1>
 <table>
 	<tr>
+		<th  style="width:20px">NAME</th>
 		<th  style="width:20px">START</th>
 	</tr>
-	<tr ng-repeat="id in progsa">
+	<tr ng-repeat="(index,prog) in progs">
 		<td>
-			<!-- <input type="text" ng-model="prog[id]"></text>  -->
-			{{progs[id].name}}
-			<p><a>Save</a></p>
-		</td>
-	</tr>
-
-	<tr ng-repeat="(index,element) in progs">
-		<td>
-			{{index}}, {{element.name}}
+			<input type="text" ng-model="prog.name" />
+			<p><a ng-click="Update('progs',prog,true)">Save</a></p>
 		</td>
 	</tr>
 
