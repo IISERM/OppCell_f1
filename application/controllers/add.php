@@ -10,9 +10,10 @@ class Add_Controller extends Base_Controller
 
 	public function action_prog()
 	{
-		$name	=	Input::get('name');
-		$link	=	Input::get('link','');
-		$comments =	Input::get('comments','');
+		$data	=	Input::json();
+		$name	=	$data->name;
+		$link	=	$data->link;
+		$comments =	$data->comments;
 		$prog = Prog::create(array(
 				'name'		=>	$name,
 				'link'		=>	$link,
@@ -30,9 +31,10 @@ class Add_Controller extends Base_Controller
 
 	public function action_job()
 	{
-		$name	=	Input::get('name');
-		$link	=	Input::get('link','');
-		$comments =	Input::get('comments','');
+		$data	=	Input::json();
+		$name	=	$data->name;
+		$link	=	$data->link;
+		$comments =	$data->comments;
 		$job = Job::create(array(
 				'name'		=>	$name,
 				'link'		=>	$link,
@@ -50,9 +52,10 @@ class Add_Controller extends Base_Controller
 
 	public function action_scholar()
 	{
-		$name	=	Input::get('name');
-		$link	=	Input::get('link','');
-		$comments =	Input::get('comments','');
+		$data	=	Input::json();
+		$name	=	$data->name;
+		$link	=	$data->link;
+		$comments =	$data->comments;
 		$scholar =	Scholar::create(array(
 				'name'		=>	$name,
 				'link'		=>	$link,
@@ -70,9 +73,10 @@ class Add_Controller extends Base_Controller
 
 	public function action_location()
 	{
-		$name	=	Input::get('name');
-		$parent	=	Input::get('parent_id',0);
-		$comment=	Input::get('comments', '');
+		$data	=	Input::json();
+		$name	=	$data->name;
+		$parent	=	$data->parent_id;
+		$comment=	$data->comments;
 		$location=	Location::create(array(
 				'name'		=>	$name,
 				'parent_id'	=>	$parent,
@@ -90,9 +94,10 @@ class Add_Controller extends Base_Controller
 
 	public function action_subject()
 	{
-		$name	=	Input::get('name');
-		$parent	=	Input::get('parent_id',0);
-		$comment=	Input::get('comments', '');
+		$data	=	Input::json();
+		$name	=	$data->name;
+		$parent	=	$data->parent_id;
+		$comment=	$data->comments;
 		$subject=	Subject::create(array(
 				'name'		=>	$name,
 				'parent_id'	=>	$parent,
@@ -110,9 +115,10 @@ class Add_Controller extends Base_Controller
 
 	public function action_skill()
 	{
-		$name	=	Input::get('name');
-		$parent	=	Input::get('parent_id',0);
-		$comment=	Input::get('comments', '');
+		$data	=	Input::json();
+		$name	=	$data->name;
+		$parent	=	$data->parent_id;
+		$comment=	$data->comments;
 		$skill	=	Skill::create(array(
 				'name'		=>	$name,
 				'parent_id'	=>	$parent,
@@ -130,9 +136,10 @@ class Add_Controller extends Base_Controller
 
 	public function action_position()
 	{
-		$name	=	Input::get('name');
-		$parent	=	Input::get('parent_id',0);
-		$comment=	Input::get('comments', '');
+		$data	=	Input::json();
+		$name	=	$data->name;
+		$parent	=	$data->parent_id;
+		$comment=	$data->comments;
 		$position=	Position::create(array(
 				'name'		=>	$name,
 				'parent_id'	=>	$parent,
@@ -150,8 +157,9 @@ class Add_Controller extends Base_Controller
 
 	public function action_ps()
 	{
-		$pos = Position::find(Input::get('position_id'));
-		if($pos->skills()->sync(Input::get('skill_id')))
+		$data	=	Input::json();
+		$pos = Position::find($data->position_id);
+		if($pos->skills()->sync($data->skill_id))
 		{
 			return 1;
 		}
@@ -163,9 +171,10 @@ class Add_Controller extends Base_Controller
 
 	public function action_jpos()
 	{
-		$job	=	Job::find(Input::get('job_id'));
-		$position =	Position::find(Input::get('position_id'));
-		if(Jbranch::get()->where('job_id','=',$job)->where('position_id','=',$position))
+		$data	=	Input::json();
+		$job	=	Job::find($data->job_id);
+		$position =	Position::find($data->position_id);
+		if(Jbranch::json()->where('job_id','=',$job)->where('position_id','=',$position))
 		{
 			return 0;
 		}
@@ -174,9 +183,9 @@ class Add_Controller extends Base_Controller
 			$jb =	Jbranch::create(array(
 						'job_id'		=>	$job,
 						'position_id'	=>	$position,
-						'deadline'		=>	Input::get('deadline'),
-						'opening'		=>	Input::get('opening'),
-						'link'			=>	Input::get('link')
+						'deadline'		=>	$data->deadline,
+						'opening'		=>	$data->opening,
+						'link'			=>	$data->link
 					));
 			if($jb)
 			{
@@ -191,9 +200,10 @@ class Add_Controller extends Base_Controller
 
 	public function action_ppos()
 	{
-		$prog	=	Prog::find(Input::get('prog_id'));
-		$position =	Position::find(Input::get('position_id'));
-		if(Pbranch::get()->where('prog_id','=',$prog)->where('position_id','=',$position))
+		$data	=	Input::json();
+		$prog	=	Prog::find($data->prog_id);
+		$position =	Position::find($data->position_id);
+		if(Pbranch::json()->where('prog_id','=',$prog)->where('position_id','=',$position))
 		{
 			return 0;
 		}
@@ -202,9 +212,9 @@ class Add_Controller extends Base_Controller
 			$pb =	Pbranch::create(array(
 						'prog_id'		=>	$prog,
 						'position_id'	=>	$position,
-						'deadline'		=>	Input::get('deadline'),
-						'opening'		=>	Input::get('opening'),
-						'link'			=>	Input::get('link')
+						'deadline'		=>	$data->deadline,
+						'opening'		=>	$data->opening,
+						'link'			=>	$data->link
 					));
 			if($pb)
 			{
@@ -219,9 +229,10 @@ class Add_Controller extends Base_Controller
 
 	public function action_spos()
 	{
-		$scholar	=	Scholar::find(Input::get('scholar_id'));
-		$position =	Position::find(Input::get('position_id'));
-		if(Sbranch::get()->where('scholar_id','=',$scholar)->where('position_id','=',$position))
+		$data	=	Input::json();
+		$scholar	=	Scholar::find($data->scholar_id);
+		$position =	Position::find($data->position_id);
+		if(Sbranch::json()->where('scholar_id','=',$scholar)->where('position_id','=',$position))
 		{
 			return 0;
 		}
@@ -230,9 +241,9 @@ class Add_Controller extends Base_Controller
 			$sb =	Sbranch::create(array(
 						'scholar_id'	=>	$scholar,
 						'position_id'	=>	$position,
-						'deadline'		=>	Input::get('deadline'),
-						'opening'		=>	Input::get('opening'),
-						'link'			=>	Input::get('link')
+						'deadline'		=>	$data->deadline,
+						'opening'		=>	$data->opening,
+						'link'			=>	$data->link
 					));
 			if($sb)
 			{
@@ -247,8 +258,9 @@ class Add_Controller extends Base_Controller
 
 	public function action_jsub()
 	{
-		$job	=	Job::find(Input::get('job_id'));
-		$subject = Input::get('subject_id');
+		$data	=	Input::json();
+		$job	=	Job::find($data->job_id);
+		$subject = $data->subject_id;
 		if($subject)
 		{
 			$job->sync($subject);
@@ -262,8 +274,9 @@ class Add_Controller extends Base_Controller
 
 	public function action_psub()
 	{
-		$prog	=	Prog::find(Input::get('prog_id'));
-		$subject = Input::get('subject_id');
+		$data	=	Input::json();
+		$prog	=	Prog::find($data->prog_id);
+		$subject = $data->subject_id;
 		if($subject)
 		{
 			$prog->sync($subject);
@@ -277,8 +290,9 @@ class Add_Controller extends Base_Controller
 
 	public function action_ssub()
 	{
-		$scholar	=	Scholar::find(Input::get('scholar_id'));
-		$subject = Input::get('subject_id');
+		$data	=	Input::json();
+		$scholar	=	Scholar::find($data->scholar_id);
+		$subject = $data->subject_id;
 		if($subject)
 		{
 			$scholar->sync($subject);
@@ -292,9 +306,10 @@ class Add_Controller extends Base_Controller
 
 	public function action_jbranch()
 	{
-		$job	=	Job::find(Input::get('job_id'));
-		$location =	Location::find(Input::get('location_id'));
-		if(Jbranch::get()->where('job_id','=',$job)->where('location_id','=',$location))
+		$data	=	Input::json();
+		$job	=	Job::find($data->job_id);
+		$location =	Location::find($data->location_id);
+		if(Jbranch::json()->where('job_id','=',$job)->where('location_id','=',$location))
 		{
 			return 0;
 		}
@@ -303,8 +318,8 @@ class Add_Controller extends Base_Controller
 			$jb =	Jbranch::create(array(
 						'job_id'		=>	$job,
 						'location_id'	=>	$location,
-						'link'			=>	Input::get('link', ''),
-						'comments'		=>	Input::get('comments','')
+						'link'			=>	$data->link,
+						'comments'		=>	$data->comments
 					));
 			if($jb)
 			{
@@ -319,9 +334,10 @@ class Add_Controller extends Base_Controller
 
 	public function action_pbranch()
 	{
-		$prog	=	Prog::find(Input::get('prog_id'));
-		$location =	Location::find(Input::get('location_id'));
-		if(Jbranch::get()->where('prog_id','=',$prog)->where('location_id','=',$location))
+		$data	=	Input::json();
+		$prog	=	Prog::find($data->prog_id);
+		$location =	Location::find($data->location_id);
+		if(Jbranch::json()->where('prog_id','=',$prog)->where('location_id','=',$location))
 		{
 			return 0;
 		}
@@ -330,8 +346,8 @@ class Add_Controller extends Base_Controller
 			$pb =	Pbranch::create(array(
 						'prog_id'		=>	$prog,
 						'location_id'	=>	$location,
-						'link'			=>	Input::get('link', ''),
-						'comments'		=>	Input::get('comments','')
+						'link'			=>	$data->link,
+						'comments'		=>	$data->comments
 					));
 			if($pb)
 			{
@@ -346,9 +362,10 @@ class Add_Controller extends Base_Controller
 
 	public function action_sbranch()
 	{
-		$scholar	=	Scholar::find(Input::get('scholar_id'));
-		$location =	Location::find(Input::get('location_id'));
-		if(Jbranch::get()->where('scholar_id','=',$scholar)->where('location_id','=',$location))
+		$data	=	Input::json();
+		$scholar	=	Scholar::find($data->scholar_id);
+		$location =	Location::find($data->location_id);
+		if(Jbranch::json()->where('scholar_id','=',$scholar)->where('location_id','=',$location))
 		{
 			return 0;
 		}
@@ -357,8 +374,8 @@ class Add_Controller extends Base_Controller
 			$sb =	Sbranch::create(array(
 						'scholar_id'	=>	$scholar,
 						'location_id'	=>	$location,
-						'link'			=>	Input::get('link', ''),
-						'comments'		=>	Input::get('comments','')
+						'link'			=>	$data->link,
+						'comments'		=>	$data->comments
 					));
 			if($sb)
 			{
