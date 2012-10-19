@@ -108,6 +108,27 @@ angular.module('oppapp',[])
 		});
 	}
 
+	truth.func.Update=function(type,id,newData,OnComplete)
+	{
+		truth.io.state.working=true;
+
+		var tData=newData;
+		tData.id=id;
+
+		$http.post(truth.io.config.basePath + truth[type].update.lnk + truth[type].config.basePath,newData)
+		.success(function(data)
+		{
+			$log.log(data);
+			truth.io.state.last=data;
+			OnComplete(truth.io.state.last);
+		})
+		.error(function(data){
+			$log.error(data);
+			truth.io.state.last=data;
+			OnComplete(truth.io.state.last);
+		});
+	}
+
 	truth.nav.Select=function(val)
 	{
 		for(var key in  truth.nav.current_select)
