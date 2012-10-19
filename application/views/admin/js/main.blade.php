@@ -77,15 +77,34 @@ angular.module('oppapp',[])
 		.success(function(data)
 		{
 			$log.log(data);
+			truth.io.state.last=data;
 			truth[type].data=data;
 			OnComplete(truth[type].data);
 		})
 		.error(function(data)
 		{
 			$log.error(data+' '+status);
+			truth.io.state.last=data;
 			OnComplete(truth[type].data);
 		});
 
+	}
+
+	truth.func.Add=function(type,newData,OnComplete)
+	{
+		truth.io.state.working=true;
+		$http.post(truth.io.config.basePath + truth[type].add.lnk + truth[type].config.basePath,newData)
+		.success(function(data)
+		{
+			$log.log(data);
+			truth.io.state.last=data;
+			OnComplete(truth.io.state.last);
+		})
+		.error(function(data){
+			$log.error(data);
+			truth.io.state.last=data;
+			OnComplete(truth.io.state.last);
+		});
 	}
 
 	truth.nav.Select=function(val)
@@ -120,12 +139,19 @@ function c_progs($scope,truthSource,$timeout)
 	$scope.progNew={name:'',link:'',comments:''};
 
 
+	$scope.locations=
+				{
+					'1':{name:'India',parent_id:'',comments:'Highly conservative. Dont go naked'}
+				}
+
 	$scope.pbranches=
 				{
-					'1':{name:'IISc Winter School',link:'http://www.iisc.org/',comments:'This is the best in India apparently'},
-					'2':{name:'IIT Winter School',link:'http://www.iitb.ac.in/',comments:''}
+					'1':{prog_id:'1',location_id:'1',link:'http://bambam.com',comments:'bam1'},
+					'2':{prog_id:'2',location_id:'2',link:'http://bambam.com',comments:'bam2'},
 				};
-	$scope.pbranchesNew={name:'',link:'',comments:''};
+	$scope.pbranchesNew={prog_id:'',location_id:'',link:'',comment:''};
+
+
 
 	//These are functions you shouldn't need to change at all! They should infact go into some
 	//library, but for now are stuck with the controller
@@ -143,6 +169,17 @@ function c_progs($scope,truthSource,$timeout)
 						// //});
 					
 				// });
+		}
+
+		$scope.Add=function(type,newData,autoRefresh)
+		{
+			truthSource.func.Add(type,newData,function(val)
+			{
+				$scope.$apply();
+				alert(JSON.stringify(val, null, 4));
+
+				// $scope.Refresh(type);
+			});
 		}
 
 		$scope.Refresh=function(type){
@@ -164,7 +201,9 @@ function c_progs($scope,truthSource,$timeout)
 			for(key in truthSource)
 			{
 				if((key!='func') && (key!='io') && (key!='nav'))
-					$scope.Refresh(key);		
+				{
+					$scope.Refresh(key);					
+				}
 			}			
 		},1000);
 	}	
