@@ -23,14 +23,18 @@ angular.module('oppapp',[])
 	//http://localhost/IISERM/elections/public
 	var truth=
 	{
-		prog:
+		progs:
 			{
-					fetch:{Now:{},lnk:'/list'},
-					add:{Now:{},lnk:'/padd'},
-					remove:{Now:{},lnk:'/pdel'},
-					update:{Now:{},lnk:'/pupdate'},
+					fetch:{lnk:'/list'},
+					add:{lnk:'/add'},
+					remove:{lnk:'/del'},
+					update:{lnk:'/update'},
 					config:{basePath:'/prog'},
 					data:{}
+			},
+		func:
+			{
+				Fetch:{},Add:{},Remove:{},Update:{}
 			},
 		io:
 		{
@@ -56,27 +60,46 @@ angular.module('oppapp',[])
 		},
 	}
 
-	function FetchHelp(lnk,truthData,targetFunction)
+	truth.func.Fetch=function(type,OnComplete)
 	{
 		truth.io.state.working=true;
-		$http.get(truth.io.config.basePath + lnk)
+		// alert(truth.io.config.basePath + truth[type].fetch.lnk + truth[type].config.basePath);
+		$http.get(truth.io.config.basePath + truth[type].fetch.lnk + truth[type].config.basePath)
 		.success(function(data)
 		{
 			$log.log(data);
-			truthData=data;
-			targetFunction(truthData);
+			truth[type].data=data;
+			OnComplete(truth[type].data);
 		})
-		.error(function(data,status){
+		.error(function(data)
+		{
 			$log.error(data+' '+status);
-			targetFunction(truthData);
+			OnComplete(truth[type].data);
 		});
+
 	}
 
-	truth.prog.fetch.Now=function(OnComplete)
-	{
-		FetchHelp(truth.prog.fetch.lnk + truth.prog.config.basePath,
-			truth.prog.data,OnComplete);
-	}
+	// function FetchHelp(lnk,truthData,targetFunction)
+	// {
+	// 	truth.io.state.working=true;
+	// 	$http.get(truth.io.config.basePath + lnk)
+	// 	.success(function(data)
+	// 	{
+	// 		$log.log(data);
+	// 		truthData=data;
+	// 		targetFunction(truthData);
+	// 	})
+	// 	.error(function(data,status){
+	// 		$log.error(data+' '+status);
+	// 		targetFunction(truthData);
+	// 	});
+	// }
+
+	// truth.prog.fetch.Now=function(OnComplete)
+	// {
+	// 	FetchHelp(truth.progs.fetch.lnk + truth.prog.config.basePath,
+	// 		truth.prog.data,OnComplete);
+	// }
 
 	truth.nav.Select=function(val)
 	{
@@ -109,37 +132,48 @@ function c_progs($scope,truthSource,$timeout)
 				{
 					'1':{name:'IISc Winter School',link:'http://www.iisc.org/',comments:'This is the best in India apparently'},
 					'2':{name:'IIT Winter School',link:'http://www.iitb.ac.in/',comments:''}
-				}
+				};
+	$scope.progNew={name:'',link:'',comments:''};
 
 	$scope.Update=function(type,obj,autoRefresh)
 	{
-		if(type=='progs')
+		$scope.Refresh(type);
+		// if(type=='progs')
 		{
 			// truthSource.prog.update.Now(obj,function(val){
 				// $scope.$apply();
-				if(autoRefresh==true)
-					truthSource.prog.fetch.Now(function(val){
-						$scope.$apply();
-						$scope.updatingInterface=true;
-						$scope.$apply();
-						prog=val;
-						$scope.updatingInterface=false;
-						$scope.$apply();
-
-					});
-				alert("Hey! This works :)");
+				// RefreshHelp
+				// if(autoRefresh==true)
+					// //truthSource[type].fetch.Now(function(val){
+						// //RefreshHelp(val,'progs');
+						// alert("Hey! This works :)");
+					// //});
+				
 			// });
 		}
 	}
 
-	// RefreshHelp=function(val,source){
-	// 	$scope.$apply();
-	// 	$scope.updatingInterface=true;
-	// 	$scope.$apply();
-	// 	source=val;
-	// 	$scope.updatingInterface=false;
-	// 	$scope.$apply();
-	// }
+	$scope.Refresh=function(type){
+		truthSource.func.Fetch(type,function(val){
+			$scope.$apply();
+			$scope.updatingInterface=true;
+			$scope.$apply();
+			$scope[type]=val;
+			$scope.updatingInterface=false;
+			$scope.$apply();			
+		});		
+	}
+
+	RefreshHelp=function(val,source){
+		$scope.$apply();
+		$scope.updatingInterface=true;
+		$scope.$apply();
+		$scope[source]=val;
+		// par.source=par.val;
+		$scope.updatingInterface=false;
+		$scope.$apply();
+		// alert("why won't you work");
+	}
 }
 
 function c_scholarships($scope,truthSource,$timeout)

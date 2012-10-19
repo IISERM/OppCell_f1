@@ -268,5 +268,10 @@
 			<p><a ng-click="Update('progs',prog,true)">Save</a></p>
 		</td>
 	</tr>
-
+	<tr>
+		<td>
+			<input type="text" ng-model="progNew.name" />
+			<p><a ng-click="Add('progs',progNew,true)" placeholder="Add New">Add</a></p>
+		</td>
+	</tr>
 </table>
