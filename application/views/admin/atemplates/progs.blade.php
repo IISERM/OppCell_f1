@@ -271,7 +271,7 @@
 	<tr>
 		<td>
 			<input type="text" ng-model="progNew.name" />
-			<p><a ng-click="Add('progs',progNew,true)" placeholder="Add New">Add</a></p>
+			<p><a ng-click="Add('progs',progNew,true)">Add</a></p>
 		</td>
 	</tr>
 </table>

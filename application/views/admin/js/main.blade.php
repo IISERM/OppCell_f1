@@ -32,6 +32,15 @@ angular.module('oppapp',[])
 					config:{basePath:'/prog'},
 					data:{}
 			},
+		pbranches:
+			{
+					fetch:{lnk:'/list'},
+					add:{lnk:'/add'},
+					remove:{lnk:'/del'},
+					update:{lnk:'/update'},
+					config:{basePath:'/pbranch'},
+					data:{}
+			},			
 		func:
 			{
 				Fetch:{},Add:{},Remove:{},Update:{}
@@ -49,15 +58,15 @@ angular.module('oppapp',[])
 		},
 		nav:
 		{
-			// blank:[{progs:''},{scholarships:''}],
 			current:'Loading..',
+			//clear text for select!
 			clear_select:{progs:'Academic Programs',
 							scholarships:'Scholarships',
 							jobs:'Jobs'},
 			select_classname:'current2',
 			current_select:{progs:'',scholarships:'',jobs:''},
 			Select:{}
-		},
+		}
 	}
 
 	truth.func.Fetch=function(type,OnComplete)
@@ -79,28 +88,6 @@ angular.module('oppapp',[])
 
 	}
 
-	// function FetchHelp(lnk,truthData,targetFunction)
-	// {
-	// 	truth.io.state.working=true;
-	// 	$http.get(truth.io.config.basePath + lnk)
-	// 	.success(function(data)
-	// 	{
-	// 		$log.log(data);
-	// 		truthData=data;
-	// 		targetFunction(truthData);
-	// 	})
-	// 	.error(function(data,status){
-	// 		$log.error(data+' '+status);
-	// 		targetFunction(truthData);
-	// 	});
-	// }
-
-	// truth.prog.fetch.Now=function(OnComplete)
-	// {
-	// 	FetchHelp(truth.progs.fetch.lnk + truth.prog.config.basePath,
-	// 		truth.prog.data,OnComplete);
-	// }
-
 	truth.nav.Select=function(val)
 	{
 		for(var key in  truth.nav.current_select)
@@ -117,9 +104,6 @@ angular.module('oppapp',[])
 
 function c_oppcell($scope,truthSource,$timeout)
 {
-	
-	// $scope.$watch('')
-	// $scope.current_select=truthSource.nav.current_select;
 	$scope.truthSource=truthSource;
 }
 
@@ -135,45 +119,56 @@ function c_progs($scope,truthSource,$timeout)
 				};
 	$scope.progNew={name:'',link:'',comments:''};
 
-	$scope.Update=function(type,obj,autoRefresh)
+
+	$scope.pbranches=
+				{
+					'1':{name:'IISc Winter School',link:'http://www.iisc.org/',comments:'This is the best in India apparently'},
+					'2':{name:'IIT Winter School',link:'http://www.iitb.ac.in/',comments:''}
+				};
+	$scope.pbranchesNew={name:'',link:'',comments:''};
+
+	//These are functions you shouldn't need to change at all! They should infact go into some
+	//library, but for now are stuck with the controller
 	{
-		$scope.Refresh(type);
-		// if(type=='progs')
+		$scope.Update=function(type,obj,autoRefresh)
 		{
-			// truthSource.prog.update.Now(obj,function(val){
-				// $scope.$apply();
-				// RefreshHelp
-				// if(autoRefresh==true)
-					// //truthSource[type].fetch.Now(function(val){
-						// //RefreshHelp(val,'progs');
-						// alert("Hey! This works :)");
-					// //});
-				
-			// });
+			$scope.Refresh(type);		
+				// truthSource.prog.update.Now(obj,function(val){
+					// $scope.$apply();
+					// RefreshHelp
+					// if(autoRefresh==true)
+						// //truthSource[type].fetch.Now(function(val){
+							// //RefreshHelp(val,'progs');
+							// alert("Hey! This works :)");
+						// //});
+					
+				// });
+		}
+
+		$scope.Refresh=function(type){
+			truthSource.func.Fetch(type,function(val){
+				$scope.$apply();
+				$scope.updatingInterface=true;
+				$scope.$apply();
+				$scope[type]=val;
+				$scope.updatingInterface=false;
+				$scope.$apply();			
+			});		
 		}
 	}
 
-	$scope.Refresh=function(type){
-		truthSource.func.Fetch(type,function(val){
-			$scope.$apply();
-			$scope.updatingInterface=true;
-			$scope.$apply();
-			$scope[type]=val;
-			$scope.updatingInterface=false;
-			$scope.$apply();			
-		});		
-	}
+	//INITIAL REFRESH
+	{
+		$timeout(function(){
+			$scope.init=0;
+			for(key in truthSource)
+			{
+				if((key!='func') && (key!='io') && (key!='nav'))
+					$scope.Refresh(key);		
+			}			
+		},1000);
+	}	
 
-	RefreshHelp=function(val,source){
-		$scope.$apply();
-		$scope.updatingInterface=true;
-		$scope.$apply();
-		$scope[source]=val;
-		// par.source=par.val;
-		$scope.updatingInterface=false;
-		$scope.$apply();
-		// alert("why won't you work");
-	}
 }
 
 function c_scholarships($scope,truthSource,$timeout)
@@ -183,7 +178,6 @@ function c_scholarships($scope,truthSource,$timeout)
 	// $scope.$apply();
 	$scope.truthSource=truthSource;
 }
-// alert('hello');
 
 function c_jobs($scope,truthSource,$timeout)
 {
