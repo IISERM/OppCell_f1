@@ -1,6 +1,6 @@
 <?php
 
-class List_Controller extends Base_Controller
+class Add_Controller extends Base_Controller
 {
 
 	public function action_index()
