@@ -13,11 +13,11 @@ class Add_Controller extends Base_Controller
 		$name	=	Input::get('name');
 		$link	=	Input::get('link','');
 		$comments =	Input::get('comments','');
-		$prog = Prog::create(
+		$prog = Prog::create(array(
 				'name'		=>	$name,
 				'link'		=>	$link,
 				'comment'	=>	$comments
-			);
+			));
 		if($prog)
 		{
 			return 1;
@@ -33,11 +33,11 @@ class Add_Controller extends Base_Controller
 		$name	=	Input::get('name');
 		$link	=	Input::get('link','');
 		$comments =	Input::get('comments','');
-		$job = Job::create(
+		$job = Job::create(array(
 				'name'		=>	$name,
 				'link'		=>	$link,
 				'comment'	=>	$comments
-			);
+			));
 		if($job)
 		{
 			return 1;
@@ -53,11 +53,11 @@ class Add_Controller extends Base_Controller
 		$name	=	Input::get('name');
 		$link	=	Input::get('link','');
 		$comments =	Input::get('comments','');
-		$scholar =	Scholar::create(
+		$scholar =	Scholar::create(array(
 				'name'		=>	$name,
 				'link'		=>	$link,
 				'comment'	=>	$comments
-			);
+			));
 		if($scholar)
 		{
 			return 1;
@@ -73,11 +73,11 @@ class Add_Controller extends Base_Controller
 		$name	=	Input::get('name');
 		$parent	=	Input::get('parent_id',0);
 		$comment=	Input::get('comments', '');
-		$location=	Location::create(
+		$location=	Location::create(array(
 				'name'		=>	$name,
 				'parent_id'	=>	$parent,
 				'comments'	=>	$comment
-			);
+			));
 		if($location)
 		{
 			return 1;
@@ -93,11 +93,11 @@ class Add_Controller extends Base_Controller
 		$name	=	Input::get('name');
 		$parent	=	Input::get('parent_id',0);
 		$comment=	Input::get('comments', '');
-		$subject=	Subject::create(
+		$subject=	Subject::create(array(
 				'name'		=>	$name,
 				'parent_id'	=>	$parent,
 				'comments'	=>	$comment
-			);
+			));
 		if($subject)
 		{
 			return 1;
@@ -113,11 +113,11 @@ class Add_Controller extends Base_Controller
 		$name	=	Input::get('name');
 		$parent	=	Input::get('parent_id',0);
 		$comment=	Input::get('comments', '');
-		$skill	=	Skill::create(
+		$skill	=	Skill::create(array(
 				'name'		=>	$name,
 				'parent_id'	=>	$parent,
 				'comments'	=>	$comment
-			);
+			));
 		if($skill)
 		{
 			return 1;
@@ -133,11 +133,11 @@ class Add_Controller extends Base_Controller
 		$name	=	Input::get('name');
 		$parent	=	Input::get('parent_id',0);
 		$comment=	Input::get('comments', '');
-		$position=	Position::create(
+		$position=	Position::create(array(
 				'name'		=>	$name,
 				'parent_id'	=>	$parent,
 				'comments'	=>	$comment
-			);
+			));
 		if($position)
 		{
 			return 1;
@@ -171,13 +171,13 @@ class Add_Controller extends Base_Controller
 		}
 		else
 		{
-			$jb =	Jbranch::create(
-						'job_id'		=	$job,
-						'position_id'	=	$position,
-						'deadline'		=	Input::get('deadline'),
-						'opening'		=	Input::get('opening'),
-						'link'			=	Input::get('link')
-					);
+			$jb =	Jbranch::create(array(
+						'job_id'		=>	$job,
+						'position_id'	=>	$position,
+						'deadline'		=>	Input::get('deadline'),
+						'opening'		=>	Input::get('opening'),
+						'link'			=>	Input::get('link')
+					));
 			if($jb)
 			{
 				return 1;
@@ -199,13 +199,13 @@ class Add_Controller extends Base_Controller
 		}
 		else
 		{
-			$pb =	Pbranch::create(
-						'prog_id'		=	$prog,
-						'position_id'	=	$position,
-						'deadline'		=	Input::get('deadline'),
-						'opening'		=	Input::get('opening'),
-						'link'			=	Input::get('link')
-					);
+			$pb =	Pbranch::create(array(
+						'prog_id'		=>	$prog,
+						'position_id'	=>	$position,
+						'deadline'		=>	Input::get('deadline'),
+						'opening'		=>	Input::get('opening'),
+						'link'			=>	Input::get('link')
+					));
 			if($pb)
 			{
 				return 1;
@@ -214,6 +214,7 @@ class Add_Controller extends Base_Controller
 			{
 				return 0;
 			}
+		}
 	}
 
 	public function action_spos()
@@ -226,13 +227,13 @@ class Add_Controller extends Base_Controller
 		}
 		else
 		{
-			$sb =	Sbranch::create(
-						'scholar_id'	=	$scholar,
-						'position_id'	=	$position,
-						'deadline'		=	Input::get('deadline'),
-						'opening'		=	Input::get('opening'),
-						'link'			=	Input::get('link')
-					);
+			$sb =	Sbranch::create(array(
+						'scholar_id'	=>	$scholar,
+						'position_id'	=>	$position,
+						'deadline'		=>	Input::get('deadline'),
+						'opening'		=>	Input::get('opening'),
+						'link'			=>	Input::get('link')
+					));
 			if($sb)
 			{
 				return 1;
@@ -241,6 +242,7 @@ class Add_Controller extends Base_Controller
 			{
 				return 0;
 			}
+		}
 	}
 
 	public function action_jsub()
@@ -298,12 +300,12 @@ class Add_Controller extends Base_Controller
 		}
 		else
 		{
-			$jb =	Jbranch::create(
-						'job_id'		=	$job,
-						'location_id'	=	$location,
-						'link'			=	Input::get('link', ''),
-						'comments'		=	Input::get('comments','')
-					);
+			$jb =	Jbranch::create(array(
+						'job_id'		=>	$job,
+						'location_id'	=>	$location,
+						'link'			=>	Input::get('link', ''),
+						'comments'		=>	Input::get('comments','')
+					));
 			if($jb)
 			{
 				return 1;
@@ -325,12 +327,12 @@ class Add_Controller extends Base_Controller
 		}
 		else
 		{
-			$pb =	Pbranch::create(
-						'prog_id'		=	$prog,
-						'location_id'	=	$location,
-						'link'			=	Input::get('link', ''),
-						'comments'		=	Input::get('comments','')
-					);
+			$pb =	Pbranch::create(array(
+						'prog_id'		=>	$prog,
+						'location_id'	=>	$location,
+						'link'			=>	Input::get('link', ''),
+						'comments'		=>	Input::get('comments','')
+					));
 			if($pb)
 			{
 				return 1;
@@ -352,12 +354,12 @@ class Add_Controller extends Base_Controller
 		}
 		else
 		{
-			$sb =	Sbranch::create(
-						'scholar_id'		=	$scholar,
-						'location_id'	=	$location,
-						'link'			=	Input::get('link', ''),
-						'comments'		=	Input::get('comments','')
-					);
+			$sb =	Sbranch::create(array(
+						'scholar_id'	=>	$scholar,
+						'location_id'	=>	$location,
+						'link'			=>	Input::get('link', ''),
+						'comments'		=>	Input::get('comments','')
+					));
 			if($sb)
 			{
 				return 1;

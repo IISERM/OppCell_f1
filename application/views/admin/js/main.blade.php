@@ -93,6 +93,7 @@ angular.module('oppapp',[])
 	truth.func.Add=function(type,newData,OnComplete)
 	{
 		truth.io.state.working=true;
+		alert(JSON.stringify(newData));
 		$http.post(truth.io.config.basePath + truth[type].add.lnk + truth[type].config.basePath,newData)
 		.success(function(data)
 		{
@@ -136,7 +137,7 @@ function c_progs($scope,truthSource,$timeout)
 					'1':{name:'IISc Winter School',link:'http://www.iisc.org/',comments:'This is the best in India apparently'},
 					'2':{name:'IIT Winter School',link:'http://www.iitb.ac.in/',comments:''}
 				};
-	$scope.progNew={name:'',link:'',comments:''};
+	$scope.progNew={name:'Testing',link:'',comments:''};
 
 
 	$scope.locations=
