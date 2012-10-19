@@ -1,7 +1,7 @@
 <?php
 	class Pbranch extends Eloquent
 	{
-		public static $table = 'pbranch';
+		public static $table = 'pbranches';
 
 		public function prog()
 		{
@@ -18,7 +18,7 @@
 			return $this->has_many_and_belongs_to('Subject','psubjects');
 		}
 
-		public function subject()
+		public function position()
 		{
 			return $this->has_many_and_belongs_to('Position','pposition')
 						->with('opening','deadline','link');

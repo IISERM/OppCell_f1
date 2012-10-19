@@ -168,16 +168,25 @@
 @#		- position	has_many_and_belongs_to	Position->sposition
 @#				+ Pivot	: Opening
 @#						: Deadline
-@						: Link
+@#						: Link
+@#
 @
+@#	position_skill
+@#	Ps
 @
-@	position_skill
-@	jpositions
-@	ppositions
-@	spositions
-@	jsubjects
-@	psubjects
-@	ssubjects
+@#	jpositions
+@#	Jpos
+@#	ppositions
+@#	Ppos
+@#	spositions
+@#	Spos
+@
+@#	jsubjects
+@#	Jsub
+@#	psubjects
+@#	Psub
+@#	ssubjects
+@#	Ssub
 @
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@

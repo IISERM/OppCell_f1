@@ -5,69 +5,80 @@
 
 		public function seed()
 		{
-			$this->subjects();
+			$this->progs();
+			$this->jobs();
+			$this->scholars();
 			$this->locations();
+			$this->subjects();
 			$this->positions();
-			$this->programs();
+			$this->skills();
 		}
 
-		public function programs()
+		public function progs()
 		{
-			DB::query('TRUNCATE TABLE programs');
-			$prog = Program::create(
+			DB::query('TRUNCATE TABLE progs');
+			$prog = Prog::create(
 					array(
 						'name'		=> 'Some Insti 1',
 						'link'		=> 'Links for 1',
-						'location'	=> 1,
-						'deadline'	=> '2012-10-21 08:00:00',
-						'opening'	=> '2012-10-11 08:00:00'
 					)
 				);
-			$prog->subjects()->sync(array(1, 2, 3));
-			$prog->positions()->sync(array(1, 2, 3));
-			$prog = Program::create(
+			$prog = Prog::create(
 					array(
 						'name'		=> 'Some Insti 2',
 						'link'		=> 'Links for 2',
-						'location'	=> 5,
-						'deadline'	=> '2012-10-21 08:00:00',
-						'opening'	=> '2012-10-11 08:00:00'
 					)
 				);
-			$prog->subjects()->sync(array(1, 4));
-			$prog->positions()->sync(array(1, 3));
-			$prog = Program::create(
+			$prog = Prog::create(
 					array(
 						'name'		=> 'Some Insti 3',
 						'link'		=> 'Links for 3',
-						'location'	=> 4,
-						'deadline'	=> '2012-10-21 08:00:00',
-						'opening'	=> '2012-10-11 08:00:00'
 					)
 				);
-			$prog->subjects()->sync(array(5));
-			$prog->positions()->sync(array(2, 3));
 		}
 
-		public function positions()
+		public function jobs()
 		{
-			DB::query('TRUNCATE TABLE positions');
-			Position::create(
+			DB::query('TRUNCATE TABLE jobs');
+			$job = Job::create(
 					array(
-						'name'		=> 'Summer Project (2 months)',
-						'duration'	=> 2.00
+						'name'		=> 'Some Job 1',
+						'link'		=> 'Links for Job 1',
 					)
 				);
-			Position::create(
+			$job = Job::create(
 					array(
-						'name'		=> 'Summer Project (4 months)',
-						'duration'	=> 4.00
+						'name'		=> 'Some Job 2',
+						'link'		=> 'Links for Job 2',
 					)
 				);
-			Position::create(
+			$job = Job::create(
 					array(
-						'name'		=> 'PhD (3 yr)',
-						'duration'	=> 36.00
+						'name'		=> 'Some Job 3',
+						'link'		=> 'Links for Job 3',
+					)
+				);
+		}
+
+		public function scholars()
+		{
+			DB::query('TRUNCATE TABLE scholars');
+			$scholar = Scholar::create(
+					array(
+						'name'		=> 'Some scholar 1',
+						'link'		=> 'Links for scholar 1',
+					)
+				);
+			$scholar = Scholar::create(
+					array(
+						'name'		=> 'Some scholar 2',
+						'link'		=> 'Links for scholar 2',
+					)
+				);
+			$scholar = Scholar::create(
+					array(
+						'name'		=> 'Some scholar 3',
+						'link'		=> 'Links for scholar 3',
 					)
 				);
 		}
@@ -93,25 +104,25 @@
 			Location::create(
 					array(
 						'name'		=> 'Texas',
-						'parent'	=> 1
+						'parent_id'	=> 1
 					)
 				);
 			Location::create(
 					array(
 						'name'		=> 'Berkeley',
-						'parent'	=> 1
+						'parent_id'	=> 1
 					)
 				);
 			Location::create(
 					array(
 						'name'		=> 'Hannover',
-						'parent'	=> 3
+						'parent_id'	=> 3
 					)
 				);
 			Location::create(
 					array(
 						'name'		=> 'Pune',
-						'parent'	=> 2
+						'parent_id'	=> 2
 					)
 				);
 		}
@@ -142,27 +153,70 @@
 			Subject::create(
 					array(
 						'name'		=> 'Quantum Mechanics',
-						'parent'	=> 1
+						'parent_id'	=> 1
 					)
 				);
 			Subject::create(
 					array(
 						'name'		=> 'Astrophysics',
-						'parent'	=> 1
+						'parent_id'	=> 1
 					)
 				);
 			Subject::create(
 					array(
 						'name'		=> 'Immunobiology',
-						'parent'	=> 4
+						'parent_id'	=> 4
 					)
 				);
 			Subject::create(
 					array(
 						'name'		=> 'Algebra',
-						'parent'	=> 2
+						'parent_id'	=> 2
 					)
 				);
+		}
+
+		public function positions()
+		{
+			DB::query('TRUNCATE TABLE positions');
+			Position::create(
+					array(
+						'name'		=> 'Summer Project (2 months)',
+					)
+				);
+			Position::create(
+					array(
+						'name'		=> 'Summer Project (4 months)',
+					)
+				);
+			Position::create(
+					array(
+						'name'		=> 'PhD (3 yr)',
+					)
+				);
+		}
+
+		public function skills()
+		{
+			DB::query('TRUNCATE TABLE skills');
+			$s = Skill::create(
+					array(
+						'name'		=> 'Skill 1',
+					)
+				);
+			$s->positions()->sync(array(1));
+			$s = Skill::create(
+					array(
+						'name'		=> 'Skill 2',
+					)
+				);
+			$s->positions()->sync(array(2,3));
+			$s = Skill::create(
+					array(
+						'name'		=> 'Skill 3',
+					)
+				);
+			$s->positions()->sync(array(1,3));
 		}
 
 	}

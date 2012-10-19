@@ -1,7 +1,7 @@
 <?php
 	class Jbranch extends Eloquent
 	{
-		public static $table = 'jbranch';
+		public static $table = 'jbranches';
 
 		public function job()
 		{
@@ -18,7 +18,7 @@
 			return $this->has_many_and_belongs_to('Subject','jsubjects');
 		}
 
-		public function subject()
+		public function position()
 		{
 			return $this->has_many_and_belongs_to('Position','jposition')
 						->with('opening','deadline','link');
