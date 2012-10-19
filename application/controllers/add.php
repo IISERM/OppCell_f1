@@ -16,7 +16,7 @@ class Add_Controller extends Base_Controller
 		$prog = Prog::create(array(
 				'name'		=>	$name,
 				'link'		=>	$link,
-				'comment'	=>	$comments
+				'comments'	=>	$comments
 			));
 		if($prog)
 		{
@@ -36,7 +36,7 @@ class Add_Controller extends Base_Controller
 		$job = Job::create(array(
 				'name'		=>	$name,
 				'link'		=>	$link,
-				'comment'	=>	$comments
+				'comments'	=>	$comments
 			));
 		if($job)
 		{
@@ -56,7 +56,7 @@ class Add_Controller extends Base_Controller
 		$scholar =	Scholar::create(array(
 				'name'		=>	$name,
 				'link'		=>	$link,
-				'comment'	=>	$comments
+				'comments'	=>	$comments
 			));
 		if($scholar)
 		{
