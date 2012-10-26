@@ -15,6 +15,6 @@ ul#menu li.current2 a
   /*border-top: 0;*/
   color: #F14E23;}
 
-.darker td{
+.current td{
 	background: #EEE;
 }
