@@ -285,16 +285,25 @@
 		<td>
 			<table>
 				<tr ng-class="{current:prog.edit}">
-					<td ng-show="prog.edit">
+					<td>
 						<div ng-repeat="(pbranchI,pbranch) in pbranches | oFilter:{'prog_id':progI}:this"> 
-							<!-- <select ng-model="pbranch.location_id" ng-options="location.id as location.name for location in locations"> -->
-							<p>{{pbranches[pbranchI]}}</p>
+<!-- 							<select ng-model="pbranches[pbranchI].location_id" ng-options="location.id as location.name for location in locations2"></select>
+ -->						<div ng-show="prog.edit">	
+								<select ng-model="pbranches[pbranchI].location_id" ng-options="locationI as (location.name+'('+ locations[location.parent_id].name+')' ) for (locationI,location) in locations"></select>
+							</div>
+
+							<div ng-hide="prog.edit">
+								<p>{{locations[pbranches[pbranchI].location_id].name}} ({{locations[locations[pbranches[pbranchI].location_id].parent_id].name}})</p>
+
+							</div>
+							<!-- <p>{{locations}}</p> -->
+							<!-- <p>{{pbranches[pbranchI]}}</p> -->
 						</div>
 						<p><a>Create Location</a> </p>
 					</td>
-					<td ng-hide="prog.edit">						
-						<p>Location 1</p>
-					</td>
+					
+						
+					
 					<td ng-show="prog.edit">
 						<a ng-click="prog.edit=false">Lock</a>
 					</td>					

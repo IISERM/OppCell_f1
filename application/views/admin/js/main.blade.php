@@ -227,9 +227,17 @@ function c_oppcell($scope,truthSource,$timeout)
 
 	$scope.locations=
 				{
+					'':{name:'Country',parent_id:'',comments:''},
 					'1':{name:'India',parent_id:'',comments:'Highly conservative. Dont go naked'},
 					'2':{name:'Delhi',parent_id:'1',comments:'The Awesomest City'}
 				};
+
+	$scope.locations2=
+				[
+					{id:'1',name:'India',parent_id:'',comments:'Highly conservative. Dont go naked'},
+					{id:'2',name:'Delhi',parent_id:'1',comments:'The Awesomest City'}
+				];
+
 
 	$scope.locationNew={name:'',parent_id:'',comments:''};
 
