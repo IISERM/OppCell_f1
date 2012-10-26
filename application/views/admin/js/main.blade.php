@@ -241,9 +241,9 @@ function c_oppcell($scope,truthSource,$timeout)
 				];
 	$scope.pbranches=
 				{
-					'1':{prog_id:'1',location_id:'1',link:'http://bambam.com',comments:'bam1'},
-					'2':{prog_id:'2',location_id:'2',link:'http://bambam.com',comments:'bam2'},
-					'3':{prog_id:'1',location_id:'1',link:'http://bambam.com',comments:'bam1'}
+					'1':{prog_id:'1',location_id:'1',link:'http://bambam1.com',comments:'bam1'},
+					'2':{prog_id:'2',location_id:'2',link:'http://bambam2.com',comments:'bam2'},
+					'3':{prog_id:'1',location_id:'1',link:'http://bambam3.com',comments:'bam3'}
 				};
 	$scope.pbranchesNew={prog_id:'',location_id:'',link:'',comment:''};
 
@@ -318,9 +318,9 @@ function c_oppcell($scope,truthSource,$timeout)
 			{
 				if((key!='func') && (key!='io') && (key!='nav'))
 				{
-					$scope.Refresh(key);					
+					// $scope.Refresh(key);					
 				}
-			}			
+			}
 		},1000);
 	}	
 

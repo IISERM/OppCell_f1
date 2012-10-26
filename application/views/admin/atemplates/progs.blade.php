@@ -286,9 +286,9 @@
 			<table>
 				<tr ng-class="{current:prog.edit}">
 					<td ng-show="prog.edit">
-						<div ng-repeat="pbranch in pbranches | oFilter:{'prog_id':progI}:this"> 
+						<div ng-repeat="(pbranchI,pbranch) in pbranches | oFilter:{'prog_id':progI}:this"> 
 							<!-- <select ng-model="pbranch.location_id" ng-options="location.id as location.name for location in locations"> -->
-							<p>{{pbranch.location_id}}</p>
+							<p>{{pbranches[pbranchI]}}</p>
 						</div>
 						<p><a>Create Location</a> </p>
 					</td>
@@ -307,6 +307,10 @@
 		<td>
 			<input type="text" ng-model="prog.comments" />
 			<p><a ng-click="Update('progs',progI,prog,true)">Save</a></p>
+		</td>
+		<td>
+			<p><input type="button" ng-click="Update('progs',progI,prog,true)">Update</input></p>
+			<p><a ng-click="Remove('progs',progI,true)">Remove</a></p>
 		</td>
 	</tr>	
 	<tr>
