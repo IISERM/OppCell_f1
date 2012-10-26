@@ -256,18 +256,59 @@
 	</tr>
 
 </table>
-<h1> This is AngularJS </h1>
+<h1>This is AngularJS</h1>
+
+<p>What the fudge!?</p>
+	<div ng-repeat="pbranch in pbranches | oFilter:{'prog_id':'1'}:this"> 
+		<!-- <select ng-model="pbranch.location_id" ng-options="location.id as location.name for location in locations"> -->
+		<p>{{pbranch.location_id}}</p>
+	</div>
+
+
+	<div ng-repeat="pbranch in pbranches | oFilter:{'prog_id':'2'}:this"> 
+		<!-- <select ng-model="pbranch.location_id" ng-options="location.id as location.name for location in locations"> -->
+		<p>{{pbranch.location_id}}</p>
+	</div>
+
 <table>
 	<tr>
-		<th  style="width:20px">NAME</th>
-		<th  style="width:20px">START</th>
+		<th  style="width:20px">Name</th>
+		<th  style="width:300px">Details</th>
+		<th  style="width:100px">Remarks</th>
 	</tr>
-	<tr ng-repeat="(index,prog) in progs">
+
+	<tr ng-repeat="(progI,prog) in progs">
 		<td>
 			<input type="text" ng-model="prog.name" />
-			<p><a ng-click="Update('progs',prog,true)">Save</a></p>
+			<p><a ng-click="Update('progs',progI,prog,true)">Save</a></p>
 		</td>
-	</tr>
+		<td>
+			<table>
+				<tr ng-class="{current:prog.edit}">
+					<td ng-show="prog.edit">
+						<div ng-repeat="pbranch in pbranches | oFilter:{'prog_id':progI}:this"> 
+							<!-- <select ng-model="pbranch.location_id" ng-options="location.id as location.name for location in locations"> -->
+							<p>{{pbranch.location_id}}</p>
+						</div>
+						<p><a>Create Location</a> </p>
+					</td>
+					<td ng-hide="prog.edit">						
+						<p>Location 1</p>
+					</td>
+					<td ng-show="prog.edit">
+						<a ng-click="prog.edit=false">Lock</a>
+					</td>					
+					<td ng-hide="prog.edit">
+						<a ng-click="prog.edit=true">Edit</a>
+					</td>
+				</tr>
+			</table>			
+		</td>
+		<td>
+			<input type="text" ng-model="prog.comments" />
+			<p><a ng-click="Update('progs',progI,prog,true)">Save</a></p>
+		</td>
+	</tr>	
 	<tr>
 		<td>
 			<input type="text" ng-model="progNew.name" />
