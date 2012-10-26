@@ -299,7 +299,17 @@
 							<!-- <p>{{locations}}</p> -->
 							<!-- <p>{{pbranches[pbranchI]}}</p> -->
 						</div>
-						<p><a>Create Location</a> </p>
+						<div ng-hide="prog.createlocation">
+							<p><a ng-click="prog.createlocation=true">Create Location</a></p>
+						</div>
+						<div ng-show="prog.createlocation">
+							<label>Name of Location</label>
+							<input type="text" ng-model="locationNew.name"/>
+							<label>Parent</label>
+								<select ng-model="locationNew.parent_id" ng-options="locationI as (location.name+'('+ locations[location.parent_id].name+')' ) for (locationI,location) in locations"></select>
+							<p><a ng-click="Add('locations',locationNew,true)">Add</a></p>					
+							<p><a ng-click="prog.createlocation=false">Hide</a></p>
+						</div>
 					</td>
 					
 						
@@ -318,7 +328,8 @@
 			<p><a ng-click="Update('progs',progI,prog,true)">Save</a></p>
 		</td>
 		<td>
-			<p><input type="button" ng-click="Update('progs',progI,prog,true)">Update</input></p>
+			<p><input type="button" ng-click="Update('progs',progI,prog,true)" value="Update"/></p>
+			<button>HELLOW</button>
 			<p><a ng-click="Remove('progs',progI,true)">Remove</a></p>
 		</td>
 	</tr>	
