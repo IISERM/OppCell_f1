@@ -50,7 +50,16 @@ Route::get('contact', function()
 	return View::make('static.contact');
 });
 
-Route::controller(array('database','admin','list','add'));
+Route::controller(
+		array(
+				'database',
+				'admin',
+				'list',
+				'add',
+				'rem',
+				'update'
+			)
+		);
 
 /*
 Route::get('json',function()

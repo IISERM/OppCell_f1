@@ -5,42 +5,44 @@
 @	#-	Create Table
 @	!-	List
 @	$-	Add
-@#!$	jobs
-@#!$		> id
-@#!$		> name
-@#!$		> link
-@#!$		> comments
-@#!$	progs
-@#!$		> id
-@#!$		> name
-@#!$		> link
-@#!$		> comments
-@#!$	scholars
-@#!$		> id
-@#!$		> name
-@#!$		> link
-@#!$		> comments
+@	^-	Update
+@	&-	Rem
+@#!$^	jobs
+@#!$^		> id
+@#!$^		> name
+@#!$^		> link
+@#!$^		> comments
+@#!$^	progs
+@#!$^		> id
+@#!$^		> name
+@#!$^		> link
+@#!$^		> comments
+@#!$^	scholars
+@#!$^		> id
+@#!$^		> name
+@#!$^		> link
+@#!$^		> comments
 @
-@#!$	locations
-@#!$		> id
-@#!$		> name
-@#!$		> parent_id
-@#!$		> comments
-@#!$	subjects
-@#!$		> id
-@#!$		> name
-@#!$		> parent_id
-@#!$		> comments
-@#!$	skills
-@#!$		> id
-@#!$		> name
-@#!$		> parent_id
-@#!$		> comments
-@#!$	positions
-@#!$		> id
-@#!$		> name
-@#!$		> parent_id
-@#!$		> comments
+@#!$^	locations
+@#!$^		> id
+@#!$^		> name
+@#!$^		> parent_id
+@#!$^		> comments
+@#!$^	subjects
+@#!$^		> id
+@#!$^		> name
+@#!$^		> parent_id
+@#!$^		> comments
+@#!$^	skills
+@#!$^		> id
+@#!$^		> name
+@#!$^		> parent_id
+@#!$^		> comments
+@#!$^	positions
+@#!$^		> id
+@#!$^		> name
+@#!$^		> parent_id
+@#!$^		> comments
 @
 @#!$	position_skill
 @#!$		> id
