@@ -334,7 +334,7 @@ function c_oppcell($scope,truthSource,$timeout)
 			{
 				if((key!='func') && (key!='io') && (key!='nav'))
 				{
-					// $scope.Refresh(key);					
+					$scope.Refresh(key);					
 				}
 			}
 		},1000);

@@ -286,9 +286,7 @@
 			<table>
 				<tr ng-repeat="(pbranchI,pbranch) in pbranches | oFilter:{'prog_id':progI}:this" ng-class="{current:pbranches[pbranchI].edit}" >
 					<td>
-						<!-- <div ng-repeat="(pbranchI,pbranch) in pbranches | oFilter:{'prog_id':progI}:this">  -->
-<!-- 							<select ng-model="pbranches[pbranchI].location_id" ng-options="location.id as location.name for location in locations2"></select>
- -->						<div ng-show="pbranches[pbranchI].edit">	
+						<div ng-show="pbranches[pbranchI].edit">	
 								<select ng-model="pbranches[pbranchI].location_id" ng-options="locationI as (location.name+'('+ locations[location.parent_id].name+')' ) for (locationI,location) in locations"></select>
 								<input type="text" ng-model="pbranches[pbranchI].link"></input>
 							</div>
@@ -296,9 +294,12 @@
 							<div ng-hide="pbranches[pbranchI].edit">
 								<p><a href="{{pbranches[pbranchI].link}}">{{locations[pbranches[pbranchI].location_id].name}} ({{locations[locations[pbranches[pbranchI].location_id].parent_id].name}})</a></p>
 							</div>
-							<!-- <p>{{locations}}</p> -->
-							<!-- <p>{{pbranches[pbranchI]}}</p> -->
-						<!-- </div> -->
+					</td>
+					<td>
+						SUBJECTS
+					</td>
+					<td>
+						POSITIONS
 					</td>
 					<td>
 						<div ng-hide="pbranches[pbranchI].edit">
