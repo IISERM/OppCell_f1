@@ -305,7 +305,7 @@
 						<select ng-model="pbranchesNew.location_id" ng-options="locationI as (location.name+'('+ locations[location.parent_id].name+')' ) for (locationI,location) in locations"></select>
 						Link: <input type="text" ng-model="pbranchesNew.link"></input>
 						Comments: <input type="text" ng-model="pbranchesNew.comments"></input>
-						<p><a ng-click="Add('locations',pbranchesNew,true,{'prog_id':progI})">Add</a></p>
+						<p><a ng-click="Add('pbranches',pbranchesNew,true,{'prog_id':progI})">Add</a></p>
 
 
 						<div ng-hide="prog.createlocation">
