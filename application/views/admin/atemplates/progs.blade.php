@@ -296,7 +296,24 @@
 							</div>
 					</td>
 					<td>
-						SUBJECTS
+						<ul>
+							<div ng-hide="pbranches[pbrachI].edit">
+								<li ng-repeat="(psubjectI,psubject) in psubjects | oFilter:{'pbranch_id':pbranchI}:this">
+									<!-- {{subjects[psubjects[psubjectI].subject_id]}} -->
+									{{subjects[psubjects[psubjectI].subject_id].name}} ({{subjects[subjects[psubjects[psubjectI].subject_id].parent_id].name}})
+								</li>
+							</div>
+							<div ng-show="pbranches[pbrachI].edit">
+								<li ng-repeat="(psubjectI,psubject) in psubjects | oFilter:{'pbranch_id':pbranchI}:this">
+									<select ng-model="psubjects[psubjectI].subject_id" ng-options="subjectI as (subject.name+'('+subjects[subject.parent_id].name+')' ) for (subjectI,subject) in subjects"></subjects>									
+									<!-- <input type="text" ng-model="subjects[psubjects[psubjectI].subject_id]"></input> -->
+								</li>
+								<li>
+									<select ng-model="subjects[psubjects[psubjectI].subject_id" ng-options="subjectI as (subject.name+'('+subjects[subject.parent_id].name+')' ) for (subjectI,subject) in subjects"></subjects>									
+								</li>
+							</div>
+
+						</ul>
 					</td>
 					<td>
 						POSITIONS
