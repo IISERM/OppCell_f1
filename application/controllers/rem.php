@@ -11,15 +11,8 @@ class Rem_Controller extends Base_Controller
 	public function action_prog()
 	{
 		$data			=	Input::json();
-		$id				=	$data->id;
-		$name			=	$data->name;
-		$link			=	$data->link;
-		$comments 		=	$data->comments;
-		$prog			=	Prog::find($id);
-		$prog->name		=	$name;
-		$prog->link		=	$link;
-		$prog->comments	=	$comments;
-		if($prog)
+		$prog			=	Prog::find($data->id);
+		if($prog->delete())
 		{
 			return 1;
 		}
@@ -32,15 +25,8 @@ class Rem_Controller extends Base_Controller
 	public function action_job()
 	{
 		$data			=	Input::json();
-		$id				=	$data->id;
-		$name			=	$data->name;
-		$link			=	$data->link;
-		$comments 		=	$data->comments;
-		$job			=	Job::find($id);
-		$job->name		=	$name;
-		$job->link		=	$link;
-		$job->comments	=	$comments;
-		if($job)
+		$job			=	Job::find($data->id);
+		if($job->delete())
 		{
 			return 1;
 		}
@@ -53,15 +39,8 @@ class Rem_Controller extends Base_Controller
 	public function action_scholar()
 	{
 		$data				=	Input::json();
-		$id					=	$data->id;
-		$name				=	$data->name;
-		$link				=	$data->link;
-		$comments 			=	$data->comments;
-		$scholar			=	Scholar::find($id);
-		$scholar->name		=	$name;
-		$scholar->link		=	$link;
-		$scholar->comments	=	$comments;
-		if($scholar)
+		$scholar			=	Scholar::find($data->id);
+		if($scholar->delete())
 		{
 			return 1;
 		}
@@ -74,15 +53,8 @@ class Rem_Controller extends Base_Controller
 	public function action_location()
 	{
 		$data					=	Input::json();
-		$id						=	$data->id;
-		$name					=	$data->name;
-		$parent					=	$data->parent_id;
-		$comment				=	$data->comments;
-		$location				=	Location::find($id);
-		$location->name			=	$name;
-		$location->parent_id	=	$parent;
-		$location->comments		=	$comment;
-		if($location)
+		$location				=	Location::find($data->id);
+		if($location->delete())
 		{
 			return 1;
 		}
@@ -95,15 +67,8 @@ class Rem_Controller extends Base_Controller
 	public function action_subject()
 	{
 		$data					=	Input::json();
-		$id						=	$data->id;
-		$name					=	$data->name;
-		$parent					=	$data->parent_id;
-		$comment				=	$data->comments;
-		$subject				=	Subject::find($id);
-		$subject->name			=	$name;
-		$subject->parent_id		=	$parent;
-		$subject->comments		=	$comment;
-		if($subject)
+		$subject				=	Subject::find($data->id);
+		if($subject->delete())
 		{
 			return 1;
 		}
@@ -116,15 +81,8 @@ class Rem_Controller extends Base_Controller
 	public function action_skill()
 	{
 		$data					=	Input::json();
-		$id						=	$data->id;
-		$name					=	$data->name;
-		$parent					=	$data->parent_id;
-		$comment				=	$data->comments;
-		$skill					=	Skill::find($id);
-		$skill->name			=	$name;
-		$skill->parent_id		=	$parent;
-		$skill->comments		=	$comment;
-		if($skill)
+		$skill					=	Skill::find($data->id);
+		if($skill->delete())
 		{
 			return 1;
 		}
@@ -137,15 +95,8 @@ class Rem_Controller extends Base_Controller
 	public function action_position()
 	{
 		$data					=	Input::json();
-		$id						=	$data->id;
-		$name					=	$data->name;
-		$parent					=	$data->parent_id;
-		$comment				=	$data->comments;
-		$position				=	Position::find($id);
-		$position->name			=	$name;
-		$position->parent_id	=	$parent;
-		$position->comments		=	$comment;
-		if($position)
+		$position				=	Position::find($data->id);
+		if($position->delete())
 		{
 			return 1;
 		}
@@ -172,22 +123,9 @@ class Rem_Controller extends Base_Controller
 	public function action_jpos()
 	{
 		$data	=	Input::json();
-		$job	=	Job::find($data->job_id);
-		$position =	Position::find($data->position_id);
-		if(Jbranch::json()->where('job_id','=',$job)->where('position_id','=',$position))
+		if(Jbranch::json()->where('job_id','=',$data->job_id)->where('position_id','=',$data->position_id))
 		{
-			return 0;
-		}
-		else
-		{
-			$jb =	Jbranch::create(array(
-						'job_id'		=>	$job,
-						'position_id'	=>	$position,
-						'deadline'		=>	$data->deadline,
-						'opening'		=>	$data->opening,
-						'link'			=>	$data->link
-					));
-			if($jb)
+			if($jb->delete())
 			{
 				return 1;
 			}
@@ -196,6 +134,7 @@ class Rem_Controller extends Base_Controller
 				return 0;
 			}
 		}
+		return 0;
 	}
 
 	public function action_ppos()
@@ -205,18 +144,7 @@ class Rem_Controller extends Base_Controller
 		$position =	Position::find($data->position_id);
 		if(Pbranch::json()->where('prog_id','=',$prog)->where('position_id','=',$position))
 		{
-			return 0;
-		}
-		else
-		{
-			$pb =	Pbranch::create(array(
-						'prog_id'		=>	$prog,
-						'position_id'	=>	$position,
-						'deadline'		=>	$data->deadline,
-						'opening'		=>	$data->opening,
-						'link'			=>	$data->link
-					));
-			if($pb)
+			if($pb->delete())
 			{
 				return 1;
 			}
@@ -225,6 +153,7 @@ class Rem_Controller extends Base_Controller
 				return 0;
 			}
 		}
+		return 0;
 	}
 
 	public function action_spos()
@@ -234,18 +163,7 @@ class Rem_Controller extends Base_Controller
 		$position =	Position::find($data->position_id);
 		if(Sbranch::json()->where('scholar_id','=',$scholar)->where('position_id','=',$position))
 		{
-			return 0;
-		}
-		else
-		{
-			$sb =	Sbranch::create(array(
-						'scholar_id'	=>	$scholar,
-						'position_id'	=>	$position,
-						'deadline'		=>	$data->deadline,
-						'opening'		=>	$data->opening,
-						'link'			=>	$data->link
-					));
-			if($sb)
+			if($sb->delete())
 			{
 				return 1;
 			}
@@ -254,6 +172,7 @@ class Rem_Controller extends Base_Controller
 				return 0;
 			}
 		}
+		return 0;
 	}
 
 	public function action_jsub()
