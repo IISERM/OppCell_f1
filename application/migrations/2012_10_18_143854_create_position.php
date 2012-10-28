@@ -1,6 +1,6 @@
 <?php
 
-class Create_Positions {
+class Create_Position {
 
 	/**
 	 * Make changes to the database.
