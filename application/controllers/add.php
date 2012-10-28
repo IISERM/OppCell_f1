@@ -309,7 +309,7 @@ class Add_Controller extends Base_Controller
 		$data	=	Input::json();
 		$job	=	Job::find($data->job_id);
 		$location =	Location::find($data->location_id);
-		if(Jbranch::json()->where('job_id','=',$job)->where('location_id','=',$location))
+		if(Jbranch::get()->where('job_id','=',$job)->where('location_id','=',$location))
 		{
 			return 0;
 		}
@@ -337,7 +337,7 @@ class Add_Controller extends Base_Controller
 		$data	=	Input::json();
 		$prog	=	Prog::find($data->prog_id);
 		$location =	Location::find($data->location_id);
-		if(Jbranch::json()->where('prog_id','=',$prog)->where('location_id','=',$location))
+		if(Pbranch::get()->where('prog_id','=',$prog)->where('location_id','=',$location))
 		{
 			return 0;
 		}
@@ -349,7 +349,7 @@ class Add_Controller extends Base_Controller
 						'link'			=>	$data->link,
 						'comments'		=>	$data->comments
 					));
-			if($pb)
+			if($pb->save())
 			{
 				return 1;
 			}
@@ -365,7 +365,7 @@ class Add_Controller extends Base_Controller
 		$data	=	Input::json();
 		$scholar	=	Scholar::find($data->scholar_id);
 		$location =	Location::find($data->location_id);
-		if(Jbranch::json()->where('scholar_id','=',$scholar)->where('location_id','=',$location))
+		if(Sbranch::get()->where('scholar_id','=',$scholar)->where('location_id','=',$location))
 		{
 			return 0;
 		}
