@@ -251,6 +251,8 @@ class List_Controller extends Base_Controller
 		{
 			$id = $j->id;
 			$d = array(
+					'job_id'		=>	$j->progs_id,
+					'location_id'	=>	$j->locations_id,
 					'link'			=>	$j->link,
 					'comments'		=>	$j->comment
 				);
@@ -267,6 +269,8 @@ class List_Controller extends Base_Controller
 		{
 			$id = $p->id;
 			$d = array(
+					'prog_id'		=>	$p->progs_id,
+					'location_id'	=>	$p->locations_id,
 					'link'			=>	$p->link,
 					'comments'		=>	$p->comment
 				);
@@ -283,6 +287,8 @@ class List_Controller extends Base_Controller
 		{
 			$id = $s->id;
 			$d = array(
+					'scholar_id'	=>	$s->scholars_id,
+					'location_id'	=>	$s->locations_id,
 					'link'			=>	$s->link,
 					'comments'		=>	$s->comment
 				);
