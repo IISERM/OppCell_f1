@@ -307,17 +307,15 @@ class Add_Controller extends Base_Controller
 	public function action_jbranch()
 	{
 		$data	=	Input::json();
-		$job	=	Job::find($data->job_id);
-		$location =	Location::find($data->location_id);
-		if(Jbranch::get()->where('job_id','=',$data->job_id)->where('location_id','=',$location))
+		if(Jbranch::get()->where('jobs_id','=',$data->job_id)->where('locations_id','=',$data->location_id))
 		{
 			return 0;
 		}
 		else
 		{
 			$jb =	Jbranch::create(array(
-						'job_id'		=>	$job,
-						'location_id'	=>	$location,
+						'jobs_id'		=>	$data->job_id,
+						'locations_id'	=>	$data->location_id,
 						'link'			=>	$data->link,
 						'comments'		=>	$data->comments
 					));
@@ -337,15 +335,15 @@ class Add_Controller extends Base_Controller
 		$data	=	Input::json();
 		$prog	=	Prog::find($data->prog_id);
 		$location =	Location::find($data->location_id);
-		if(Pbranch::get()->where('prog_id','=',$data->prog_id)->where('location_id','=',$location))
+		if(Pbranch::where('progs_id','=',$data->prog_id)->where('locations_id','=',$data->location_id)->get())
 		{
 			return 0;
 		}
 		else
 		{
 			$pb =	Pbranch::create(array(
-						'prog_id'		=>	$prog,
-						'location_id'	=>	$location,
+						'progs_id'		=>	$data->prog_id,
+						'locations_id'	=>	$data->location_id,
 						'link'			=>	$data->link,
 						'comments'		=>	$data->comments
 					));
@@ -365,15 +363,15 @@ class Add_Controller extends Base_Controller
 		$data	=	Input::json();
 		$scholar	=	Scholar::find($data->scholar_id);
 		$location =	Location::find($data->location_id);
-		if(Sbranch::get()->where('scholar_id','=',$data->scholar_id)->where('location_id','=',$location))
+		if(Sbranch::get()->where('scholars_id','=',$data->scholar_id)->where('locations_id','=',$data->location_id))
 		{
 			return 0;
 		}
 		else
 		{
 			$sb =	Sbranch::create(array(
-						'scholar_id'	=>	$scholar,
-						'location_id'	=>	$location,
+						'scholars_id'	=>	$data->scholar_id,
+						'locations_id'	=>	$data->location_id,
 						'link'			=>	$data->link,
 						'comments'		=>	$data->comments
 					));
