@@ -253,7 +253,7 @@ function c_oppcell($scope,truthSource,$timeout)
 					'2':{prog_id:'2',location_id:'2',link:'http://bambam2.com',comments:'bam2'},
 					'3':{prog_id:'1',location_id:'1',link:'http://bambam3.com',comments:'bam3'}
 				};
-	$scope.pbranchesNew={prog_id:'',location_id:'',link:'',comment:''};
+	$scope.pbranchesNew={prog_id:'',location_id:'',link:'',comments:''};
 
 
 
@@ -279,21 +279,29 @@ function c_oppcell($scope,truthSource,$timeout)
 		{
 			if(arguments.length==4)
 			{
-				alert("wow");
-			}
-			truthSource.func.Add(type,newData,function(val)
-			{
-				// $scope.$apply();
-				// alert(JSON.stringify(val, null, 4));
-				$scope.Refresh(type);
-				if(val==1)
+				// alert("wow");
+				// alert(arguments[3]);
+				for(key in arguments[3])
 				{
-					for(key in newData)
-					{
-						newData[key]='';
-					}					
+					newData[key]=arguments[3][key];
 				}
-			});
+			}
+			// else
+			{
+				truthSource.func.Add(type,newData,function(val)
+				{
+					// $scope.$apply();
+					// alert(JSON.stringify(val, null, 4));
+					$scope.Refresh(type);
+					if(val==1)
+					{
+						for(key in newData)
+						{
+							newData[key]='';
+						}					
+					}
+				});
+			}
 		}
 
 		$scope.Remove=function(type,id,autoRefresh)

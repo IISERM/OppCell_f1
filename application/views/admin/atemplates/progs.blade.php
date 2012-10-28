@@ -290,15 +290,24 @@
 <!-- 							<select ng-model="pbranches[pbranchI].location_id" ng-options="location.id as location.name for location in locations2"></select>
  -->						<div ng-show="prog.edit">	
 								<select ng-model="pbranches[pbranchI].location_id" ng-options="locationI as (location.name+'('+ locations[location.parent_id].name+')' ) for (locationI,location) in locations"></select>
+								<input type="text" ng-model="pbranches[pbranchI].link"></input>
+								<input type="text" ng-model="pbranches[pbranchI].comments"></input>
 							</div>
 
 							<div ng-hide="prog.edit">
 								<p>{{locations[pbranches[pbranchI].location_id].name}} ({{locations[locations[pbranches[pbranchI].location_id].parent_id].name}})</p>
-
+								<a href="{{pbranches[pbranchI].link}}">{{pbranches[pbranchI].link}}</a>
+								<p>{{pbranches[pbranchI].comments}}</p>
 							</div>
 							<!-- <p>{{locations}}</p> -->
 							<!-- <p>{{pbranches[pbranchI]}}</p> -->
 						</div>
+						<select ng-model="pbranchesNew.location_id" ng-options="locationI as (location.name+'('+ locations[location.parent_id].name+')' ) for (locationI,location) in locations"></select>
+						Link: <input type="text" ng-model="pbranchesNew.link"></input>
+						Comments: <input type="text" ng-model="pbranchesNew.comments"></input>
+						<p><a ng-click="Add('locations',pbranchesNew,true,{'prog_id':progI})">Add</a></p>
+
+
 						<div ng-hide="prog.createlocation">
 							<p><a ng-click="prog.createlocation=true">Create Location</a></p>
 						</div>
@@ -306,7 +315,7 @@
 							<label>Name of Location</label>
 							<input type="text" ng-model="locationNew.name"/>
 							<label>Parent</label>
-								<select ng-model="locationNew.parent_id" ng-options="locationI as (location.name+'('+ locations[location.parent_id].name+')' ) for (locationI,location) in locations"></select>
+								<select ng-model="locationNew.parent_id" ng-options="locationI as (location.name+'('+ locations[location.parent_id].name+')' ) for (locationI,location) in locations | oFilter:{'parent_id':''}"></select>
 							<p><a ng-click="Add('locations',locationNew,true)">Add</a></p>					
 							<p><a ng-click="prog.createlocation=false">Hide</a></p>
 						</div>
