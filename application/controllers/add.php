@@ -349,7 +349,7 @@ class Add_Controller extends Base_Controller
 						'link'			=>	$data->link,
 						'comments'		=>	$data->comments
 					));
-			if($pb->save())
+			if($pb)
 			{
 				return 1;
 			}
