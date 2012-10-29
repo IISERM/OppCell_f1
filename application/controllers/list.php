@@ -155,8 +155,10 @@ class List_Controller extends Base_Controller
 		{
 			$id = $jpo->id;
 			$d = array(
-					'position_id'	=>	$jpo->position_id,
-					'skill_id'		=>	$jpo->skill_id
+					'position_id'	=>	$jpo->positions_id,
+					'jbranch_id'	=>	$jpo->jbranches_id,
+					'deadline'		=>	$jpo->deadline,
+					'opening'		=>	$jpo->opening
 				);
 			$data[$id] = $d;
 		}
@@ -171,8 +173,10 @@ class List_Controller extends Base_Controller
 		{
 			$id = $ppo->id;
 			$d = array(
-					'position_id'	=>	$ppo->position_id,
-					'skill_id'		=>	$ppo->skill_id
+					'position_id'	=>	$ppo->positions_id,
+					'pbranch_id'	=>	$ppo->pbranches_id,
+					'deadline'		=>	$ppo->deadline,
+					'opening'		=>	$ppo->opening
 				);
 			$data[$id] = $d;
 		}
@@ -187,8 +191,10 @@ class List_Controller extends Base_Controller
 		{
 			$id = $spo->id;
 			$d = array(
-					'position_id'	=>	$spo->position_id,
-					'skill_id'		=>	$spo->skill_id
+					'position_id'	=>	$spo->positions_id,
+					'sbranch_id'	=>	$spo->sbranches_id,
+					'deadline'		=>	$spo->deadline,
+					'opening'		=>	$spo->opening
 				);
 			$data[$id] = $d;
 		}
