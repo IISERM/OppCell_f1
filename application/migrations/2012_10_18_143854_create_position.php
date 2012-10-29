@@ -17,9 +17,9 @@ class Create_Position {
 
 			// Link Fields
 				// Job Branch
-				$table->integer('jbranches_id');
+				$table->integer('jbranches_id')->unsigned();
 				// Position Branch
-				$table->integer('positions_id');
+				$table->integer('positions_id')->unsigned();
 			// Data Fields
 				// Dates
 					// Opening
@@ -41,9 +41,9 @@ class Create_Position {
 
 			// Link Fields
 				// Program Branch
-				$table->integer('pbranches_id');
+				$table->integer('pbranches_id')->unsigned();
 				// Position Branch
-				$table->integer('positions_id');
+				$table->integer('positions_id')->unsigned();
 			// Data Fields
 				// Dates
 					// Opening
@@ -65,9 +65,9 @@ class Create_Position {
 
 			// Link Fields
 				// Scholarship Branch
-				$table->integer('sbranches_id');
+				$table->integer('sbranches_id')->unsigned();
 				// Position Branch
-				$table->integer('positions_id');
+				$table->integer('positions_id')->unsigned();
 			// Data Fields
 				// Dates
 					// Opening

@@ -17,9 +17,9 @@ class Create_Subject {
 			
 			// Link Fields
 				// Job Branch
-				$table->integer('jbranch_id');
+				$table->integer('jbranch_id')->unsigned();
 				// Subject
-				$table->integer('subject_id');
+				$table->integer('subject_id')->unsigned();
 
 			// Timestamps
 			$table->timestamps();
@@ -33,9 +33,9 @@ class Create_Subject {
 			
 			// Link Fields
 				// Program Branch 
-				$table->integer('pbranch_id');
+				$table->integer('pbranch_id')->unsigned();
 				// Subject
-				$table->integer('subject_id');
+				$table->integer('subject_id')->unsigned();
 
 			// Timestamps
 			$table->timestamps();
@@ -49,9 +49,9 @@ class Create_Subject {
 			
 			// Link Fields
 				// Scholarship Branches
-				$table->integer('sbranch_id');
+				$table->integer('sbranch_id')->unsigned();
 				// Subject
-				$table->integer('subject_id');
+				$table->integer('subject_id')->unsigned();
 
 			// Timestamps
 			$table->timestamps();
