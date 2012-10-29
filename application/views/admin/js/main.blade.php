@@ -99,6 +99,15 @@ angular.module('oppapp',[])
 				add:{lnk:'/add'},
 				remove:{lnk:'/del'},
 				update:{lnk:'/update'},
+				config:{basePath:'/psub'},
+				data:{}								
+			},
+		subjects:
+			{
+				fetch:{lnk:'/list'},
+				add:{lnk:'/add'},
+				remove:{lnk:'/del'},
+				update:{lnk:'/update'},
 				config:{basePath:'/subject'},
 				data:{}								
 			},
@@ -187,12 +196,12 @@ angular.module('oppapp',[])
 		});
 	}
 
-	truth.func.Update=function(type,id,newData,OnComplete)
+	truth.func.Update=function(type,newData,OnComplete)
 	{
 		truth.io.state.working=true;
 
 		var tData=newData;
-		tData.id=id;
+		// tData.id=id;
 
 		$http.post(truth.io.config.basePath + truth[type].update.lnk + truth[type].config.basePath,newData)
 		.success(function(data)
@@ -285,16 +294,29 @@ function c_oppcell($scope,truthSource,$timeout)
 				}
 	$scope.subjectNew={name:'',parent_id:'',comments:''};
 
+	$scope.ppositions=
+				{
+					'1':{pbranch_id:'1',position_id:'1',opening:'',deadline:'',link:''}
+				}
+
+
 	//These are functions you shouldn't need to change at all! They should infact go into some
 	//library, but for now are stuck with the controller
 	{
-		$scope.Update=function(type,id,obj,autoRefresh)
+		$scope.Update=function(type,obj,autoRefresh)
 		{
-			$scope.Refresh(type);		
+			// $scope.Refresh(type);		
 				// truthSource.prog.update.Now(obj,function(val){
+				truthSource.func.Update(type,obj,function(val){
+					$scope.Refresh(type);
+				});
+			if(autoRefresh)
+				$scope.RefreshAll();
+
 					// $scope.$apply();
 					// RefreshHelp
 					// if(autoRefresh==true)
+
 						// //truthSource[type].fetch.Now(function(val){
 							// //RefreshHelp(val,'progs');
 							// alert("Hey! This works :)");
@@ -330,6 +352,8 @@ function c_oppcell($scope,truthSource,$timeout)
 					}
 				});
 			}
+			if(autoRefresh)
+				$scope.RefreshAll();
 		}
 
 		$scope.Remove=function(type,id,autoRefresh)
@@ -340,31 +364,41 @@ function c_oppcell($scope,truthSource,$timeout)
 
 				// $scope.Refresh(type);
 			});
+			if(autoRefresh)
+				$scope.RefreshAll();
+
 		}
 
 		$scope.Refresh=function(type){
 			truthSource.func.Fetch(type,function(val){
-				$scope.$apply();
+				// $scope.$apply();
 				$scope.updatingInterface=true;
-				$scope.$apply();
+				// $scope.$apply();
 				$scope[type]=val;
 				$scope.updatingInterface=false;
-				$scope.$apply();			
-			});		
+				// $scope.$apply();			
+				// $timeout(function(){
+				// 	$scope.$apply();
+				// },500);
+			});			
 		}
+	}
+
+	$scope.RefreshAll=function(){
+		$scope.init=0;
+		for(key in truthSource)
+		{
+			if((key!='func') && (key!='io') && (key!='nav'))
+			{
+				$scope.Refresh(key);					
+			}
+		}		
 	}
 
 	//INITIAL REFRESH
 	{
 		$timeout(function(){
-			$scope.init=0;
-			for(key in truthSource)
-			{
-				if((key!='func') && (key!='io') && (key!='nav'))
-				{
-					// $scope.Refresh(key);					
-				}
-			}
+			$scope.RefreshAll();
 		},1000);
 	}	
 
