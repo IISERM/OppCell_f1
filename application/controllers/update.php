@@ -230,79 +230,46 @@ class Update_Controller extends Base_Controller
 
 	public function action_jbranch()
 	{
-		$data	=	Input::json();
-		if(Jbranch::json()->where('job_id','=',$data->job_id)->where('location_id','=',$data->location_id))
+		$data				=	Input::json();
+		$jb					=	Jbranch::find($data->id);
+		$jb->jobs_id		=	$data->job_id;
+		$jb->locations_id	=	$data->location_id;
+		$jb->link			=	$data->link;
+		$jb->comments		=	$data->comments;
+		if($jb->save())
 		{
-			return 0;
+			return 1;
 		}
-		else
-		{
-			$jb =	Jbranch::create(array(
-						'job_id'		=>	$data->job_id,
-						'location_id'	=>	$data->location_id,
-						'link'			=>	$data->link,
-						'comments'		=>	$data->comments
-					));
-			if($jb->save())
-			{
-				return 1;
-			}
-			else
-			{
-				return 0;
-			}
-		}
+		return 0;
 	}
 
 	public function action_pbranch()
 	{
-		$data	=	Input::json();
-		if(Jbranch::json()->where('prog_id','=',$data->prog_id)->where('location_id','=',$data->location_id))
+		$data				=	Input::json();
+		$pb					=	Pbranch::find($data->id);
+		$pb->progs_id		=	$data->prog_id;
+		$pb->locations_id	=	$data->location_id;
+		$pb->link			=	$data->link;
+		$pb->comments		=	$data->comments;
+		if($pb->save())
 		{
-			return 0;
+			return 1;
 		}
-		else
-		{
-			$pb =	Pbranch::create(array(
-						'prog_id'		=>	$data->prog_id,
-						'location_id'	=>	$data->location_id,
-						'link'			=>	$data->link,
-						'comments'		=>	$data->comments
-					));
-			if($pb->save())
-			{
-				return 1;
-			}
-			else
-			{
-				return 0;
-			}
-		}
+		return 0;
 	}
 
 	public function action_sbranch()
 	{
-		$data	=	Input::json();
-		if(Jbranch::json()->where('scholar_id','=',$data->scholar_id)->where('location_id','=',$data->location_id))
+		$data				=	Input::json();
+		$sb					=	Sbranch::find($data->id);
+		$sb->scholars_id	=	$data->scholar_id;
+		$sb->locations_id	=	$data->location_id;
+		$sb->link			=	$data->link;
+		$sb->comments		=	$data->comments;
+		if($sb->save())
 		{
-			return 0;
+			return 1;
 		}
-		else
-		{
-			$sb =	Sbranch::create(array(
-						'scholar_id'	=>	$data->scholar_id,
-						'location_id'	=>	$data->location_id,
-						'link'			=>	$data->link,
-						'comments'		=>	$data->comments
-					));
-			if($sb->save())
-			{
-				return 1;
-			}
-			else
-			{
-				return 0;
-			}
-		}
+		return 0;
 	}
 }
