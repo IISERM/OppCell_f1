@@ -111,6 +111,24 @@ angular.module('oppapp',[])
 				config:{basePath:'/subject'},
 				data:{}								
 			},
+		ppositions:
+			{
+				fetch:{lnk:'/list'},
+				add:{lnk:'/add'},
+				remove:{lnk:'/rem'},
+				update:{lnk:'/update'},
+				config:{basePath:'/ppos'},
+				data:{}								
+			},
+		positions:
+			{
+				fetch:{lnk:'/list'},
+				add:{lnk:'/add'},
+				remove:{lnk:'/rem'},
+				update:{lnk:'/update'},
+				config:{basePath:'/position'},
+				data:{}								
+			},
 		func:
 			{
 				Fetch:{},Add:{},Remove:{},Update:{}
@@ -406,7 +424,7 @@ function c_oppcell($scope,truthSource,$timeout)
 		{
 			if((key!='func') && (key!='io') && (key!='nav'))
 			{
-				// $scope.Refresh(key);					
+				$scope.Refresh(key);					
 			}
 		}		
 	}
