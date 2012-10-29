@@ -93,6 +93,15 @@ angular.module('oppapp',[])
 				config:{basePath:'/location'},
 				data:{}								
 			},
+		psubjects:
+			{
+				fetch:{lnk:'/list'},
+				add:{lnk:'/add'},
+				remove:{lnk:'/del'},
+				update:{lnk:'/update'},
+				config:{basePath:'/subject'},
+				data:{}								
+			},
 		func:
 			{
 				Fetch:{},Add:{},Remove:{},Update:{}
@@ -250,12 +259,31 @@ function c_oppcell($scope,truthSource,$timeout)
 	$scope.pbranches=
 				{
 					'1':{prog_id:'1',location_id:'1',link:'http://bambam1.com',comments:'bam1'},
-					'2':{prog_id:'2',location_id:'2',link:'http://bambam2.com',comments:'bam2'},
-					'3':{prog_id:'1',location_id:'1',link:'http://bambam3.com',comments:'bam3'}
+					'3':{prog_id:'2',location_id:'2',link:'http://bambam2.com',comments:'bam2'},
+					'2':{prog_id:'1',location_id:'2',link:'http://bambam3.com',comments:'bam3'}
 				};
-	$scope.pbranchesNew={prog_id:'',location_id:'',link:'',comments:''};
+	$scope.pbranchNew={prog_id:'',location_id:'',link:'',comments:''};
 
 
+	$scope.psubjects=
+				{
+					'1':{pbranch_id:'1',subject_id:'1'},
+					'2':{pbranch_id:'1',subject_id:'2'},
+					'3':{pbranch_id:'1',subject_id:'3'},
+					'4':{pbranch_id:'2',subject_id:'1'},
+					'5':{pbranch_id:'2',subject_id:'2'},
+					'6':{pbranch_id:'2',subject_id:'3'}
+				}
+	$scope.psubjectNew={pbranch_id:'',subject_id:''};
+
+	$scope.subjects=
+				{
+					'1':{name:'Quantum Physics',parent_id:'4',comments:'Awesome as it gets'},
+					'2':{name:'Radio Astrophysics',parent_id:'4',comments:'Astrophysical Twise'},
+					'3':{name:'String',parent_id:'4',comments:'Entaglement'},
+					'4':{name:'Physics',parent_id:''}
+				}
+	$scope.subjectNew={name:'',parent_id:'',comments:''};
 
 	//These are functions you shouldn't need to change at all! They should infact go into some
 	//library, but for now are stuck with the controller

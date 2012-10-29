@@ -32,3 +32,13 @@ text-align: center;
 text-shadow: 0px 1px 1px rgba(255,255,255,1);
 line-height: 1;
 }
+
+.addnew {
+	background-color: rgba(0,255,135,.75);
+	/*background: rgba(0,255,0,0.5);*/
+}
+
+.createnew {
+	background-color: rgba(255,215,0,.75) ;
+	/*background: rgba(255,0,0,0.5);*/
+}

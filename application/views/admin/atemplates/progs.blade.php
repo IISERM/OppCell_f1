@@ -294,26 +294,65 @@
 							<div ng-hide="pbranches[pbranchI].edit">
 								<p><a href="{{pbranches[pbranchI].link}}">{{locations[pbranches[pbranchI].location_id].name}} ({{locations[locations[pbranches[pbranchI].location_id].parent_id].name}})</a></p>
 							</div>
+						</div>
 					</td>
 					<td>
-						<ul>
-							<div ng-hide="pbranches[pbrachI].edit">
+						<ul>							
+							<div ng-hide="pbranches[pbranchI].edit">
 								<li ng-repeat="(psubjectI,psubject) in psubjects | oFilter:{'pbranch_id':pbranchI}:this">
 									<!-- {{subjects[psubjects[psubjectI].subject_id]}} -->
-									{{subjects[psubjects[psubjectI].subject_id].name}} ({{subjects[subjects[psubjects[psubjectI].subject_id].parent_id].name}})
-								</li>
-							</div>
-							<div ng-show="pbranches[pbrachI].edit">
-								<li ng-repeat="(psubjectI,psubject) in psubjects | oFilter:{'pbranch_id':pbranchI}:this">
-									<select ng-model="psubjects[psubjectI].subject_id" ng-options="subjectI as (subject.name+'('+subjects[subject.parent_id].name+')' ) for (subjectI,subject) in subjects"></subjects>									
-									<!-- <input type="text" ng-model="subjects[psubjects[psubjectI].subject_id]"></input> -->
-								</li>
-								<li>
-									<select ng-model="subjects[psubjects[psubjectI].subject_id" ng-options="subjectI as (subject.name+'('+subjects[subject.parent_id].name+')' ) for (subjectI,subject) in subjects"></subjects>									
+									<p>{{subjects[psubjects[psubjectI].subject_id].name}} ({{subjects[subjects[psubjects[psubjectI].subject_id].parent_id].name}}) - {{subjects[psubjects[psubjectI].subject_id].comments}}</p>
 								</li>
 							</div>
 
+							<div ng-show="pbranches[pbranchI].edit">
+								<li ng-repeat="(psubjectI,psubject) in psubjects | oFilter:{'pbranch_id':pbranchI}:this">
+									<select ng-model="psubjects[psubjectI].subject_id" ng-options="subjectI as (subject.name+'('+subjects[subject.parent_id].name+')' ) for (subjectI,subject) in subjects"></subjects>	
+									<input type="text" ng-model="subjects[psubjects[psubjectI].subject_id].comments"></input>
+
+									<p><a ng-click="Update('subjects',subjects[psubjects[psubjectI].subject_id],true)">Update Subject</a>
+									| <a ng-click="Remove('psubjects',psubjects[psubjects[psubjectI].subject_id],true)">X</a></p>
+
+									<!-- <input type="text" ng-model="subjects[psubjects[psubjectI].subject_id]"></input> -->
+								</li>
+
+
+								<div ng-hide="pbranches[pbranchI].addsubject" class="addnew">
+									<p><a ng-click="pbranches[pbranchI].addsubject=true">Add Subject</a></p>
+								</div>
+
+								<div ng-show="pbranches[pbranchI].addsubject" class="addnew">
+									
+									<select ng-model="psubjectNew.subject_id" ng-options="subjectI as (subject.name+'('+subjects[subject.parent_id].name+')' ) for (subjectI,subject) in subjects"></select>
+									<p><a ng-click="Add('psubjects',psubjectNew,true,{'pbranch_id':pbranchI})">Add</a></p>
+								
+									<p><a ng-click="pbranches[pbranchI].addsubject=false">Hide</a></p>
+								</div>
+
+								<div ng-hide="pbranches[pbranchI].createsubject" class="createnew">
+									<p><a ng-click="pbranches[pbranchI].createsubject=true">Create Subject</a></p>
+								</div>
+								<div ng-show="pbranches[pbranchI].createsubject" class="createnew">
+									<p>
+										<label>Name of Subject</label>
+										<input type="text" ng-model="subjectNew.name"/>
+									</p>
+									<p>
+										<label>Parent</label>
+										<select ng-model="subjectNew.parent_id" ng-options="subjectI as (subject.name+'('+subjects[subject.parent_id].name+')' ) for (subjectI,subject) in subjects | oFilter:{'parent_id':''}"></subjects>	
+									</p>
+									<p>
+										<label>Comments</label>
+										<input type="text" ng-model="subjectNew.comments"/>
+									</p>
+									<p><a ng-click="Add('subjects',subjectNew,true)">Add</a></p>
+									
+									<p><a ng-click="pbranches[pbranchI].createsubject=false">Hide</a></p>
+								</div>
+
+							</div>
 						</ul>
+
 					</td>
 					<td>
 						POSITIONS
@@ -329,7 +368,10 @@
 					</td>
 											
 					<td ng-show="pbranches[pbranchI].edit">
-						<a ng-click="pbranches[pbranchI].edit=false">Lock</a>
+						<ul>
+							<li><a ng-click="pbranches[pbranchI].edit=false">Lock</a></li>
+							<li><a ng-click="Update('pbranches',pbranches[pbranchI],true)">Update Branch</a></li>							
+						</ul>
 					</td>					
 					<td ng-hide="pbranches[pbranchI].edit">
 						<a ng-click="pbranches[pbranchI].edit=true">Edit</a>
@@ -337,16 +379,22 @@
 				</tr>
 				<tr>
 					<td>
-						<select ng-model="pbranchesNew.location_id" ng-options="locationI as (location.name+'('+ locations[location.parent_id].name+')' ) for (locationI,location) in locations"></select>
-						Link: <input type="text" ng-model="pbranchesNew.link"></input>
-						Comments: <input type="text" ng-model="pbranchesNew.comments"></input>
-						<p><a ng-click="Add('pbranches',pbranchesNew,true,{'prog_id':progI})">Add</a></p>
+						<div ng-hide="prog.addbranch" class="addnew">
+							<p><a ng-click="prog.addbranch=true">Add New Branch</a></p>
+						</div>
 
+						<div ng-show="prog.addbranch" class="addnew">
+							<select ng-model="pbranchesNew.location_id" ng-options="locationI as (location.name+'('+ locations[location.parent_id].name+')' ) for (locationI,location) in locations"></select>
+							<p>Link: <input type="text" ng-model="pbranchesNew.link"></input></p>
+							<p>Comments: <input type="text" ng-model="pbranchesNew.comments"></input></p>
+							<p><a ng-click="Add('pbranches',pbranchesNew,true,{'prog_id':progI})">Add</a></p>
+							<p><a ng-click="prog.addbranch=false">Hide</a></p>
+						</div>
 
-						<div ng-hide="prog.createlocation">
+						<div ng-hide="prog.createlocation" class="createnew">
 							<p><a ng-click="prog.createlocation=true">Create Location</a></p>
 						</div>
-						<div ng-show="prog.createlocation">
+						<div ng-show="prog.createlocation" class="createnew">
 							<label>Name of Location</label>
 							<input type="text" ng-model="locationNew.name"/>
 							<label>Parent</label>
@@ -371,8 +419,10 @@
 	</tr>	
 	<tr>
 		<td>
-			<input type="text" ng-model="progNew.name" />
-			<p><a ng-click="Add('progs',progNew,true)">Add</a></p>
+			<div class="createnew">
+				<input type="text" ng-model="progNew.name" />
+				<p><a ng-click="Add('progs',progNew,true)">Add</a></p>
+			</div>
 		</td>
 	</tr>
 </table>
