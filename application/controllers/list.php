@@ -203,9 +203,9 @@ class List_Controller extends Base_Controller
 		{
 			$id = $jsu->id;
 			$d = array(
-					'position_id'	=>	$jsu->position_id,
-					'skill_id'		=>	$jsu->skill_id
-				);
+					'jbranch_id'	=>	$jsu->jbranch_id,
+					'subject_id'	=>	$jsu->subject_id
+			);
 			$data[$id] = $d;
 		}
 		return json_encode($data);
@@ -219,9 +219,9 @@ class List_Controller extends Base_Controller
 		{
 			$id = $psu->id;
 			$d = array(
-					'position_id'	=>	$psu->position_id,
-					'skill_id'		=>	$psu->skill_id
-				);
+					'pbranch_id'	=>	$psu->pbranch_id,
+					'subject_id'	=>	$psu->subject_id
+			);
 			$data[$id] = $d;
 		}
 		return json_encode($data);
@@ -235,9 +235,9 @@ class List_Controller extends Base_Controller
 		{
 			$id = $ssu->id;
 			$d = array(
-					'position_id'	=>	$ssu->position_id,
-					'skill_id'		=>	$ssu->skill_id
-				);
+					'sbranch_id'	=>	$ssu->sbranch_id,
+					'subject_id'	=>	$ssu->subject_id
+			);
 			$data[$id] = $d;
 		}
 		return json_encode($data);

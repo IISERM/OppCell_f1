@@ -271,9 +271,8 @@ class Add_Controller extends Base_Controller
 		$data	=	Input::json();
 		$prog	=	Pbranch::find($data->pbranch_id);
 		$subject = $data->subject_id;
-		if($subject)
+		if($prog->subject()->attach($subject))
 		{
-			$prog->subject()->attach($subject);
 			return 1;
 		}
 		else

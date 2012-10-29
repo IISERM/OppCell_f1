@@ -307,8 +307,17 @@
 
 							<div ng-show="pbranches[pbranchI].edit">
 								<li ng-repeat="(psubjectI,psubject) in psubjects | oFilter:{'pbranch_id':pbranchI}:this">
-									<select ng-model="psubjects[psubjectI].subject_id" ng-options="subjectI as (subject.name+'('+subjects[subject.parent_id].name+')' ) for (subjectI,subject) in subjects"></subjects>	
+									<select ng-model="psubjects[psubjectI].subject_id" ng-options="subjectI as (subject.name+'('+subjects[subject.parent_id].name+')' ) for (subjectI,subject) in subjects"></select>	
+									
+									<!-- <input ng-model="psubjects[psubjectI].subject_id"></input> -->
+
 									<input type="text" ng-model="subjects[psubjects[psubjectI].subject_id].comments"></input>
+
+									<p>
+										{{subjects[psubjects[psubjectI].subject_id].name}}
+										<br/>
+										Comments: {{subjects[psubjects[psubjectI].subject_id].comments}}
+									</p>
 
 									<p><a ng-click="Update('subjects',subjects[psubjects[psubjectI].subject_id],true)">Update Subject</a>
 									| <a ng-click="Remove('psubjects',psubjects[psubjects[psubjectI].subject_id],true)">X</a></p>
@@ -374,7 +383,7 @@
 						</ul>
 					</td>					
 					<td ng-hide="pbranches[pbranchI].edit">
-						<a ng-click="pbranches[pbranchI].edit=true">Edit</a>
+						<a ng-click="[(pbranches[pbranchI].edit=true),digest()]">Edit</a>
 					</td>
 				</tr>
 				<tr>

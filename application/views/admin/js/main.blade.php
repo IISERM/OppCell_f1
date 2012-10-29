@@ -294,6 +294,11 @@ function c_oppcell($scope,truthSource,$timeout)
 				}
 	$scope.subjectNew={name:'',parent_id:'',comments:''};
 
+	$scope.ppositions=
+				{
+					'1':{pbranch_id:'1',position_id:'1',opening:'',deadline:'',link:''}
+				}
+
 
 	//These are functions you shouldn't need to change at all! They should infact go into some
 	//library, but for now are stuck with the controller
@@ -305,6 +310,9 @@ function c_oppcell($scope,truthSource,$timeout)
 				truthSource.func.Update(type,obj,function(val){
 					$scope.Refresh(type);
 				});
+			if(autoRefresh)
+				$scope.RefreshAll();
+
 					// $scope.$apply();
 					// RefreshHelp
 					// if(autoRefresh==true)
@@ -344,6 +352,8 @@ function c_oppcell($scope,truthSource,$timeout)
 					}
 				});
 			}
+			if(autoRefresh)
+				$scope.RefreshAll();
 		}
 
 		$scope.Remove=function(type,id,autoRefresh)
@@ -354,31 +364,41 @@ function c_oppcell($scope,truthSource,$timeout)
 
 				// $scope.Refresh(type);
 			});
+			if(autoRefresh)
+				$scope.RefreshAll();
+
 		}
 
 		$scope.Refresh=function(type){
 			truthSource.func.Fetch(type,function(val){
-				$scope.$apply();
+				// $scope.$apply();
 				$scope.updatingInterface=true;
-				$scope.$apply();
+				// $scope.$apply();
 				$scope[type]=val;
 				$scope.updatingInterface=false;
-				$scope.$apply();			
-			});		
+				// $scope.$apply();			
+				// $timeout(function(){
+				// 	$scope.$apply();
+				// },500);
+			});			
 		}
+	}
+
+	$scope.RefreshAll=function(){
+		$scope.init=0;
+		for(key in truthSource)
+		{
+			if((key!='func') && (key!='io') && (key!='nav'))
+			{
+				$scope.Refresh(key);					
+			}
+		}		
 	}
 
 	//INITIAL REFRESH
 	{
 		$timeout(function(){
-			$scope.init=0;
-			for(key in truthSource)
-			{
-				if((key!='func') && (key!='io') && (key!='nav'))
-				{
-					$scope.Refresh(key);					
-				}
-			}
+			$scope.RefreshAll();
 		},1000);
 	}	
 
