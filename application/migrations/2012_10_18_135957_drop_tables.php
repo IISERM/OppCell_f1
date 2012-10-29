@@ -31,19 +31,19 @@ class Drop_Tables {
 	 */
 	public function down()
 	{
-		Schema::create('jobs',function(){});
-		Schema::create('job_location',function(){});
-		Schema::create('job_skill',function(){});
-		Schema::create('locations',function(){});
-		Schema::create('location_program',function(){});
-		Schema::create('location_scholarship',function(){});
-		Schema::create('positions',function(){});
-		Schema::create('programs',function(){});
-		Schema::create('program_subject',function(){});
-		Schema::create('scholarships',function(){});
-		Schema::create('sholarship_subject',function(){});
-		Schema::create('skills',function(){});
-		Schema::create('subjects',function(){});
+		Schema::create('jobs',function($table){$table->increments('id');});
+		Schema::create('job_location',function($table){$table->increments('id');});
+		Schema::create('job_skill',function($table){$table->increments('id');});
+		Schema::create('locations',function($table){$table->increments('id');});
+		Schema::create('location_program',function($table){$table->increments('id');});
+		Schema::create('location_scholarship',function($table){$table->increments('id');});
+		Schema::create('positions',function($table){$table->increments('id');});
+		Schema::create('programs',function($table){$table->increments('id');});
+		Schema::create('program_subject',function($table){$table->increments('id');});
+		Schema::create('scholarships',function($table){$table->increments('id');});
+		Schema::create('scholarship_subject',function($table){$table->increments('id');});
+		Schema::create('skills',function($table){$table->increments('id');});
+		Schema::create('subjects',function($table){$table->increments('id');});
 	}
 
 }

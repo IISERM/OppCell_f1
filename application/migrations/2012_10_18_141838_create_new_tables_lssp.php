@@ -1,6 +1,7 @@
 <?php
 
-class Create_New_Tables_Lssp {
+class Create_New_Tables_Lssp
+{
 
 	/**
 	 * Make changes to the database.
@@ -19,7 +20,7 @@ class Create_New_Tables_Lssp {
 				// Name
 				$table->string('name');
 				// Parent
-				$table->integer('parent_id')->default(0);
+				$table->integer('parent_id')->default(0)->unsigned();
 				// Comments
 				$table->text('comments');
 
@@ -37,7 +38,7 @@ class Create_New_Tables_Lssp {
 				// Name
 				$table->string('name');
 				// Parent
-				$table->integer('parent_id')->default(0);
+				$table->integer('parent_id')->default(0)->unsigned();
 				// Comments
 				$table->text('comments');
 
@@ -55,7 +56,7 @@ class Create_New_Tables_Lssp {
 				// Name
 				$table->string('name');
 				// Parent
-				$table->integer('parent_id')->default(0);
+				$table->integer('parent_id')->default(0)->unsigned();
 				// Comments
 				$table->text('comments');
 
@@ -73,7 +74,7 @@ class Create_New_Tables_Lssp {
 				// Name
 				$table->string('name');
 				// Parent
-				$table->integer('parent_id')->default(0);
+				$table->integer('parent_id')->default(0)->unsigned();
 				// Comments
 				$table->text('comments');
 

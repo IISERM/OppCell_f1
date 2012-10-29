@@ -18,9 +18,9 @@ class Create_Branches
 
 				// Link Fields
 					// Job
-					$table->integer('jobs_id');
+					$table->integer('jobs_id')->unsigned();
 					// Location
-					$table->integer('locations_id');
+					$table->integer('locations_id')->unsigned();
 
 				// Data Fields
 					// Link
@@ -40,9 +40,9 @@ class Create_Branches
 
 				// Link Fields
 					// Program
-					$table->integer('progs_id');
+					$table->integer('progs_id')->unsigned();
 					// Location
-					$table->integer('locations_id');
+					$table->integer('locations_id')->unsigned();
 
 				// Data Fields
 					// Link
@@ -62,9 +62,9 @@ class Create_Branches
 
 				// Link Fields
 					// Scholarship
-					$table->integer('scholars_id');
+					$table->integer('scholars_id')->unsigned();
 					// Location
-					$table->integer('locations_id');
+					$table->integer('locations_id')->unsigned();
 
 				// Data Fields
 					// Link

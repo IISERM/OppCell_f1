@@ -16,9 +16,9 @@ class Link_Position_Skill {
 
 			// Linking Fields
 				// Position
-				$table->integer('position_id');
+				$table->integer('position_id')->unsigned();
 				// Skill
-				$table->integer('skill_id');
+				$table->integer('skill_id')->unsigned();
 
 			// Timestamps
 			$table->timestamps();
@@ -32,7 +32,7 @@ class Link_Position_Skill {
 	 */
 	public function down()
 	{
-		//
+		Schema::drop('position_skill');
 	}
 
 }

@@ -16,10 +16,7 @@ class Rem_Controller extends Base_Controller
 		{
 			return 1;
 		}
-		else
-		{
-			return 0;
-		}
+		return 0;
 	}
 
 	public function action_job()
@@ -30,10 +27,7 @@ class Rem_Controller extends Base_Controller
 		{
 			return 1;
 		}
-		else
-		{
-			return 0;
-		}
+		return 0;
 	}
 
 	public function action_scholar()
@@ -44,10 +38,7 @@ class Rem_Controller extends Base_Controller
 		{
 			return 1;
 		}
-		else
-		{
-			return 0;
-		}
+		return 0;
 	}
 
 	public function action_location()
@@ -58,10 +49,7 @@ class Rem_Controller extends Base_Controller
 		{
 			return 1;
 		}
-		else
-		{
-			return 0;
-		}
+		return 0;
 	}
 
 	public function action_subject()
@@ -72,10 +60,7 @@ class Rem_Controller extends Base_Controller
 		{
 			return 1;
 		}
-		else
-		{
-			return 0;
-		}
+		return 0;
 	}
 
 	public function action_skill()
@@ -86,10 +71,7 @@ class Rem_Controller extends Base_Controller
 		{
 			return 1;
 		}
-		else
-		{
-			return 0;
-		}
+		return 0;
 	}
 
 	public function action_position()
@@ -100,39 +82,27 @@ class Rem_Controller extends Base_Controller
 		{
 			return 1;
 		}
-		else
-		{
-			return 0;
-		}
+		return 0;
 	}
 
 	public function action_ps()
 	{
-		// $data	=	Input::json();
-		// $pos = Position::find($data->position_id);
-		// if($pos->skills()->sync($data->skill_id))
-		// {
-		// 	return 1;
-		// }
-		// else
-		// {
-			return 0;
-		// }
+		$data	=	Input::json();
+		$ps		=	Ps::find($data->id);
+		if($ps->delete())
+		{
+			return 1;
+		}
+		return 0;
 	}
 
 	public function action_jpos()
 	{
 		$data	=	Input::json();
-		if(Jbranch::json()->where('job_id','=',$data->job_id)->where('position_id','=',$data->position_id))
+		$jpos	=	Jpos::find($data->id);
+		if($jpos->delete())
 		{
-			if($jb->delete())
-			{
-				return 1;
-			}
-			else
-			{
-				return 0;
-			}
+			return 1;
 		}
 		return 0;
 	}
@@ -140,18 +110,10 @@ class Rem_Controller extends Base_Controller
 	public function action_ppos()
 	{
 		$data	=	Input::json();
-		$prog	=	Prog::find($data->prog_id);
-		$position =	Position::find($data->position_id);
-		if(Pbranch::json()->where('prog_id','=',$prog)->where('position_id','=',$position))
+		$ppos=	Ppos::find($data->id);
+		if($ppos->delete())
 		{
-			if($pb->delete())
-			{
-				return 1;
-			}
-			else
-			{
-				return 0;
-			}
+			return 1;
 		}
 		return 0;
 	}
@@ -159,18 +121,10 @@ class Rem_Controller extends Base_Controller
 	public function action_spos()
 	{
 		$data	=	Input::json();
-		$scholar	=	Scholar::find($data->scholar_id);
-		$position =	Position::find($data->position_id);
-		if(Sbranch::json()->where('scholar_id','=',$scholar)->where('position_id','=',$position))
+		$spos=	Spos::find($data->id);
+		if($spos->delete())
 		{
-			if($sb->delete())
-			{
-				return 1;
-			}
-			else
-			{
-				return 0;
-			}
+			return 1;
 		}
 		return 0;
 	}
@@ -178,132 +132,66 @@ class Rem_Controller extends Base_Controller
 	public function action_jsub()
 	{
 		$data	=	Input::json();
-		$job	=	Job::find($data->job_id);
-		$subject = $data->subject_id;
-		if($subject)
+		$jsub=	Jsub::find($data->id);
+		if($jsub->delete())
 		{
-			$job->sync($subject);
 			return 1;
 		}
-		else
-		{
-			return 0;
-		}
+		return 0;
 	}
 
 	public function action_psub()
 	{
 		$data	=	Input::json();
-		$prog	=	Prog::find($data->prog_id);
-		$subject = $data->subject_id;
-		if($subject)
+		$psub=	Psub::find($data->id);
+		if($psub->delete())
 		{
-			$prog->sync($subject);
 			return 1;
 		}
-		else
-		{
-			return 0;
-		}
+		return 0;
 	}
 
 	public function action_ssub()
 	{
 		$data	=	Input::json();
-		$scholar	=	Scholar::find($data->scholar_id);
-		$subject = $data->subject_id;
-		if($subject)
+		$ssub=	Ssub::find($data->id);
+		if($ssub->delete())
 		{
-			$scholar->sync($subject);
 			return 1;
 		}
-		else
-		{
-			return 0;
-		}
+		return 0;
 	}
 
 	public function action_jbranch()
 	{
 		$data	=	Input::json();
-		$job	=	Job::find($data->job_id);
-		$location =	Location::find($data->location_id);
-		if(Jbranch::json()->where('job_id','=',$job)->where('location_id','=',$location))
+		$jbranch=	Jbranch::find($data->id);
+		if($jbranch->delete())
 		{
-			return 0;
+			return 1;
 		}
-		else
-		{
-			$jb =	Jbranch::create(array(
-						'job_id'		=>	$job,
-						'location_id'	=>	$location,
-						'link'			=>	$data->link,
-						'comments'		=>	$data->comments
-					));
-			if($jb)
-			{
-				return 1;
-			}
-			else
-			{
-				return 0;
-			}
-		}
+		return 0;
 	}
 
 	public function action_pbranch()
 	{
 		$data	=	Input::json();
-		$prog	=	Prog::find($data->prog_id);
-		$location =	Location::find($data->location_id);
-		if(Jbranch::json()->where('prog_id','=',$prog)->where('location_id','=',$location))
+		$pbranch=	Pbranch::find($data->id);
+		if($pbranch->delete())
 		{
-			return 0;
+			return 1;
 		}
-		else
-		{
-			$pb =	Pbranch::create(array(
-						'prog_id'		=>	$prog,
-						'location_id'	=>	$location,
-						'link'			=>	$data->link,
-						'comments'		=>	$data->comments
-					));
-			if($pb)
-			{
-				return 1;
-			}
-			else
-			{
-				return 0;
-			}
-		}
+		return 0;
 	}
 
 	public function action_sbranch()
 	{
 		$data	=	Input::json();
-		$scholar	=	Scholar::find($data->scholar_id);
-		$location =	Location::find($data->location_id);
-		if(Jbranch::json()->where('scholar_id','=',$scholar)->where('location_id','=',$location))
+		$sbranch=	Sbranch::find($data->id);
+		if($sbranch->delete())
 		{
-			return 0;
+			return 1;
 		}
-		else
-		{
-			$sb =	Sbranch::create(array(
-						'scholar_id'	=>	$scholar,
-						'location_id'	=>	$location,
-						'link'			=>	$data->link,
-						'comments'		=>	$data->comments
-					));
-			if($sb)
-			{
-				return 1;
-			}
-			else
-			{
-				return 0;
-			}
-		}
+		return 0;
 	}
 }
