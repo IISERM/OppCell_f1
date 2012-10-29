@@ -1,10 +1,15 @@
 <h2>Blade-AngularJS UI</h2>
 
+<!-- <center>
+	<input type="text" placeholder="Search Institute Name" ng-model="searchInstitute"/>
+</center>
+ -->
 <table>
 	<tr>
-		<th  style="width:20px">Name</th>
-		<th  style="width:300px">Details</th>
+		<th  style="width:20px"	>Name</th>
+		<th  					>Details</th>
 		<th  style="width:100px">Remarks</th>
+		<th 					>Control</th>
 	</tr>
 
 	<tr ng-repeat="(progI,prog) in progs">
@@ -14,19 +19,29 @@
 		</td>
 		<td>
 			<table>
+				<tr>
+					<th style="width:20px">Branch</th>
+					<th style="width:200px">Subjects</th>
+					<th style="width:200px">Positions</th>
+					<th style="width:40px">Comments</th>
+					<th 				>Control</th>
+				</tr>
 <!-- THIS IS FOR THE BRANCHES -->
 				<tr ng-repeat="(pbranchI,pbranch) in pbranches | oFilter:{'prog_id':progI}:this" ng-class="{current:pbranches[pbranchI].edit}" >
 	<!-- BRANCH LOCATION -->
 					<td>
-						<div ng-show="pbranches[pbranchI].edit">	
-								<select ng-model="pbranches[pbranchI].location_id" ng-options="locationI as (location.name+'('+ locations[location.parent_id].name+')' ) for (locationI,location) in locations"></select>
-								<input type="text" ng-model="pbranches[pbranchI].link"></input>
-							</div>
-
-							<div ng-hide="pbranches[pbranchI].edit">
-								<p><a href="{{pbranches[pbranchI].link}}" target="_blank">{{locations[pbranches[pbranchI].location_id].name}} ({{locations[locations[pbranches[pbranchI].location_id].parent_id].name}})</a></p>
-							</div>
+		<!-- VIEW LOCATION -->
+						<div ng-hide="pbranches[pbranchI].edit">
+							<p><a href="{{pbranches[pbranchI].link}}" target="_blank">{{locations[pbranches[pbranchI].location_id].name}} ({{locations[locations[pbranches[pbranchI].location_id].parent_id].name}})</a></p>
 						</div>
+
+		<!-- EDIT LOCATION -->
+						<div ng-show="pbranches[pbranchI].edit">	
+							<!-- <select ng-model="pbranches[pbranchI].location_id" ng-options="locationI as (location.name+'('+ locations[location.parent_id].name+')' ) for (locationI,location) in locations"></select> -->
+							<b>{{locations[pbranches[pbranchI].location_id].name}} ({{locations[locations[pbranches[pbranchI].location_id].parent_id].name}})</b>
+							<input type="text" ng-model="pbranches[pbranchI].link"></input>
+						</div>
+						
 					</td>
 	<!-- SUBJECTS -->					
 					<td>
@@ -35,7 +50,7 @@
 							<div ng-hide="pbranches[pbranchI].edit">
 								<li ng-repeat="(psubjectI,psubject) in psubjects | oFilter:{'pbranch_id':pbranchI}:this">
 									<!-- {{subjects[psubjects[psubjectI].subject_id]}} -->
-									<p>{{subjects[psubjects[psubjectI].subject_id].name}} ({{subjects[subjects[psubjects[psubjectI].subject_id].parent_id].name}}) - {{subjects[psubjects[psubjectI].subject_id].comments}}</p>
+									<p><b>{{subjects[psubjects[psubjectI].subject_id].name}} ({{subjects[subjects[psubjects[psubjectI].subject_id].parent_id].name}}) </b> - {{subjects[psubjects[psubjectI].subject_id].comments}}</p>
 								</li>
 							</div>
 
@@ -47,7 +62,7 @@
 									<input type="text" ng-model="subjects[psubjects[psubjectI].subject_id].comments"></input>
 
 									<p>
-										{{subjects[psubjects[psubjectI].subject_id].name}}
+										<b>{{subjects[psubjects[psubjectI].subject_id].name}}</b>
 										<br/>
 										Comments: {{subjects[psubjects[psubjectI].subject_id].comments}}
 									</p>
@@ -124,7 +139,7 @@
 
 									<input type="text" ng-model="positions[ppositions[ppositionI].position_id].comments"/>									
 									<p>
-										{{positions[ppositions[ppositionI].position_id].name}} ({{positions[positions[ppositions[ppositionI].position_id].parent_id].name}})
+										<b>{{positions[ppositions[ppositionI].position_id].name}} ({{positions[positions[ppositions[ppositionI].position_id].parent_id].name}})</b>
 										<br/>
 										{{positions[ppositions[ppositionI].position_id].comments}}
 									</p>
@@ -189,7 +204,7 @@
 							</div>
 
 					</td>
-
+	<!-- COMMENTS for BRANCH -->
 					<td>
 						<div ng-hide="pbranches[pbranchI].edit">
 								<p>{{pbranches[pbranchI].comments}}</p>
@@ -199,19 +214,22 @@
 								<input type="text" ng-model="pbranches[pbranchI].comments"></input>
 						</div>
 					</td>
-											
+	<!-- CONTROL FOR BRANCH -->
 					<td ng-show="pbranches[pbranchI].edit">
 						<ul>
 							<li><a ng-click="pbranches[pbranchI].edit=false">Lock</a></li>
-							<li><a ng-click="Update('pbranches',pbranchI,pbranches[pbranchI],true)">Update Branch</a></li>							
+							<li><a ng-click="Update('pbranches',pbranchI,pbranches[pbranchI],true)">Update Branch</a></li> 
+							<li><a ng-click="Remove('pbranches',pbranchI,true)">X</a></li>
 						</ul>
 					</td>					
 					<td ng-hide="pbranches[pbranchI].edit">
 						<a ng-click="[(pbranches[pbranchI].edit=true),digest()]">Edit</a>
 					</td>
 				</tr>
+<!-- ADDING A BRANCH/CREATE LOCATION -->
 				<tr>
 					<td>
+		<!-- ADDING A BRANCH -->
 						<div ng-hide="prog.addbranch" class="addnew">
 							<p><a ng-click="prog.addbranch=true">Add New Branch</a></p>
 						</div>
@@ -223,7 +241,7 @@
 							<p><a ng-click="Add('pbranches',pbranchesNew,true,{'prog_id':progI})">Add</a></p>
 							<p><a ng-click="prog.addbranch=false">Hide</a></p>
 						</div>
-
+		<!-- CREATE LOCATION -->
 						<div ng-hide="prog.createlocation" class="createnew">
 							<p><a ng-click="prog.createlocation=true">Create Location</a></p>
 						</div>
