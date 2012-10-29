@@ -303,15 +303,16 @@ function c_oppcell($scope,truthSource,$timeout)
 					'2':{name:'5 year PhD',parent_id:'',comments:'You have to work hard for this'},
 					'3':{name:'Winter Project',parent_id:'',comments:'Its cold at different times for different countries'}
 				};
+	$scope.positionNew={name:'',parent_id:'',comments:''};
 
 	$scope.ppositions=
 				{
-					'1':{pbranch_id:'1',position_id:'1',opening:'',deadline:'',link:''},
-					'2':{pbranch_id:'2',position_id:'1',opening:'',deadline:'',link:''},
-					'3':{pbranch_id:'2',position_id:'2',opening:'',deadline:'',link:''},
-					'4':{pbranch_id:'2',position_id:'3',opening:'',deadline:'',link:''}
+					'1':{pbranch_id:'1',position_id:'1',opening:'2012-09-01',deadline:'2012-10-10',link:'http://Blah.com/'},
+					'2':{pbranch_id:'2',position_id:'1',opening:'2012-09-02',deadline:'2012-10-10',link:'http://something1.com'},
+					'3':{pbranch_id:'2',position_id:'2',opening:'2012-09-03',deadline:'2012-10-10',link:'http://something2.com'},
+					'4':{pbranch_id:'2',position_id:'3',opening:'2012-09-04',deadline:'2012-10-10',link:'http://something3.com'}
 				};
-
+	$scope.ppositionNew={pbranch_id:'',position_id:'',opening:'',deadline:'',link:''};
 
 	//These are functions you shouldn't need to change at all! They should infact go into some
 	//library, but for now are stuck with the controller
