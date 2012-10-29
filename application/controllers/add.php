@@ -253,7 +253,7 @@ class Add_Controller extends Base_Controller
 	public function action_jsub()
 	{
 		$data	=	Input::json();
-		$job	=	Job::find($data->job_id);
+		$job	=	Jbranch::find($data->jbranch_id);
 		$subject = $data->subject_id;
 		if($subject)
 		{
@@ -269,7 +269,7 @@ class Add_Controller extends Base_Controller
 	public function action_psub()
 	{
 		$data	=	Input::json();
-		$prog	=	Prog::find($data->prog_id);
+		$prog	=	Pbranch::find($data->pbranch_id);
 		$subject = $data->subject_id;
 		if($subject)
 		{
@@ -285,7 +285,7 @@ class Add_Controller extends Base_Controller
 	public function action_ssub()
 	{
 		$data	=	Input::json();
-		$scholar	=	Scholar::find($data->scholar_id);
+		$scholar	=	Sbranch::find($data->sbranch_id);
 		$subject = $data->subject_id;
 		if($subject)
 		{
