@@ -350,7 +350,7 @@
 									</p>
 									<p>
 										<label>Parent</label>
-										<select ng-model="subjectNew.parent_id" ng-options="subjectI as (subject.name+'('+subjects[subject.parent_id].name+')' ) for (subjectI,subject) in subjects | oFilter:{'parent_id':''}"></subjects>	
+										<select ng-model="subjectNew.parent_id" ng-options="subjectI as (subject.name+'('+subjects[subject.parent_id].name+')' ) for (subjectI,subject) in subjects | oFilter:{'parent_id':''}"></select>	
 									</p>
 									<p>
 										<label>Comments</label>
@@ -369,13 +369,94 @@
 					<td>
 						<ul>
 		<!-- VIEW POSITIONS -->
-							<!-- <div ng-hide="pbranches[pbranchI].posEdit"> -->
+							<div ng-hide="pbranches[pbranchI].edit">
 								<li ng-repeat="(ppositionI,pposition) in ppositions | oFilter:{'pbranch_id':pbranchI}:this">
 									<!-- <p>{{positions[ppositions[ppositionI].position_id].name}} ({{positions[ppositions[ppositionI].position_id].parent_id].name}}) - {{positions[ppositions[ppositionI].position_id].comments}} </p> -->
-									<p>{{positions[ppositions[ppositionI].position_id].name}} ({{positions[positions[ppositions[ppositionI].position_id].parent_id].name}}) - {{positions[ppositions[ppositionI].position_id].comments}}</p>
-									<p>Opening:{{ppositions[ppositionI].opening}} | Deadline:{{pposition[ppositionI].deadline}}</p>
+									<p>
+										<a href="{{ppositions[ppositionI].link}}" target="_blank">
+											{{positions[ppositions[ppositionI].position_id].name}} ({{positions[positions[ppositions[ppositionI].position_id].parent_id].name}})
+										</a>
+											 - {{positions[ppositions[ppositionI].position_id].comments}}
+									</p>
+									<p>
+										Opening:
+										<input type="text" readonly="readonly" value="{{ppositions[ppositionI].opening}}"/> 
+										Deadline:
+										<input type="text" readonly="readonly" value="{{ppositions[ppositionI].deadline}}"/>
+									</p>
+
 								</li>
-							<!-- </div> -->
+							</div>
+		<!-- EDIT POSITIONS -->
+							<div ng-show="pbranches[pbranchI].edit">
+			<!-- EDIT EXISTING POSITIONS -->
+								<li ng-repeat="(ppositionI,pposition) in ppositions | oFilter:{'pbranch_id':pbranchI}:this">
+
+									<input type="text" ng-model="positions[ppositions[ppositionI].position_id].comments"/>									
+									<p>
+										{{positions[ppositions[ppositionI].position_id].name}} ({{positions[positions[ppositions[ppositionI].position_id].parent_id].name}})
+										<br/>
+										{{positions[ppositions[ppositionI].position_id].comments}}
+									</p>
+									
+									<p>
+										Opening: <input type="text" ng-model="ppositions[ppositionI].opening"/>
+										<br/>
+										<!-- <input type="date" date-format="YYYY-MM-DD" ng-value="{{ppositions[ppositionI].opening}}"/>  -->
+										Deadline: <input type="text" ng-model="ppositions[ppositionI].deadline"/>
+										<!-- <br/> -->
+										<!-- <input type="date" date-format="YYYY-MM-DD" ng-value="{{ppositions[ppositionI].deadline}}"/> -->
+										Link: <input type="text" ng-model="ppositions[ppositionI].link"/>
+									</p>
+
+									<p><a ng-click="Update('positions',ppositions[ppositionI].position_id,positions[ppositions[ppositionI].position_id],true)">Update Position</a>
+									| <a ng-click="Remove('ppositions',ppositions[ppositionI].position_id,true)">X</a></p>									
+
+								</li>
+
+			<!-- ADD POSITIONS -->
+								<div ng-hide="pbranches[pbranchI].addposition" class="addnew">
+									<p><a ng-click="pbranches[pbranchI].addposition=true">Add Position</a></p>
+								</div>
+
+								<div ng-show="pbranches[pbranchI].addposition" class="addnew">
+									
+									<select ng-model="ppositionNew.position_id" ng-options="positionI as (position.name+'('+positions[position.parent_id].name+')' ) for (positionI,position) in positions"></select>									
+									<br/>
+									Opening: <input type="text" ng-model="ppositionNew.opening"/>
+									<br/>
+									Deadline: <input type="text" ng-model="ppositionNew.deadline"/>
+									<br/>
+									Link: <input type="text" ng-model="ppositionNew.link"/>
+
+									<p><a ng-click="Add('ppositions',ppositionNew,true,{'pbranch_id':pbranchI})">Add</a></p>
+								
+									<p><a ng-click="pbranches[pbranchI].addposition=false">Hide</a></p>
+								</div>
+
+			<!-- CREATE POSITIONS -->
+								<div ng-hide="pbranches[pbranchI].createposition" class="createnew">
+									<p><a ng-click="pbranches[pbranchI].createposition=true">Create Position</a></p>
+								</div>
+								<div ng-show="pbranches[pbranchI].createposition" class="createnew">
+									<p>
+										<label>Name of Position</label>
+										<input type="text" ng-model="positionNew.name"/>
+									</p>
+									<p>
+										<label>Parent</label>
+										<select ng-model="positionNew.parent_id" ng-options="positionI as (position.name+'('+positions[position.parent_id].name+')' ) for (positionI,position) in positions | oFilter:{'parent_id':''}"></select>	
+									</p>
+									<p>
+										<label>Comments</label>
+										<input type="text" ng-model="positionNew.comments"/>
+									</p>
+									<p><a ng-click="Add('positions',positionNew,true)">Add</a></p>
+									
+									<p><a ng-click="pbranches[pbranchI].createposition=false">Hide</a></p>
+								</div>
+
+							</div>
 
 					</td>
 
