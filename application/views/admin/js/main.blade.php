@@ -182,7 +182,7 @@ angular.module('oppapp',[])
 	{
 		truth.io.state.working=true;
 		alert(id);
-		$http.post(truth.io.config.basePath + truth[type].add.lnk + truth[type].config.basePath,id)
+		$http.post(truth.io.config.basePath + truth[type].remove.lnk + truth[type].config.basePath,id)
 		.success(function(data)
 		{
 			$log.log(data);
@@ -201,7 +201,9 @@ angular.module('oppapp',[])
 		truth.io.state.working=true;
 
 		var tData=newData;
+
 		// tData.id=id;
+		alert(JSON.stringify(tData));
 
 		$http.post(truth.io.config.basePath + truth[type].update.lnk + truth[type].config.basePath,newData)
 		.success(function(data)
@@ -282,7 +284,7 @@ function c_oppcell($scope,truthSource,$timeout)
 					'4':{pbranch_id:'2',subject_id:'1'},
 					'5':{pbranch_id:'2',subject_id:'2'},
 					'6':{pbranch_id:'2',subject_id:'3'}
-				}
+				};
 	$scope.psubjectNew={pbranch_id:'',subject_id:''};
 
 	$scope.subjects=
@@ -291,23 +293,36 @@ function c_oppcell($scope,truthSource,$timeout)
 					'2':{name:'Radio Astrophysics',parent_id:'4',comments:'Astrophysical Twise'},
 					'3':{name:'String',parent_id:'4',comments:'Entaglement'},
 					'4':{name:'Physics',parent_id:''}
-				}
+				};
 	$scope.subjectNew={name:'',parent_id:'',comments:''};
+
+
+	$scope.positions=
+				{
+					'1':{name:'Summer Project',parent_id:'',comments:'It doesnt need an explanation'},
+					'2':{name:'5 year PhD',parent_id:'',comments:'You have to work hard for this'},
+					'3':{name:'Winter Project',parent_id:'',comments:'Its cold at different times for different countries'}
+				};
 
 	$scope.ppositions=
 				{
-					'1':{pbranch_id:'1',position_id:'1',opening:'',deadline:'',link:''}
-				}
+					'1':{pbranch_id:'1',position_id:'1',opening:'',deadline:'',link:''},
+					'2':{pbranch_id:'2',position_id:'1',opening:'',deadline:'',link:''},
+					'3':{pbranch_id:'2',position_id:'2',opening:'',deadline:'',link:''},
+					'4':{pbranch_id:'2',position_id:'3',opening:'',deadline:'',link:''}
+				};
 
 
 	//These are functions you shouldn't need to change at all! They should infact go into some
 	//library, but for now are stuck with the controller
 	{
-		$scope.Update=function(type,obj,autoRefresh)
+		$scope.Update=function(type,id,data,autoRefresh)
 		{
+			var newData=data;
+			newData.id=id;
 			// $scope.Refresh(type);		
 				// truthSource.prog.update.Now(obj,function(val){
-				truthSource.func.Update(type,obj,function(val){
+				truthSource.func.Update(type,newData,function(val){
 					$scope.Refresh(type);
 				});
 			if(autoRefresh)

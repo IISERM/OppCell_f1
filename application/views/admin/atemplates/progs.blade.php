@@ -284,7 +284,9 @@
 		</td>
 		<td>
 			<table>
+<!-- THIS IS FOR THE BRANCHES -->
 				<tr ng-repeat="(pbranchI,pbranch) in pbranches | oFilter:{'prog_id':progI}:this" ng-class="{current:pbranches[pbranchI].edit}" >
+	<!-- BRANCH LOCATION -->
 					<td>
 						<div ng-show="pbranches[pbranchI].edit">	
 								<select ng-model="pbranches[pbranchI].location_id" ng-options="locationI as (location.name+'('+ locations[location.parent_id].name+')' ) for (locationI,location) in locations"></select>
@@ -292,12 +294,14 @@
 							</div>
 
 							<div ng-hide="pbranches[pbranchI].edit">
-								<p><a href="{{pbranches[pbranchI].link}}">{{locations[pbranches[pbranchI].location_id].name}} ({{locations[locations[pbranches[pbranchI].location_id].parent_id].name}})</a></p>
+								<p><a href="{{pbranches[pbranchI].link}}" target="_blank">{{locations[pbranches[pbranchI].location_id].name}} ({{locations[locations[pbranches[pbranchI].location_id].parent_id].name}})</a></p>
 							</div>
 						</div>
 					</td>
+	<!-- SUBJECTS -->					
 					<td>
 						<ul>							
+		<!-- VIEW SUBJECTS -->		
 							<div ng-hide="pbranches[pbranchI].edit">
 								<li ng-repeat="(psubjectI,psubject) in psubjects | oFilter:{'pbranch_id':pbranchI}:this">
 									<!-- {{subjects[psubjects[psubjectI].subject_id]}} -->
@@ -305,12 +309,11 @@
 								</li>
 							</div>
 
+		<!-- EDIT SUBJECTS -->		
 							<div ng-show="pbranches[pbranchI].edit">
+			<!-- EDIT EXISTING SUBJECTS -->		
 								<li ng-repeat="(psubjectI,psubject) in psubjects | oFilter:{'pbranch_id':pbranchI}:this">
-									<select ng-model="psubjects[psubjectI].subject_id" ng-options="subjectI as (subject.name+'('+subjects[subject.parent_id].name+')' ) for (subjectI,subject) in subjects"></select>	
-									
-									<!-- <input ng-model="psubjects[psubjectI].subject_id"></input> -->
-
+									<select ng-model="psubjects[psubjectI].subject_id" ng-options="subjectI as (subject.name+'('+subjects[subject.parent_id].name+')' ) for (subjectI,subject) in subjects"></select>
 									<input type="text" ng-model="subjects[psubjects[psubjectI].subject_id].comments"></input>
 
 									<p>
@@ -319,13 +322,11 @@
 										Comments: {{subjects[psubjects[psubjectI].subject_id].comments}}
 									</p>
 
-									<p><a ng-click="Update('subjects',subjects[psubjects[psubjectI].subject_id],true)">Update Subject</a>
-									| <a ng-click="Remove('psubjects',psubjects[psubjects[psubjectI].subject_id],true)">X</a></p>
-
-									<!-- <input type="text" ng-model="subjects[psubjects[psubjectI].subject_id]"></input> -->
+									<p><a ng-click="Update('subjects',psubjects[psubjectI].subject_id,subjects[psubjects[psubjectI].subject_id],true)">Update Subject</a>
+									| <a ng-click="Remove('psubjects',psubjects[psubjectI].subject_id,true)">X</a></p>									
 								</li>
 
-
+			<!-- ADD SUBJECTS -->		
 								<div ng-hide="pbranches[pbranchI].addsubject" class="addnew">
 									<p><a ng-click="pbranches[pbranchI].addsubject=true">Add Subject</a></p>
 								</div>
@@ -338,6 +339,7 @@
 									<p><a ng-click="pbranches[pbranchI].addsubject=false">Hide</a></p>
 								</div>
 
+			<!-- CREATE SUBJECTS -->
 								<div ng-hide="pbranches[pbranchI].createsubject" class="createnew">
 									<p><a ng-click="pbranches[pbranchI].createsubject=true">Create Subject</a></p>
 								</div>
@@ -364,8 +366,10 @@
 
 					</td>
 					<td>
+<!-- THIS IS FOR POSITIONS -->
 						POSITIONS
 					</td>
+
 					<td>
 						<div ng-hide="pbranches[pbranchI].edit">
 								<p>{{pbranches[pbranchI].comments}}</p>
@@ -379,7 +383,7 @@
 					<td ng-show="pbranches[pbranchI].edit">
 						<ul>
 							<li><a ng-click="pbranches[pbranchI].edit=false">Lock</a></li>
-							<li><a ng-click="Update('pbranches',pbranches[pbranchI],true)">Update Branch</a></li>							
+							<li><a ng-click="Update('pbranches',pbranchI,pbranches[pbranchI],true)">Update Branch</a></li>							
 						</ul>
 					</td>					
 					<td ng-hide="pbranches[pbranchI].edit">
@@ -421,8 +425,7 @@
 			<p><a ng-click="Update('progs',progI,prog,true)">Save</a></p>
 		</td>
 		<td>
-			<p><input type="button" ng-click="Update('progs',progI,prog,true)" value="Update"/></p>
-			<button>HELLOW</button>
+			<p><a ng-click="Update('progs',progI,prog,true)">Update</a></p>			
 			<p><a ng-click="Remove('progs',progI,true)">Remove</a></p>
 		</td>
 	</tr>	
