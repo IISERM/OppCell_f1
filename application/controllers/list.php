@@ -254,7 +254,7 @@ class List_Controller extends Base_Controller
 					'job_id'		=>	$j->progs_id,
 					'location_id'	=>	$j->locations_id,
 					'link'			=>	$j->link,
-					'comments'		=>	$j->comment
+					'comments'		=>	$j->comments
 				);
 			$data[$id] = $d;
 		}
@@ -272,7 +272,7 @@ class List_Controller extends Base_Controller
 					'prog_id'		=>	$p->progs_id,
 					'location_id'	=>	$p->locations_id,
 					'link'			=>	$p->link,
-					'comments'		=>	$p->comment
+					'comments'		=>	$p->comments
 				);
 			$data[$id] = $d;
 		}
@@ -290,7 +290,7 @@ class List_Controller extends Base_Controller
 					'scholar_id'	=>	$s->scholars_id,
 					'location_id'	=>	$s->locations_id,
 					'link'			=>	$s->link,
-					'comments'		=>	$s->comment
+					'comments'		=>	$s->comments
 				);
 			$data[$id] = $d;
 		}
