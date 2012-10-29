@@ -4,28 +4,28 @@ class Database_Controller extends Base_Controller
 {
 	public function action_index()
 	{
-		return View::make('admin.index');
+		return View::make('database.index');
 	}
 
 	public function action_js_main()
 	{
-		return View::make('admin.js.main');
+		return View::make('database.js.main');
 	}
 
 
 	public function action_atemplates_scholarships()
 	{
-		return View::make('admin.atemplates.scholarships');
+		return View::make('database.atemplates.scholarships');
 	}
 
 	public function action_atemplates_progs()
 	{
-		return View::make('admin.atemplates.progs');
+		return View::make('database.atemplates.progs');
 	}
 
 	public function action_atemplates_jobs()
 	{
-		return View::make('admin.atemplates.jobs');
+		return View::make('database.atemplates.jobs');
 	}
 	
 		// public function action_index()

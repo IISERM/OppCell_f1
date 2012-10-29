@@ -1,5 +1,3 @@
-<h2>Blade-AngularJS UI</h2>
-
 <!-- <center>
 	<input type="text" placeholder="Search Institute Name" ng-model="searchInstitute"/>
 </center>
