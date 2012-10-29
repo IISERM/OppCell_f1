@@ -135,84 +135,49 @@ class Update_Controller extends Base_Controller
 	public function action_jpos()
 	{
 		$data	=	Input::json();
-		if(Jbranch::json()->where('job_id','=',$data->job_id)->where('position_id','=',$data->position_id))
+		$jb =	Jbranch::find($data->id);
+		$jb->job_id		->	$data->job_id,
+		$jb->position_id->	$data->position_id,
+		$jb->deadline	->	$data->deadline,
+		$jb->opening	->	$data->opening,
+		$jb->link		->	$data->link
+		if($jb->save())
 		{
-			return 0;
+			return 1;
 		}
-		else
-		{
-			$jb =	Jbranch::create(array(
-						'job_id'		=>	$data->job_id,
-						'position_id'	=>	$data->position_id,
-						'deadline'		=>	$data->deadline,
-						'opening'		=>	$data->opening,
-						'link'			=>	$data->link
-					));
-			if($jb->save())
-			{
-				return 1;
-			}
-			else
-			{
-				return 0;
-			}
-		}
+		return 0;
 	}
 
 	public function action_ppos()
 	{
 		$data	=	Input::json();
-		if(Pbranch::json()->where('prog_id','=',$data->prog_id)->where('position_id','=',$data->position_id))
+		$pb =	Pbranch::find($data->id);
+		$pb->prog_id	->	$data->prog_id,
+		$pb->position_id->	$data->position_id,
+		$pb->deadline	->	$data->deadline,
+		$pb->opening	->	$data->opening,
+		$pb->link		->	$data->link
+		if($pb->save())
 		{
-			return 0;
+			return 1;
 		}
-		else
-		{
-			$pb =	Pbranch::create(array(
-						'prog_id'		=>	$data->prog_id,
-						'position_id'	=>	$data->position_id,
-						'deadline'		=>	$data->deadline,
-						'opening'		=>	$data->opening,
-						'link'			=>	$data->link
-					));
-			if($pb->save())
-			{
-				return 1;
-			}
-			else
-			{
-				return 0;
-			}
-		}
+		return 0;
 	}
 
 	public function action_spos()
 	{
 		$data	=	Input::json();
-		$scholar	=	Scholar::find($);
-		$position =	Position::find($);
-		if(Sbranch::json()->where('scholar_id','=',$data->scholar_id)->where('position_id','=',$data->position_id))
+		$sb =	Sbranch::find($data->id);
+		$sb->scholar_id	->	$data->scholar_id,
+		$sb->position_id->	$data->position_id,
+		$sb->deadline	->	$data->deadline,
+		$sb->opening	->	$data->opening,
+		$sb->link		->	$data->link
+		if($sb->save())
 		{
-			return 0;
+			return 1;
 		}
-		else
-		{
-			$sb =	Sbranch::create(array(
-						'scholar_id'	=>	$data->scholar_id,
-						'position_id'	=>	$data->position_id,
-						'deadline'		=>	$data->deadline,
-						'opening'		=>	$data->opening,
-						'link'			=>	$data->link
-					));
-			if($sb->save())
-			{
-				return 1;
-			}
-			else
-			{
-				return 0;
-			}
-		}
+		return 0;
 	}
 
 	public function action_jsub()

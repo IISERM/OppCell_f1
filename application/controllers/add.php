@@ -11,13 +11,10 @@ class Add_Controller extends Base_Controller
 	public function action_prog()
 	{
 		$data	=	Input::json();
-		$name	=	$data->name;
-		$link	=	$data->link;
-		$comments =	$data->comments;
 		$prog = Prog::create(array(
-				'name'		=>	$name,
-				'link'		=>	$link,
-				'comments'	=>	$comments
+				'name'		=>	$data->name,
+				'link'		=>	$data->link,
+				'comments'	=>	$data->comments
 			));
 		if($prog)
 		{
@@ -158,7 +155,6 @@ class Add_Controller extends Base_Controller
 	public function action_ps()
 	{
 		$data	=	Input::json();
-		$pos = Position::find($data->position_id);
 		if($pos->skills()->sync($data->skill_id))
 		{
 			return 1;
