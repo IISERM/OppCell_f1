@@ -313,7 +313,7 @@
 							<div ng-show="pbranches[pbranchI].edit">
 			<!-- EDIT EXISTING SUBJECTS -->		
 								<li ng-repeat="(psubjectI,psubject) in psubjects | oFilter:{'pbranch_id':pbranchI}:this">
-									<select ng-model="psubjects[psubjectI].subject_id" ng-options="subjectI as (subject.name+'('+subjects[subject.parent_id].name+')' ) for (subjectI,subject) in subjects"></select>
+									<!-- <select ng-model="psubjects[psubjectI].subject_id" ng-options="subjectI as (subject.name+'('+subjects[subject.parent_id].name+')' ) for (subjectI,subject) in subjects"></select> -->
 									<input type="text" ng-model="subjects[psubjects[psubjectI].subject_id].comments"></input>
 
 									<p>
@@ -365,9 +365,18 @@
 						</ul>
 
 					</td>
+	<!-- THIS IS FOR POSITIONS -->
 					<td>
-<!-- THIS IS FOR POSITIONS -->
-						POSITIONS
+						<ul>
+		<!-- VIEW POSITIONS -->
+							<!-- <div ng-hide="pbranches[pbranchI].posEdit"> -->
+								<li ng-repeat="(ppositionI,pposition) in ppositions | oFilter:{'pbranch_id':pbranchI}:this">
+									<!-- <p>{{positions[ppositions[ppositionI].position_id].name}} ({{positions[ppositions[ppositionI].position_id].parent_id].name}}) - {{positions[ppositions[ppositionI].position_id].comments}} </p> -->
+									<p>{{positions[ppositions[ppositionI].position_id].name}} ({{positions[positions[ppositions[ppositionI].position_id].parent_id].name}}) - {{positions[ppositions[ppositionI].position_id].comments}}</p>
+									<p>Opening:{{ppositions[ppositionI].opening}} | Deadline:{{pposition[ppositionI].deadline}}</p>
+								</li>
+							<!-- </div> -->
+
 					</td>
 
 					<td>

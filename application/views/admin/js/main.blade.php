@@ -70,7 +70,7 @@ angular.module('oppapp',[])
 			{
 				fetch:{lnk:'/list'},
 				add:{lnk:'/add'},
-				remove:{lnk:'/del'},
+				remove:{lnk:'/rem'},
 				update:{lnk:'/update'},
 				config:{basePath:'/prog'},
 				data:{}
@@ -79,7 +79,7 @@ angular.module('oppapp',[])
 			{
 				fetch:{lnk:'/list'},
 				add:{lnk:'/add'},
-				remove:{lnk:'/del'},
+				remove:{lnk:'/rem'},
 				update:{lnk:'/update'},
 				config:{basePath:'/pbranch'},
 				data:{}
@@ -88,7 +88,7 @@ angular.module('oppapp',[])
 			{
 				fetch:{lnk:'/list'},
 				add:{lnk:'/add'},
-				remove:{lnk:'/del'},
+				remove:{lnk:'/rem'},
 				update:{lnk:'/update'},
 				config:{basePath:'/location'},
 				data:{}								
@@ -97,7 +97,7 @@ angular.module('oppapp',[])
 			{
 				fetch:{lnk:'/list'},
 				add:{lnk:'/add'},
-				remove:{lnk:'/del'},
+				remove:{lnk:'/rem'},
 				update:{lnk:'/update'},
 				config:{basePath:'/psub'},
 				data:{}								
@@ -106,7 +106,7 @@ angular.module('oppapp',[])
 			{
 				fetch:{lnk:'/list'},
 				add:{lnk:'/add'},
-				remove:{lnk:'/del'},
+				remove:{lnk:'/rem'},
 				update:{lnk:'/update'},
 				config:{basePath:'/subject'},
 				data:{}								
@@ -405,7 +405,7 @@ function c_oppcell($scope,truthSource,$timeout)
 		{
 			if((key!='func') && (key!='io') && (key!='nav'))
 			{
-				$scope.Refresh(key);					
+				// $scope.Refresh(key);					
 			}
 		}		
 	}
