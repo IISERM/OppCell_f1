@@ -201,7 +201,9 @@ angular.module('oppapp',[])
 		truth.io.state.working=true;
 
 		var tData=newData;
+
 		// tData.id=id;
+		alert(JSON.stringify(tData));
 
 		$http.post(truth.io.config.basePath + truth[type].update.lnk + truth[type].config.basePath,newData)
 		.success(function(data)
@@ -314,11 +316,13 @@ function c_oppcell($scope,truthSource,$timeout)
 	//These are functions you shouldn't need to change at all! They should infact go into some
 	//library, but for now are stuck with the controller
 	{
-		$scope.Update=function(type,obj,autoRefresh)
+		$scope.Update=function(type,id,data,autoRefresh)
 		{
+			var newData=data;
+			newData.id=id;
 			// $scope.Refresh(type);		
 				// truthSource.prog.update.Now(obj,function(val){
-				truthSource.func.Update(type,obj,function(val){
+				truthSource.func.Update(type,newData,function(val){
 					$scope.Refresh(type);
 				});
 			if(autoRefresh)
