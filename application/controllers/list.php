@@ -158,7 +158,8 @@ class List_Controller extends Base_Controller
 					'position_id'	=>	$jpo->positions_id,
 					'jbranch_id'	=>	$jpo->jbranches_id,
 					'deadline'		=>	$jpo->deadline,
-					'opening'		=>	$jpo->opening
+					'opening'		=>	$jpo->opening,
+					'link'			=>	$jpo->link
 				);
 			$data[$id] = $d;
 		}
@@ -176,7 +177,8 @@ class List_Controller extends Base_Controller
 					'position_id'	=>	$ppo->positions_id,
 					'pbranch_id'	=>	$ppo->pbranches_id,
 					'deadline'		=>	$ppo->deadline,
-					'opening'		=>	$ppo->opening
+					'opening'		=>	$ppo->opening,
+					'link'			=>	$ppo->link
 				);
 			$data[$id] = $d;
 		}
@@ -194,7 +196,8 @@ class List_Controller extends Base_Controller
 					'position_id'	=>	$spo->positions_id,
 					'sbranch_id'	=>	$spo->sbranches_id,
 					'deadline'		=>	$spo->deadline,
-					'opening'		=>	$spo->opening
+					'opening'		=>	$spo->opening,
+					'link'			=>	$spo->link
 				);
 			$data[$id] = $d;
 		}
