@@ -284,24 +284,59 @@
 		</td>
 		<td>
 			<table>
-				<tr ng-class="{current:prog.edit}">
+				<tr ng-repeat="(pbranchI,pbranch) in pbranches | oFilter:{'prog_id':progI}:this" ng-class="{current:pbranches[pbranchI].edit}" >
 					<td>
-						<div ng-repeat="(pbranchI,pbranch) in pbranches | oFilter:{'prog_id':progI}:this"> 
-<!-- 							<select ng-model="pbranches[pbranchI].location_id" ng-options="location.id as location.name for location in locations2"></select>
- -->						<div ng-show="prog.edit">	
+						<div ng-show="pbranches[pbranchI].edit">	
 								<select ng-model="pbranches[pbranchI].location_id" ng-options="locationI as (location.name+'('+ locations[location.parent_id].name+')' ) for (locationI,location) in locations"></select>
 								<input type="text" ng-model="pbranches[pbranchI].link"></input>
-								<input type="text" ng-model="pbranches[pbranchI].comments"></input>
 							</div>
 
-							<div ng-hide="prog.edit">
-								<p>{{locations[pbranches[pbranchI].location_id].name}} ({{locations[locations[pbranches[pbranchI].location_id].parent_id].name}})</p>
-								<a href="{{pbranches[pbranchI].link}}">{{pbranches[pbranchI].link}}</a>
-								<p>{{pbranches[pbranchI].comments}}</p>
+							<div ng-hide="pbranches[pbranchI].edit">
+								<p><a href="{{pbranches[pbranchI].link}}">{{locations[pbranches[pbranchI].location_id].name}} ({{locations[locations[pbranches[pbranchI].location_id].parent_id].name}})</a></p>
 							</div>
-							<!-- <p>{{locations}}</p> -->
-							<!-- <p>{{pbranches[pbranchI]}}</p> -->
+					</td>
+					<td>
+						<ul>
+							<div ng-hide="pbranches[pbrachI].edit">
+								<li ng-repeat="(psubjectI,psubject) in psubjects | oFilter:{'pbranch_id':pbranchI}:this">
+									<!-- {{subjects[psubjects[psubjectI].subject_id]}} -->
+									{{subjects[psubjects[psubjectI].subject_id].name}} ({{subjects[subjects[psubjects[psubjectI].subject_id].parent_id].name}})
+								</li>
+							</div>
+							<div ng-show="pbranches[pbrachI].edit">
+								<li ng-repeat="(psubjectI,psubject) in psubjects | oFilter:{'pbranch_id':pbranchI}:this">
+									<select ng-model="psubjects[psubjectI].subject_id" ng-options="subjectI as (subject.name+'('+subjects[subject.parent_id].name+')' ) for (subjectI,subject) in subjects"></subjects>									
+									<!-- <input type="text" ng-model="subjects[psubjects[psubjectI].subject_id]"></input> -->
+								</li>
+								<li>
+									<select ng-model="subjects[psubjects[psubjectI].subject_id" ng-options="subjectI as (subject.name+'('+subjects[subject.parent_id].name+')' ) for (subjectI,subject) in subjects"></subjects>									
+								</li>
+							</div>
+
+						</ul>
+					</td>
+					<td>
+						POSITIONS
+					</td>
+					<td>
+						<div ng-hide="pbranches[pbranchI].edit">
+								<p>{{pbranches[pbranchI].comments}}</p>
 						</div>
+
+						<div ng-show="pbranches[pbranchI].edit">
+								<input type="text" ng-model="pbranches[pbranchI].comments"></input>
+						</div>
+					</td>
+											
+					<td ng-show="pbranches[pbranchI].edit">
+						<a ng-click="pbranches[pbranchI].edit=false">Lock</a>
+					</td>					
+					<td ng-hide="pbranches[pbranchI].edit">
+						<a ng-click="pbranches[pbranchI].edit=true">Edit</a>
+					</td>
+				</tr>
+				<tr>
+					<td>
 						<select ng-model="pbranchesNew.location_id" ng-options="locationI as (location.name+'('+ locations[location.parent_id].name+')' ) for (locationI,location) in locations"></select>
 						Link: <input type="text" ng-model="pbranchesNew.link"></input>
 						Comments: <input type="text" ng-model="pbranchesNew.comments"></input>
@@ -319,15 +354,7 @@
 							<p><a ng-click="Add('locations',locationNew,true)">Add</a></p>					
 							<p><a ng-click="prog.createlocation=false">Hide</a></p>
 						</div>
-					</td>
-					
-						
-					
-					<td ng-show="prog.edit">
-						<a ng-click="prog.edit=false">Lock</a>
-					</td>					
-					<td ng-hide="prog.edit">
-						<a ng-click="prog.edit=true">Edit</a>
+
 					</td>
 				</tr>
 			</table>			
