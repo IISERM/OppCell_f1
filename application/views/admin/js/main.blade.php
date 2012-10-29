@@ -271,8 +271,10 @@ angular.module('oppapp',[])
 	truth.func.Remove=function(type,id,OnComplete)
 	{
 		truth.io.state.working=true;
-		alert(id);
-		$http.post(truth.io.config.basePath + truth[type].remove.lnk + truth[type].config.basePath,{id:id})
+		// alert(id);
+		var sendId={id:id};
+		alert(JSON.stringify(sendId));
+		$http.post(truth.io.config.basePath + truth[type].remove.lnk + truth[type].config.basePath,sendId)
 		.success(function(data)
 		{
 			$log.log(data);
@@ -327,84 +329,84 @@ function c_oppcell($scope,truthSource,$timeout)
 {
 	$scope.truthSource=truthSource;
 
-	$scope.progs=
-				{
-					'1':{name:'IISc Winter School',link:'http://www.iisc.org/',comments:'This is the best in India apparently'}
-					// '2':{name:'IIT Winter School',link:'http://www.iitb.ac.in/',comments:''}
-				};
-	$scope.progNew={name:'',link:'',comments:''};
+	// $scope.progs=
+	// 			{
+	// 				'1':{name:'IISc Winter School',link:'http://www.iisc.org/',comments:'This is the best in India apparently'}
+	// 				// '2':{name:'IIT Winter School',link:'http://www.iitb.ac.in/',comments:''}
+	// 			};
+	// $scope.progNew={name:'',link:'',comments:''};
 
 
-	$scope.locations=
-				{
-					'':{name:'Country',parent_id:'',comments:''},
-					'1':{name:'India',parent_id:'',comments:'Highly conservative. Dont go naked'},
-					'2':{name:'Delhi',parent_id:'1',comments:'The Awesomest City'}
-				};
+	// $scope.locations=
+	// 			{
+	// 				'':{name:'Country',parent_id:'',comments:''},
+	// 				'1':{name:'India',parent_id:'',comments:'Highly conservative. Dont go naked'},
+	// 				'2':{name:'Delhi',parent_id:'1',comments:'The Awesomest City'}
+	// 			};
 
-	$scope.locations2=
-				[
-					{id:'1',name:'India',parent_id:'',comments:'Highly conservative. Dont go naked'},
-					{id:'2',name:'Delhi',parent_id:'1',comments:'The Awesomest City'}
-				];
-
-
-	$scope.locationNew={name:'',parent_id:'',comments:''};
-
-	$scope.pbranches2=
-				[
-					{id:'1',prog_id:'1',location_id:'1',link:'http://bambam.com',comments:'bam1'},
-					{id:'2',prog_id:'2',location_id:'1',link:'http://bambam.com',comments:'bam1'},
-					{id:'3',prog_id:'3',location_id:'1',link:'http://bambam.com',comments:'bam1'},
-				];
-	$scope.pbranches=
-				{
-					'1':{prog_id:'1',location_id:'1',link:'http://bambam1.com',comments:'bam1'},
-					'3':{prog_id:'2',location_id:'2',link:'http://bambam2.com',comments:'bam2'},
-					'2':{prog_id:'1',location_id:'2',link:'http://bambam3.com',comments:'bam3'}
-				};
-	$scope.pbranchNew={prog_id:'',location_id:'',link:'',comments:''};
-
-	$scope.sbranchNew={prog_id:'',location_id:'',link:'',comments:''};
+	// $scope.locations2=
+	// 			[
+	// 				{id:'1',name:'India',parent_id:'',comments:'Highly conservative. Dont go naked'},
+	// 				{id:'2',name:'Delhi',parent_id:'1',comments:'The Awesomest City'}
+	// 			];
 
 
-	$scope.psubjects=
-				{
-					'1':{pbranch_id:'1',subject_id:'1'},
-					'2':{pbranch_id:'1',subject_id:'2'},
-					'3':{pbranch_id:'1',subject_id:'3'},
-					'4':{pbranch_id:'2',subject_id:'1'},
-					'5':{pbranch_id:'2',subject_id:'2'},
-					'6':{pbranch_id:'2',subject_id:'3'}
-				};
-	$scope.psubjectNew={pbranch_id:'',subject_id:''};
+	// $scope.locationNew={name:'',parent_id:'',comments:''};
 
-	$scope.subjects=
-				{
-					'1':{name:'Quantum Physics',parent_id:'4',comments:'Awesome as it gets'},
-					'2':{name:'Radio Astrophysics',parent_id:'4',comments:'Astrophysical Twise'},
-					'3':{name:'String',parent_id:'4',comments:'Entaglement'},
-					'4':{name:'Physics',parent_id:''}
-				};
-	$scope.subjectNew={name:'',parent_id:'',comments:''};
+	// $scope.pbranches2=
+	// 			[
+	// 				{id:'1',prog_id:'1',location_id:'1',link:'http://bambam.com',comments:'bam1'},
+	// 				{id:'2',prog_id:'2',location_id:'1',link:'http://bambam.com',comments:'bam1'},
+	// 				{id:'3',prog_id:'3',location_id:'1',link:'http://bambam.com',comments:'bam1'},
+	// 			];
+	// $scope.pbranches=
+	// 			{
+	// 				'1':{prog_id:'1',location_id:'1',link:'http://bambam1.com',comments:'bam1'},
+	// 				'3':{prog_id:'2',location_id:'2',link:'http://bambam2.com',comments:'bam2'},
+	// 				'2':{prog_id:'1',location_id:'2',link:'http://bambam3.com',comments:'bam3'}
+	// 			};
+	// $scope.pbranchNew={prog_id:'',location_id:'',link:'',comments:''};
+
+	// $scope.sbranchNew={prog_id:'',location_id:'',link:'',comments:''};
 
 
-	$scope.positions=
-				{
-					'1':{name:'Summer Project',parent_id:'',comments:'It doesnt need an explanation'},
-					'2':{name:'5 year PhD',parent_id:'',comments:'You have to work hard for this'},
-					'3':{name:'Winter Project',parent_id:'',comments:'Its cold at different times for different countries'}
-				};
-	$scope.positionNew={name:'',parent_id:'',comments:''};
+	// $scope.psubjects=
+	// 			{
+	// 				'1':{pbranch_id:'1',subject_id:'1'},
+	// 				'2':{pbranch_id:'1',subject_id:'2'},
+	// 				'3':{pbranch_id:'1',subject_id:'3'},
+	// 				'4':{pbranch_id:'2',subject_id:'1'},
+	// 				'5':{pbranch_id:'2',subject_id:'2'},
+	// 				'6':{pbranch_id:'2',subject_id:'3'}
+	// 			};
+	// $scope.psubjectNew={pbranch_id:'',subject_id:''};
 
-	$scope.ppositions=
-				{
-					'1':{pbranch_id:'1',position_id:'1',opening:'2012-09-01',deadline:'2012-10-10',link:'http://Blah.com/'},
-					'2':{pbranch_id:'2',position_id:'1',opening:'2012-09-02',deadline:'2012-10-10',link:'http://something1.com'},
-					'3':{pbranch_id:'2',position_id:'2',opening:'2012-09-03',deadline:'2012-10-10',link:'http://something2.com'},
-					'4':{pbranch_id:'2',position_id:'3',opening:'2012-09-04',deadline:'2012-10-10',link:'http://something3.com'}
-				};
-	$scope.ppositionNew={pbranch_id:'',position_id:'',opening:'',deadline:'',link:''};
+	// $scope.subjects=
+	// 			{
+	// 				'1':{name:'Quantum Physics',parent_id:'4',comments:'Awesome as it gets'},
+	// 				'2':{name:'Radio Astrophysics',parent_id:'4',comments:'Astrophysical Twise'},
+	// 				'3':{name:'String',parent_id:'4',comments:'Entaglement'},
+	// 				'4':{name:'Physics',parent_id:''}
+	// 			};
+	// $scope.subjectNew={name:'',parent_id:'',comments:''};
+
+
+	// $scope.positions=
+	// 			{
+	// 				'1':{name:'Summer Project',parent_id:'',comments:'It doesnt need an explanation'},
+	// 				'2':{name:'5 year PhD',parent_id:'',comments:'You have to work hard for this'},
+	// 				'3':{name:'Winter Project',parent_id:'',comments:'Its cold at different times for different countries'}
+	// 			};
+	// $scope.positionNew={name:'',parent_id:'',comments:''};
+
+	// $scope.ppositions=
+	// 			{
+	// 				'1':{pbranch_id:'1',position_id:'1',opening:'2012-09-01',deadline:'2012-10-10',link:'http://Blah.com/'},
+	// 				'2':{pbranch_id:'2',position_id:'1',opening:'2012-09-02',deadline:'2012-10-10',link:'http://something1.com'},
+	// 				'3':{pbranch_id:'2',position_id:'2',opening:'2012-09-03',deadline:'2012-10-10',link:'http://something2.com'},
+	// 				'4':{pbranch_id:'2',position_id:'3',opening:'2012-09-04',deadline:'2012-10-10',link:'http://something3.com'}
+	// 			};
+	// $scope.ppositionNew={pbranch_id:'',position_id:'',opening:'',deadline:'',link:''};
 
 	//These are functions you shouldn't need to change at all! They should infact go into some
 	//library, but for now are stuck with the controller
@@ -496,7 +498,7 @@ function c_oppcell($scope,truthSource,$timeout)
 	{
 		$timeout(function(){
 			$scope.RefreshAll();
-		},1000);
+		},100);
 	}	
 
 }
