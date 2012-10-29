@@ -99,6 +99,15 @@ angular.module('oppapp',[])
 				add:{lnk:'/add'},
 				remove:{lnk:'/del'},
 				update:{lnk:'/update'},
+				config:{basePath:'/psub'},
+				data:{}								
+			},
+		subjects:
+			{
+				fetch:{lnk:'/list'},
+				add:{lnk:'/add'},
+				remove:{lnk:'/del'},
+				update:{lnk:'/update'},
 				config:{basePath:'/subject'},
 				data:{}								
 			},
@@ -187,12 +196,12 @@ angular.module('oppapp',[])
 		});
 	}
 
-	truth.func.Update=function(type,id,newData,OnComplete)
+	truth.func.Update=function(type,newData,OnComplete)
 	{
 		truth.io.state.working=true;
 
 		var tData=newData;
-		tData.id=id;
+		// tData.id=id;
 
 		$http.post(truth.io.config.basePath + truth[type].update.lnk + truth[type].config.basePath,newData)
 		.success(function(data)
@@ -285,16 +294,21 @@ function c_oppcell($scope,truthSource,$timeout)
 				}
 	$scope.subjectNew={name:'',parent_id:'',comments:''};
 
+
 	//These are functions you shouldn't need to change at all! They should infact go into some
 	//library, but for now are stuck with the controller
 	{
-		$scope.Update=function(type,id,obj,autoRefresh)
+		$scope.Update=function(type,obj,autoRefresh)
 		{
-			$scope.Refresh(type);		
+			// $scope.Refresh(type);		
 				// truthSource.prog.update.Now(obj,function(val){
+				truthSource.func.Update(type,obj,function(val){
+					$scope.Refresh(type);
+				});
 					// $scope.$apply();
 					// RefreshHelp
 					// if(autoRefresh==true)
+
 						// //truthSource[type].fetch.Now(function(val){
 							// //RefreshHelp(val,'progs');
 							// alert("Hey! This works :)");
@@ -362,7 +376,7 @@ function c_oppcell($scope,truthSource,$timeout)
 			{
 				if((key!='func') && (key!='io') && (key!='nav'))
 				{
-					// $scope.Refresh(key);					
+					$scope.Refresh(key);					
 				}
 			}
 		},1000);
