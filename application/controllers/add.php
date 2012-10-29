@@ -168,7 +168,7 @@ class Add_Controller extends Base_Controller
 	public function action_jpos()
 	{
 		$data	=	Input::json();
-		if(Jbranch::json()->where('job_id','=',$data->job_id)->where('position_id','=',$data->position_id))
+		if(!Jpos::where('jbranch_id','=',$data->jbranch_id)->where('position_id','=',$data->position_id)->get())
 		{
 			return 0;
 		}
@@ -195,15 +195,15 @@ class Add_Controller extends Base_Controller
 	public function action_ppos()
 	{
 		$data	=	Input::json();
-		if(Pbranch::json()->where('prog_id','=',$data->prog_id)->where('position_id','=',$data->position_id))
+		if(Ppos::where('pbranches_id','=',$data->pbranch_id)->where('positions_id','=',$data->position_id)->get())
 		{
 			return 0;
 		}
 		else
 		{
-			$pb =	Pbranch::create(array(
-						'prog_id'		=>	$data->prog_id,
-						'position_id'	=>	$data->position_id,
+			$pb =	Ppos::create(array(
+						'pbranches_id'	=>	$data->pbranch_id,
+						'positions_id'	=>	$data->position_id,
 						'deadline'		=>	$data->deadline,
 						'opening'		=>	$data->opening,
 						'link'			=>	$data->link
@@ -222,14 +222,14 @@ class Add_Controller extends Base_Controller
 	public function action_spos()
 	{
 		$data	=	Input::json();
-		if(Sbranch::json()->where('scholar_id','=',$data->scholar_id)->where('position_id','=',$data->position_id))
+		if(Spos::where('sbranch_id','=',$data->sbranch_id)->where('position_id','=',$data->position_id)->get())
 		{
 			return 0;
 		}
 		else
 		{
 			$sb =	Sbranch::create(array(
-						'scholar_id'	=>	$data->scholar_id,
+						'sbranches_id'	=>	$data->sbranch_id,
 						'position_id'	=>	$data->position_id,
 						'deadline'		=>	$data->deadline,
 						'opening'		=>	$data->opening,
