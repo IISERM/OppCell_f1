@@ -4,8 +4,8 @@
 <head>
     <title>@yield('title') | Opportunity Cell</title>
     <!-- <meta http-equiv="content-type" content="text/html; charset=utf-8" /> -->
-    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine&amp;v1" />
-    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz" />
+    <link rel="stylesheet" type="text/css" href="{=URL::base().'/css/fonts/YanoneKaffeesatz.css'=}" />
+    <link rel="stylesheet" type="text/css" href="{=URL::base().'/css/fonts/tangerine.css'=}" />
     <link rel="stylesheet" type="text/css" href="{=URL::base().'/css/front.css'=}" />
     <link rel="Shortcut Icon" href="{=URL::base().'/img/favicon.ico'=}" />
 
@@ -63,15 +63,30 @@
             @yield('contents')
         </div>
         <div id="footer">
-            <p style="float:left">Copyright &copy; Opportunity Cell - IISER Mohali </p>
-            <p style="float:right">Powered By: <a href="http://validator.w3.org/check?uri=referer">HTML5</a> | <a href="http://jigsaw.w3.org/css-validator/check/referer">CSS</a> | <a href="http://www.html5webtemplates.co.uk">html5webtemplates</a></p>
+            <p style="float:left">
+                Copyright &copy; Opportunity Cell - IISER Mohali
+            </p>
+            <p style="float:right">
+                Powered By: 
+                <a href="http://validator.w3.org/check?uri=referer">
+                    HTML5
+                </a>
+                 | 
+                 <a href="http://jigsaw.w3.org/css-validator/check/referer">
+                    CSS
+                </a>
+                 | 
+                 <a href="http://www.html5webtemplates.co.uk">
+                    html5webtemplates
+                </a>
+            </p>
         </div>
         <center>        
         <br/>
         <p>Created by</p>
         <a target="_blank" href="http://www.github.com/theDeparted/"><img src= "{=URL::base().'/img/theDeparted.svg'=}" width="150px"/></a>
         <p>Can't live until you die</p>
-        <!-- <p>Indian Institute of Science Education and Research, Mohali</p> -->
+        <p>Indian Institute of Science Education and Research, Mohali</p>
         </center>           
     </div>
 </body>
