@@ -86,7 +86,7 @@
         <p>Created by</p>
         <a target="_blank" href="http://www.github.com/theDeparted/"><img src= "{=URL::base().'/img/theDeparted.svg'=}" width="150px"/></a>
         <p>Can't live until you die</p>
-        <!-- <p>Indian Institute of Science Education and Research, Mohali</p> -->
+        <p>Indian Institute of Science Education and Research, Mohali</p>
         </center>           
     </div>
 </body>
