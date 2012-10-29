@@ -136,11 +136,11 @@ class Update_Controller extends Base_Controller
 	{
 		$data	=	Input::json();
 		$jb =	Jbranch::find($data->id);
-		$jb->job_id		->	$data->job_id,
-		$jb->position_id->	$data->position_id,
-		$jb->deadline	->	$data->deadline,
-		$jb->opening	->	$data->opening,
-		$jb->link		->	$data->link
+		$jb->job_id		->	$data->job_id;
+		$jb->position_id->	$data->position_id;
+		$jb->deadline	->	$data->deadline;
+		$jb->opening	->	$data->opening;
+		$jb->link		->	$data->link;
 		if($jb->save())
 		{
 			return 1;
@@ -152,11 +152,11 @@ class Update_Controller extends Base_Controller
 	{
 		$data	=	Input::json();
 		$pb =	Pbranch::find($data->id);
-		$pb->prog_id	->	$data->prog_id,
-		$pb->position_id->	$data->position_id,
-		$pb->deadline	->	$data->deadline,
-		$pb->opening	->	$data->opening,
-		$pb->link		->	$data->link
+		$pb->prog_id	->	$data->prog_id;
+		$pb->position_id->	$data->position_id;
+		$pb->deadline	->	$data->deadline;
+		$pb->opening	->	$data->opening;
+		$pb->link		->	$data->link;
 		if($pb->save())
 		{
 			return 1;
@@ -168,11 +168,11 @@ class Update_Controller extends Base_Controller
 	{
 		$data	=	Input::json();
 		$sb =	Sbranch::find($data->id);
-		$sb->scholar_id	->	$data->scholar_id,
-		$sb->position_id->	$data->position_id,
-		$sb->deadline	->	$data->deadline,
-		$sb->opening	->	$data->opening,
-		$sb->link		->	$data->link
+		$sb->scholar_id	->	$data->scholar_id;
+		$sb->position_id->	$data->position_id;
+		$sb->deadline	->	$data->deadline;
+		$sb->opening	->	$data->opening;
+		$sb->link		->	$data->link;
 		if($sb->save())
 		{
 			return 1;
