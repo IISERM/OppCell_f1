@@ -257,7 +257,7 @@ class Add_Controller extends Base_Controller
 		$subject = $data->subject_id;
 		if($subject)
 		{
-			$job->sync($subject);
+			$job->subject()->attach($subject);
 			return 1;
 		}
 		else
@@ -273,7 +273,7 @@ class Add_Controller extends Base_Controller
 		$subject = $data->subject_id;
 		if($subject)
 		{
-			$prog->sync($subject);
+			$prog->subject()->attach($subject);
 			return 1;
 		}
 		else
@@ -289,7 +289,7 @@ class Add_Controller extends Base_Controller
 		$subject = $data->subject_id;
 		if($subject)
 		{
-			$scholar->sync($subject);
+			$scholar->subject()->attach($subject);
 			return 1;
 		}
 		else
