@@ -120,7 +120,6 @@ class Update_Controller extends Base_Controller
 
 	public function action_ps()
 	{
-		// $data	=	Input::json();
 		// $pos = Position::find($data->position_id);
 		// if($pos->skills()->sync($data->skill_id))
 		// {
