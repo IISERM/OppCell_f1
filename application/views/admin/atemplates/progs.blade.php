@@ -421,8 +421,7 @@
 			<p><a ng-click="Update('progs',progI,prog,true)">Save</a></p>
 		</td>
 		<td>
-			<p><input type="button" ng-click="Update('progs',progI,prog,true)" value="Update"/></p>
-			<button>HELLOW</button>
+			<p><a ng-click="Update('progs',progI,prog,true)">Update</a></p>			
 			<p><a ng-click="Remove('progs',progI,true)">Remove</a></p>
 		</td>
 	</tr>	
