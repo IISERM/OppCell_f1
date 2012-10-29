@@ -408,6 +408,10 @@
 										<!-- <input type="date" date-format="YYYY-MM-DD" ng-value="{{ppositions[ppositionI].deadline}}"/> -->
 										Link: <input type="text" ng-model="ppositions[ppositionI].link"/>
 									</p>
+
+									<p><a ng-click="Update('positions',ppositions[ppositionI].position_id,positions[ppositions[ppositionI].position_id],true)">Update Position</a>
+									| <a ng-click="Remove('ppositions',ppositions[ppositionI].position_id,true)">X</a></p>									
+
 								</li>
 
 			<!-- ADD POSITIONS -->
@@ -432,7 +436,7 @@
 
 			<!-- CREATE POSITIONS -->
 								<div ng-hide="pbranches[pbranchI].createposition" class="createnew">
-									<p><a ng-click="pbranches[pbranchI].createposition=true">Create Subject</a></p>
+									<p><a ng-click="pbranches[pbranchI].createposition=true">Create Position</a></p>
 								</div>
 								<div ng-show="pbranches[pbranchI].createposition" class="createnew">
 									<p>
