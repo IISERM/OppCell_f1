@@ -15,12 +15,12 @@
 
 		public function subject()
 		{
-			return $this->has_many_and_belongs_to('Subject','psubjects');
+			return $this->has_many_and_belongs_to('Subject','ssubjects');
 		}
 
 		public function position()
 		{
-			return $this->has_many_and_belongs_to('Position','pposition')
+			return $this->has_many_and_belongs_to('Position','sposition')
 						->with('opening','deadline','link');
 		}
 	}

@@ -334,8 +334,9 @@ function c_oppcell($scope,truthSource,$timeout)
 	// 				'1':{name:'IISc Winter School',link:'http://www.iisc.org/',comments:'This is the best in India apparently'}
 	// 				// '2':{name:'IIT Winter School',link:'http://www.iitb.ac.in/',comments:''}
 	// 			};
-	// $scope.progNew={name:'',link:'',comments:''};
-
+	$scope.progNew={name:'',link:'',comments:''};
+	$scope.scholarNew={name:'',link:'',comments:''};
+	$scope.jobNew={name:'',link:'',comments:''};
 
 	// $scope.locations=
 	// 			{
@@ -351,7 +352,7 @@ function c_oppcell($scope,truthSource,$timeout)
 	// 			];
 
 
-	// $scope.locationNew={name:'',parent_id:'',comments:''};
+	$scope.locationNew={name:'',parent_id:'',comments:''};
 
 	// $scope.pbranches2=
 	// 			[
@@ -365,10 +366,9 @@ function c_oppcell($scope,truthSource,$timeout)
 	// 				'3':{prog_id:'2',location_id:'2',link:'http://bambam2.com',comments:'bam2'},
 	// 				'2':{prog_id:'1',location_id:'2',link:'http://bambam3.com',comments:'bam3'}
 	// 			};
-	// $scope.pbranchNew={prog_id:'',location_id:'',link:'',comments:''};
-
-	// $scope.sbranchNew={prog_id:'',location_id:'',link:'',comments:''};
-
+	$scope.pbranchNew={prog_id:'',location_id:'',link:'',comments:''};
+	$scope.sbranchNew={scholar_id:'',location_id:'',link:'',comments:''};
+	$scope.jbranchNew={job_id:'',location_id:'',link:'',comments:''};
 
 	// $scope.psubjects=
 	// 			{
@@ -388,7 +388,7 @@ function c_oppcell($scope,truthSource,$timeout)
 	// 				'3':{name:'String',parent_id:'4',comments:'Entaglement'},
 	// 				'4':{name:'Physics',parent_id:''}
 	// 			};
-	// $scope.subjectNew={name:'',parent_id:'',comments:''};
+	$scope.subjectNew={name:'',parent_id:'',comments:''};
 
 
 	// $scope.positions=
@@ -397,7 +397,7 @@ function c_oppcell($scope,truthSource,$timeout)
 	// 				'2':{name:'5 year PhD',parent_id:'',comments:'You have to work hard for this'},
 	// 				'3':{name:'Winter Project',parent_id:'',comments:'Its cold at different times for different countries'}
 	// 			};
-	// $scope.positionNew={name:'',parent_id:'',comments:''};
+	$scope.positionNew={name:'',parent_id:'',comments:''};
 
 	// $scope.ppositions=
 	// 			{
@@ -406,7 +406,9 @@ function c_oppcell($scope,truthSource,$timeout)
 	// 				'3':{pbranch_id:'2',position_id:'2',opening:'2012-09-03',deadline:'2012-10-10',link:'http://something2.com'},
 	// 				'4':{pbranch_id:'2',position_id:'3',opening:'2012-09-04',deadline:'2012-10-10',link:'http://something3.com'}
 	// 			};
-	// $scope.ppositionNew={pbranch_id:'',position_id:'',opening:'',deadline:'',link:''};
+	$scope.ppositionNew={pbranch_id:'',position_id:'',opening:'',deadline:'',link:''};
+	$scope.jpositionNew={jbranch_id:'',position_id:'',opening:'',deadline:'',link:''};
+	$scope.spositionNew={sbranch_id:'',position_id:'',opening:'',deadline:'',link:''};
 
 	//These are functions you shouldn't need to change at all! They should infact go into some
 	//library, but for now are stuck with the controller
@@ -484,21 +486,24 @@ function c_oppcell($scope,truthSource,$timeout)
 	}
 
 	$scope.RefreshAll=function(){
-		$scope.init=0;
-		for(key in truthSource)
-		{
-			if((key!='func') && (key!='io') && (key!='nav'))
+		$timeout(function(){
+			$scope.init=0;
+			for(key in truthSource)
 			{
-				$scope.Refresh(key);					
-			}
-		}		
+				if((key!='func') && (key!='io') && (key!='nav'))
+				{
+					$scope.Refresh(key);					
+				}
+			}		
+
+		},100);
 	}
 
 	//INITIAL REFRESH
 	{
-		$timeout(function(){
+		// $timeout(function(){
 			$scope.RefreshAll();
-		},100);
+		// },100);
 	}	
 
 }

@@ -67,8 +67,8 @@
 										Comments: {{subjects[jsubjects[jsubjectI].subject_id].comments}}
 									</p>
 
-									<p><a ng-click="Update('subjects',jsubjects[jsubjectI].subject_id,subjects[jsubjects[jsubjectI].subject_id],true)">Update Subject</a>
-									| <a ng-click="Remove('jsubjects',jsubjects[jsubjectI].subject_id,true)">X</a></p>									
+									<p><a ng-click="Update('subjects',jsubjectI,subjects[jsubjects[jsubjectI].subject_id],true)">Update Subject</a>
+									| <a ng-click="Remove('jsubjects',jsubjectI,true)">X</a></p>									
 								</li>
 
 			<!-- ADD SUBJECTS -->		
@@ -157,8 +157,8 @@
 										Link: <input type="text" ng-model="jpositions[jpositionI].link"/>
 									</p>
 
-									<p><a ng-click="Update('positions',jpositions[jpositionI].position_id,positions[jpositions[jpositionI].position_id],true)">Update Position</a>
-									| <a ng-click="Remove('jpositions',jpositions[jpositionI].position_id,true)">X</a></p>									
+									<p><a ng-click="Update('positions',jpositionI,positions[jpositions[jpositionI].position_id],true)">Update Position</a>
+									| <a ng-click="Remove('jpositions',jpositionI,true)">X</a></p>									
 
 								</li>
 

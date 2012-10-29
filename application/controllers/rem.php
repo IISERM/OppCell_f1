@@ -155,6 +155,7 @@ class Rem_Controller extends Base_Controller
 	{
 		$id 	=	Input::json();
 		$ssub=	Ssub::find($id->id);
+		return json_encode($ssub);
 		if($ssub->delete())
 		{
 			return 1;
