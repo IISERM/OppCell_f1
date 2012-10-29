@@ -75,6 +75,24 @@ angular.module('oppapp',[])
 				config:{basePath:'/prog'},
 				data:{}
 			},
+		scholars:
+			{
+				fetch:{lnk:'/list'},
+				add:{lnk:'/add'},
+				remove:{lnk:'/rem'},
+				update:{lnk:'/update'},
+				config:{basePath:'/scholar'},
+				data:{}
+			},			
+		jobs:
+			{
+				fetch:{lnk:'/list'},
+				add:{lnk:'/add'},
+				remove:{lnk:'/rem'},
+				update:{lnk:'/update'},
+				config:{basePath:'/job'},
+				data:{}
+			},			
 		pbranches:
 			{
 				fetch:{lnk:'/list'},
@@ -84,6 +102,24 @@ angular.module('oppapp',[])
 				config:{basePath:'/pbranch'},
 				data:{}
 			},
+		sbranches:
+			{
+				fetch:{lnk:'/list'},
+				add:{lnk:'/add'},
+				remove:{lnk:'/rem'},
+				update:{lnk:'/update'},
+				config:{basePath:'/sbranch'},
+				data:{}
+			},
+		jbranches:
+			{
+				fetch:{lnk:'/list'},
+				add:{lnk:'/add'},
+				remove:{lnk:'/rem'},
+				update:{lnk:'/update'},
+				config:{basePath:'/jbranch'},
+				data:{}								
+			},			
 		locations:
 			{
 				fetch:{lnk:'/list'},
@@ -100,6 +136,24 @@ angular.module('oppapp',[])
 				remove:{lnk:'/rem'},
 				update:{lnk:'/update'},
 				config:{basePath:'/psub'},
+				data:{}								
+			},
+		ssubjects:
+			{
+				fetch:{lnk:'/list'},
+				add:{lnk:'/add'},
+				remove:{lnk:'/rem'},
+				update:{lnk:'/update'},
+				config:{basePath:'/ssub'},
+				data:{}								
+			},
+		jsubjects:
+			{
+				fetch:{lnk:'/list'},
+				add:{lnk:'/add'},
+				remove:{lnk:'/rem'},
+				update:{lnk:'/update'},
+				config:{basePath:'/jsub'},
 				data:{}								
 			},
 		subjects:
@@ -119,6 +173,24 @@ angular.module('oppapp',[])
 				update:{lnk:'/update'},
 				config:{basePath:'/ppos'},
 				data:{}								
+			},
+		spositions:
+			{
+				fetch:{lnk:'/list'},
+				add:{lnk:'/add'},
+				remove:{lnk:'/rem'},
+				update:{lnk:'/update'},
+				config:{basePath:'/spos'},
+				data:{}
+			},
+		jpositions:
+			{
+				fetch:{lnk:'/list'},
+				add:{lnk:'/add'},
+				remove:{lnk:'/rem'},
+				update:{lnk:'/update'},
+				config:{basePath:'/jpos'},
+				data:{}
 			},
 		positions:
 			{
@@ -200,7 +272,7 @@ angular.module('oppapp',[])
 	{
 		truth.io.state.working=true;
 		alert(id);
-		$http.post(truth.io.config.basePath + truth[type].remove.lnk + truth[type].config.basePath,id)
+		$http.post(truth.io.config.basePath + truth[type].remove.lnk + truth[type].config.basePath,{id:id})
 		.success(function(data)
 		{
 			$log.log(data);
@@ -293,6 +365,8 @@ function c_oppcell($scope,truthSource,$timeout)
 				};
 	$scope.pbranchNew={prog_id:'',location_id:'',link:'',comments:''};
 
+	$scope.sbranchNew={prog_id:'',location_id:'',link:'',comments:''};
+
 
 	$scope.psubjects=
 				{
@@ -346,17 +420,6 @@ function c_oppcell($scope,truthSource,$timeout)
 				});
 			if(autoRefresh)
 				$scope.RefreshAll();
-
-					// $scope.$apply();
-					// RefreshHelp
-					// if(autoRefresh==true)
-
-						// //truthSource[type].fetch.Now(function(val){
-							// //RefreshHelp(val,'progs');
-							// alert("Hey! This works :)");
-						// //});
-					
-				// });
 		}
 
 		$scope.Add=function(type,newData,autoRefresh)
@@ -457,6 +520,14 @@ function c_scholarships($scope,truthSource,$timeout)
 	truthSource.nav.Select('scholarships');
 	// $scope.$apply();
 	$scope.truthSource=truthSource;
+	$scope.AddBranch=function(type,newData,scholarId,autoRefresh)
+	{
+		var tData=newData;
+		tData.scholar=scholarId;
+		$scope.Add(type,tData,autoRefresh);
+	}
+
+
 }
 
 function c_jobs($scope,truthSource,$timeout)
@@ -465,4 +536,12 @@ function c_jobs($scope,truthSource,$timeout)
 	truthSource.nav.Select('jobs');
 	// $scope.$apply();
 	$scope.truthSource=truthSource;
+
+	$scope.AddBranch=function(type,newData,jobId,autoRefresh)
+	{
+		var tData=newData;
+		tData.job=jobId;
+		$scope.Add(type,tData,autoRefresh);
+	}
+
 }

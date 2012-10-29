@@ -16,8 +16,8 @@
 @endsection
 
 @section('full_content')
-    <div ng-app="oppapp">
-    <div ng-controller="c_oppcell">
+    <div ng-app="oppapp" id="main">
+    <div ng-controller="c_oppcell" id="side_content">
         <div id="menubar">
             <ul id="menu">
                 <!-- put class="current" in the li tag for the selected page - to highlight which page you're on -->
@@ -28,16 +28,7 @@
         </div>
         <!-- insert the page content here -->        
         <h1>{{truthSource.nav.current}}</h1>
-        <h2>About</h2>
-        <textarea>Use this system to introduce this section</textarea>
-        <p><a>Update</a></p>
-        <br/>
         
-        <h2>Best Practices</h2>
-        <textarea>This section deals with Academic Programmes including Scholarships, PhDs, Summer Intern-ships etcetera</textarea>
-        <p><a>Update</a></p>
-        <br/>
-
         <h1>The Database</h1>
         <div ng-view>
         </div>

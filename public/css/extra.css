@@ -34,11 +34,13 @@ line-height: 1;
 }
 
 .addnew {
-	background-color: rgba(0,255,135,.75);
+	background-color: white;
+	/*rgba(0,255,135,.75);*/
 	/*background: rgba(0,255,0,0.5);*/
 }
 
 .createnew {
-	background-color: rgba(255,215,0,.75) ;
+	background-color: #DDD;
+	/*rgba(255,215,0,.75) ;*/
 	/*background: rgba(255,0,0,0.5);*/
 }

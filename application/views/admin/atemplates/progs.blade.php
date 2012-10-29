@@ -68,7 +68,7 @@
 									</p>
 
 									<p><a ng-click="Update('subjects',psubjects[psubjectI].subject_id,subjects[psubjects[psubjectI].subject_id],true)">Update Subject</a>
-									| <a ng-click="Remove('psubjects',psubjects[psubjectI].subject_id,true)">X</a></p>									
+									| <a ng-click="Remove('psubjects',psubjectI,true)">X</a></p>									
 								</li>
 
 			<!-- ADD SUBJECTS -->		
@@ -125,9 +125,12 @@
 									</p>
 									<p>
 										Opening:
-										<input type="text" readonly="readonly" value="{{ppositions[ppositionI].opening}}"/> 
+										<br/>
+										{{ppositions[ppositionI].opening}}
+										<br/>
 										Deadline:
-										<input type="text" readonly="readonly" value="{{ppositions[ppositionI].deadline}}"/>
+										<br/>
+										{{ppositions[ppositionI].deadline}}
 									</p>
 
 								</li>
@@ -155,7 +158,7 @@
 									</p>
 
 									<p><a ng-click="Update('positions',ppositions[ppositionI].position_id,positions[ppositions[ppositionI].position_id],true)">Update Position</a>
-									| <a ng-click="Remove('ppositions',ppositions[ppositionI].position_id,true)">X</a></p>									
+									| <a ng-click="Remove('ppositions',ppositionI,true)">X</a></p>									
 
 								</li>
 
