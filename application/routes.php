@@ -41,10 +41,15 @@ Route::get('home', function()
 {
 	return View::make('static.home');
 });
-Route::get('about', function()
+Route::get('students', function()
 {
-	return View::make('static.about');
+	return View::make('static.students');
 });
+Route::get('industry', function()
+{
+	return View::make('static.industry');
+});
+
 Route::get('contact', function()
 {
 	return View::make('static.contact');

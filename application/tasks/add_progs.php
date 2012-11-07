@@ -142,12 +142,12 @@
 				);
 			Subject::create(
 					array(
-						'name'		=> 'Chemistry',
+						'name'		=> 'Biology',
 					)
 				);
 			Subject::create(
 					array(
-						'name'		=> 'Biology',
+						'name'		=> 'Chemistry',
 					)
 				);
 			Subject::create(
@@ -165,7 +165,7 @@
 			Subject::create(
 					array(
 						'name'		=> 'Immunobiology',
-						'parent_id'	=> 4
+						'parent_id'	=> 3
 					)
 				);
 			Subject::create(

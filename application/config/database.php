@@ -67,6 +67,7 @@ return array(
 			'prefix'   => '',
 		),
 
+/*
 		'mysql' => array(
 			'driver'   => 'mysql',
 			'host'     => 'localhost',
@@ -76,6 +77,7 @@ return array(
 			'charset'  => 'utf8',
 			'prefix'   => '',
 		),
+*/
 
 		'pgsql' => array(
 			'driver'   => 'pgsql',

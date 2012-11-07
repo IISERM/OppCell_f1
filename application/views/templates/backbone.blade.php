@@ -34,25 +34,34 @@
                     @endif
                     ><a href="{=URL::to('home')=}">Home</a></li>
                     <li
-                    @if (URI::segment(1) == 'about')
+                    @if (URI::segment(1) == 'students')
                         {="class='current'"=}
                     @endif
-                    ><a href="{=URL::to('about')=}">About</a></li>
+                    ><a href="{=URL::to('students')=}">For Students</a></li>
+                    <li
+                    @if (URI::segment(1) == 'industry')
+                        {="class='current'"=}
+                    @endif
+                    ><a href="{=URL::to('industry')=}">For Industry</a></li>
+<!--
                     <li
                     @if (URI::segment(1) == 'database')
                         {="class='current'"=}
                     @endif
                     ><a href="{=URL::to('database')=}">Databases</a></li>
+-->
                     <li
                     @if (URI::segment(1) == 'contact')
                         {="class='current'"=}
                     @endif
                     ><a href="{=URL::to('contact')=}">Contact Us</a></li>
+<!--
                     <li
                     @if (URI::segment(1) == 'admin')
                         {="class='current'"=}
                     @endif
                     ><a href="{=URL::to('admin')=}">Admin</a></li>
+-->
                     @yield_section
                 </ul>
             </div>

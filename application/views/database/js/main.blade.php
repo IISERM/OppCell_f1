@@ -220,7 +220,7 @@ angular.module('oppapp',[])
 		{
 			current:'Loading..',
 			//clear text for select!
-			clear_select:{progs:'Academic Programs',
+			clear_select:{progs:'Summers and PhDs',
 							scholarships:'Scholarships',
 							jobs:'Jobs'},
 			select_classname:'current2',

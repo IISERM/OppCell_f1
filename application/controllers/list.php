@@ -260,7 +260,7 @@ class List_Controller extends Base_Controller
 		{
 			$id = $j->id;
 			$d = array(
-					'job_id'		=>	$j->progs_id,
+					'job_id'		=>	$j->jobs_id,
 					'location_id'	=>	$j->locations_id,
 					'link'			=>	$j->link,
 					'comments'		=>	$j->comments

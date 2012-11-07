@@ -15,16 +15,34 @@
 
 @section('content')
     <!-- insert the page content here -->
-    <h1>Welcome to the Opportunity Cell</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam non pretium sapien. Aliquam sed tortor nec leo tincidunt pulvinar. Ut vel lacinia sapien. Donec sed lacinia neque. Sed et leo nunc, a accumsan nisi. Aliquam scelerisque adipiscing adipiscing. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-    <p>Integer nec egestas sem. Curabitur semper est eget justo tempus vitae ultrices nunc dapibus. Ut nulla ipsum, molestie vel interdum sit amet, aliquet mattis est. Vivamus aliquet tristique sapien id euismod. Nulla imperdiet, turpis a condimentum placerat, nisi nulla vehicula odio, non faucibus enim ipsum eu lectus. Integer massa ligula, dignissim id vulputate sit amet, semper ac tortor. Pellentesque quis aliquam neque. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Curabitur nibh lectus, fermentum ac tempus vel, iaculis et purus. Pellentesque ut justo est, ac tempus metus. Suspendisse potenti. Donec sodales luctus lorem a laoreet. Nam consectetur blandit mi id tristique. Donec vehicula turpis vel dolor posuere vulputate. Vestibulum ut orci at ligula congue ornare. Donec est nisi, fringilla lacinia hendrerit a, bibendum consectetur dui.</p>
-    <p>Nam fermentum hendrerit volutpat. Nullam iaculis nisi at ligula tempus ut auctor magna facilisis. Quisque congue, tortor sed varius convallis, nibh leo tempus justo, a rutrum dui odio vel metus. Nullam cursus blandit ligula. Aenean in laoreet dui. In et sapien at purus pulvinar ultricies. In hac habitasse platea dictumst.</p>
-    <h2>Heading 2</h2>
-    <p>Maecenas ut leo a nisi iaculis tempus pulvinar vitae sapien. Curabitur quis ante et magna sodales ullamcorper nec at ante. In sit amet dui tempor velit pulvinar posuere. Quisque sed sem in odio porttitor tincidunt id non libero. Integer at laoreet lorem. Curabitur id dolor lectus. Praesent vitae quam et mi porttitor sagittis et id lorem. Sed sit amet sapien ut nibh accumsan venenatis et eget ante. Proin posuere, purus vel blandit interdum, magna purus facilisis nulla, at convallis magna velit et tortor. Donec varius, est nec viverra molestie, sapien nunc fringilla massa, ac vestibulum lectus magna et odio. Sed congue, lorem rhoncus pharetra pharetra, erat dolor tincidunt odio, at imperdiet erat ante volutpat massa. Aenean ullamcorper ligula vel libero adipiscing at pulvinar dui consequat. In hac habitasse platea dictumst. Suspendisse fringilla varius nulla.</p>
-    <ul>
-        <li>Physics</li>
-        <li>Mathematics</li>
-        <li>Biology</li>
-        <li>Chemistry</li>
-    </ul>
+    <h1>Welcome to Opportunity Cell of IISER Mohali</h1>
+    <p>IISER Mohali aims to produce world class science graduates who would pursue research as a career. Keeping this objective in mind and catering to the needs of the students of IISER Mohali, the <b>Opportunity Cell</b> was constituted as a joint Student- Faculty venture in 2011.</p>
+    <h1>Aims:</h1>
+    <h2>Summer/Winter Internships </h2>
+    <p>Each year students pursue research projects in industry and academia through internships. The cell aims to provide information about various internship programs. By establishing contact with industries and research institutes the cell also aims to facilitate the application process. </p>
+    <h2>PhD Programs </h2>
+    <p>The cell aims to provide information and guidance about PhD programs within India and abroad. Further the cell endeavours to provide on-campus PhD positions to IISER Mohali graduates in various research institutes. </p>
+    <h2>Research Oriented Jobs</h2>
+    <p>The opportunity cell aims to recruit IISER Mohali graduates in companies with a strong research base that exploit the skills gained by students during their course work.</p>
+    <!-- <h2>Subject specific co-ordinators of OppCell are</h2> -->
+<!--     <table>
+        <tr><td><h4>Physics</h4></td><td> - </td>
+            <td>Mayank Mishra</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr><td><h4>Mathematics</h4></td><td> - </td>
+            <td>Keshav Aggarwal</td>
+            <td> &amp; </td>
+            <td>Hitesh </td>
+        </tr>
+        <tr><td><h4>Biology</h4></td><td> - </td>
+            <td>Abhilasha Joshi</td>
+            <td> &amp; </td>
+            <td>Vrinda Ravi Kumar</td>
+        </tr>
+        <tr><td><h4>Chemistry</h4></td><td> - </td>
+            <td>Need Volunteers!</td><td></td><td></td> 
+        </tr>
+    </table> -->
 @endsection

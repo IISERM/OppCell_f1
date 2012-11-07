@@ -1,22 +1,20 @@
-<p>
-<h2>About</h2>
-Then something happened in the world, and alas, the website was ready!
-</p>
-
-
-<p>
-<h2>Extravance</h2>
-The world is made of tiny particles which using mechanistic theories, can explain everything there is to understand.
-</p>
+<h2>What exactly is a summer project</h2>
+	<p>The answer would depend on what type of person you are;</p>
+	<ol>
+		<li><strong>Science Person</strong> – Summer projects help decipher your major field of interested or gain experience in an already identified field of interest.</li>
+		<li><strong>Non Science Person</strong> – Summer projects are your ONLY source of learning something that might be ‘useful’ for some kind of ‘job’ you might want. So, do your summers VERY WISELY and CREATE contacts for yourself.</li>
+		<li><strong>Utterly confused Person</strong> – Summer projects would be most fun for you. You can try all sorts of things - academic internships, industry internships, non-science internships and also internships in alternative careers in science like science journalism etc.</li>
+	</ol>
+	<p>Your experience not only becomes a part of your CV, it shows your interest in identifying what you want to do which is a very important factor wherever you go – be it science or non-science.</p>
 <!-- <center>
 	<input type="text" placeholder="Search Institute Name" ng-model="searchInstitute"/>
 </center>
  -->
 <table>
 	<tr>
-		<th  style="width:100px"	>Name</th>
+		<th  style="width:100px">Name</th>
 		<th  					>Details</th>
-		<th  style="width:100px">Remarks</th>	
+		<th  style="width:100px">Remarks</th>
 	</tr>
 
 	<tr ng-repeat="(progI,prog) in progs">
@@ -38,12 +36,12 @@ The world is made of tiny particles which using mechanistic theories, can explai
 		<!-- VIEW LOCATION -->
 						<div ng-hide="pbranches[pbranchI].edit">
 							<p><a href="{{pbranches[pbranchI].link}}" target="_blank">{{locations[pbranches[pbranchI].location_id].name}} ({{locations[locations[pbranches[pbranchI].location_id].parent_id].name}})</a></p>
-						</div>						
+						</div>
 					</td>
-	<!-- SUBJECTS -->					
+	<!-- SUBJECTS -->
 					<td>
-						<ul>							
-		<!-- VIEW SUBJECTS -->		
+						<ul>
+		<!-- VIEW SUBJECTS -->
 							<div ng-hide="pbranches[pbranchI].edit">
 								<li ng-repeat="(psubjectI,psubject) in psubjects | oFilter:{'pbranch_id':pbranchI}:this">
 									<!-- {{subjects[psubjects[psubjectI].subject_id]}} -->
