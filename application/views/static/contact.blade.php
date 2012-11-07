@@ -41,7 +41,7 @@
             <td><a href="mailto:samrat@iisermohali.ac.in">samrat@iisermohali.ac.in</a></td>
         </tr>
         <tr>
-            <td>Abhilasha Joshi</td>
+            <td>Abhilasha Joshi (MS08001)</td>
             <td>Student Coordinator</td>
             <td><a href="mailto:ms08001@iisermohali.ac.in">ms08001@iisermohali.ac.in</a></td>
         </tr>
@@ -116,7 +116,7 @@
         </tr>
         <tr>
             <td>
-                Vrinda Ravi Kumar
+                Vrinda Ravi Kumar (MS09137)
             </td>
             <td>
                 <a href="mailto:slipshodder@gmail.com">slipshodder@gmail.com</a>
@@ -127,7 +127,7 @@
         </tr>
         <tr>
             <td>
-                Tejinder Chechi
+                Tejinder Chechi (MS10054)
             </td>
             <td>
                 <a href="mailto:chechi.on.rule@gmail.com">chechi.on.rule@gmail.com</a>
@@ -138,7 +138,7 @@
         </tr>    
         <tr>
             <td>
-                Kanwal Puneet
+                Kanwal Puneet (MS09068)
             </td>
             <td>
                 <a href="mailto:kanwal.puneet@gmail.com">kanwal.puneet@gmail.com</a>
@@ -228,7 +228,7 @@
             <th>Phone</th>
         </tr>
         <tr>
-            <td>Gagan Preet Singh (MS08)</td>
+            <td>Gagan Preet Singh (MS08021)</td>
             <td><a href="mailto:s.gagan.preet@gmail.com">s.gagan.preet@gmail.com</a></td>
             <td>7837058851</td>
         </tr>
