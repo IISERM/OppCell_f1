@@ -55,6 +55,11 @@ Route::get('contact', function()
 	return View::make('static.contact');
 });
 
+Route::get('faq', function()
+{
+	return View::make('static.faq');
+});
+
 Route::controller(
 		array(
 				'database',

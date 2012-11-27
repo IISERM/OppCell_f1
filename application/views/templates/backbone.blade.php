@@ -2,6 +2,7 @@
 <html>
 
 <head>
+    @yield('extraStyle')    
     <title>@yield('title') | Opportunity Cell</title>
     <!-- <meta http-equiv="content-type" content="text/html; charset=utf-8" /> -->
     <link rel="stylesheet" type="text/css" href="{=URL::base().'/css/fonts/YanoneKaffeesatz.css'=}" />
@@ -13,6 +14,7 @@
     <meta name="description" content="This is the opportunity cell of IISER Mohali" />
     <meta name="keywords" content="opportunities, MS students, PhD, jobs, placement, IISER Mohali" />
     @yield_section
+
 
 </head>
 
@@ -43,6 +45,11 @@
                         {="class='current'"=}
                     @endif
                     ><a href="{=URL::to('industry')=}">For Industry</a></li>
+                    <li
+                    @if (URI::segment(1) == 'faq')
+                        {="class='current'"=}
+                    @endif
+                    ><a href="{=URL::to('faq')=}">FAQs</a></li>
 <!--
                     <li
                     @if (URI::segment(1) == 'database')
@@ -55,6 +62,7 @@
                         {="class='current'"=}
                     @endif
                     ><a href="{=URL::to('contact')=}">Contact Us</a></li>
+
 <!--
                     <li
                     @if (URI::segment(1) == 'admin')
