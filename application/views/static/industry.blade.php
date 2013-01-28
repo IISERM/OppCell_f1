@@ -30,9 +30,9 @@
             <th>Email</th>
         </tr> 
         <tr>
-            <td>Dr. Samrat Ghosh</td>
+            <td> Varadharaj R. Srinivasan</td>
             <td>Faculty Coordinator</td>
-            <td><a href="mailto:samrat@iisermohali.ac.in">samrat@iisermohali.ac.in</a></td>
+            <td><a href="mailto:ravisri@iisermohali.ac.in">ravisri@iisermohali.ac.in</a></td>
         </tr>
         <tr>
             <td>Abhilasha Joshi</td>

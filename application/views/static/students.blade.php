@@ -25,7 +25,7 @@
     <ol>
         <li>Academia: Students, depending on the year of their study can purse the following options 
             <ul>
-                <li> PhD Position</li>
+                <li> PhD Position (<a target="_blank" href="https://docs.google.com/document/d/1yrkjn7MhBimm1rxJRd0kWmIH3TO6IFsdF3olYS642C8/edit">how to write an SOP</a>) </li>
                 <li> Research Associate Position</li> 
                 <li> Summer/Winter Internships   </li>
             </ul> 
