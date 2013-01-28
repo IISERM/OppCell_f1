@@ -45,11 +45,13 @@
                         {="class='current'"=}
                     @endif
                     ><a href="{=URL::to('industry')=}">For Industry</a></li>
-                    <li
+
+<!--                     <li
                     @if (URI::segment(1) == 'faq')
                         {="class='current'"=}
                     @endif
                     ><a href="{=URL::to('faq')=}">FAQs</a></li>
+ -->
 <!--
                     <li
                     @if (URI::segment(1) == 'database')
